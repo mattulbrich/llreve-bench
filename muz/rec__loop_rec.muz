@@ -1,0 +1,461 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   call$1_0_1
+   Int)
+(declare-var
+   call$2_0_1
+   Int)
+(declare-var
+   m$1_0_old_1
+   Int)
+(declare-var
+   m$2_0_old_1
+   Int)
+(declare-var
+   n$1_0_old_1
+   Int)
+(declare-var
+   n$2_0_old_1
+   Int)
+(declare-var
+   result$1_1
+   Int)
+(declare-var
+   result$2_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((m$1_0 Int)
+    (m$2_0 Int))
+   Bool
+   (= m$1_0 m$2_0))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int))
+   Bool
+   (= result$1 result$2))
+(declare-rel
+   INV_REC_tr^tr
+   (Int
+    Int
+    Int
+    Int))
+(declare-rel
+   INV_REC_tr^tr_PRE
+   (Int
+    Int))
+(declare-rel
+   INV_42
+   (Int
+    Int
+    Int
+    Int))
+(declare-rel
+   INV_42_PRE
+   (Int
+    Int))
+(declare-rel
+   INV_REC_tr__1
+   (Int
+    Int))
+(declare-rel
+   INV_REC_tr__1_PRE
+   (Int))
+(declare-rel
+   INV_42__1
+   (Int
+    Int))
+(declare-rel
+   INV_42__1_PRE
+   (Int))
+(declare-rel
+   INV_REC_tr__2
+   (Int
+    Int))
+(declare-rel
+   INV_REC_tr__2_PRE
+   (Int))
+(declare-rel
+   INV_42__2
+   (Int
+    Int))
+(declare-rel
+   INV_42__2_PRE
+   (Int))
+(rule
+   (let
+      ((m$1_0_1 m$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (> m$1_0_1 0)))
+         (let
+            ((sub$1_0_1 (- m$1_0_1 1))
+             (m$2_0_1 m$2_0_old_1))
+            (let
+               ((cmp$2_0_1 (> m$2_0_1 0)))
+               (let
+                  ((sub$2_0_1 (- m$2_0_1 1)))
+                  (=>
+                     (and
+                        (IN_INV m$1_0_old_1 m$2_0_old_1)
+                        cmp$1_0_1
+                        cmp$2_0_1)
+                     (INV_REC_tr^tr_PRE sub$1_0_1 sub$2_0_1))))))))
+(rule
+   (let
+      ((m$1_0_1 m$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (> m$1_0_1 0)))
+         (let
+            ((sub$1_0_1 (- m$1_0_1 1))
+             (m$2_0_1 m$2_0_old_1))
+            (let
+               ((cmp$2_0_1 (> m$2_0_1 0)))
+               (let
+                  ((sub$2_0_1 (- m$2_0_1 1)))
+                  (let
+                     ((add$1_0_1 (+ call$1_0_1 m$1_0_1)))
+                     (let
+                        ((result.0$1_0_1 add$1_0_1))
+                        (let
+                           ((result$1_1 result.0$1_0_1)
+                            (cmp1$2_0_1 (>= call$2_0_1 0))
+                            (add$2_0_1 (+ call$2_0_1 m$2_0_1)))
+                           (let
+                              ((add.call$2_0_1 (ite cmp1$2_0_1 add$2_0_1 call$2_0_1)))
+                              (let
+                                 ((result.1$2_0_1 add.call$2_0_1))
+                                 (let
+                                    ((result$2_1 result.1$2_0_1))
+                                    (=>
+                                       (and
+                                          (IN_INV m$1_0_old_1 m$2_0_old_1)
+                                          cmp$1_0_1
+                                          cmp$2_0_1
+                                          (INV_REC_tr^tr sub$1_0_1 sub$2_0_1 call$1_0_1 call$2_0_1)
+                                          (not (OUT_INV result$1_1 result$2_1)))
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((m$1_0_1 m$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (> m$1_0_1 0)))
+         (let
+            ((sub$1_0_1 (- m$1_0_1 1))
+             (m$2_0_1 m$2_0_old_1))
+            (let
+               ((cmp$2_0_1 (> m$2_0_1 0)))
+               (let
+                  ((result.1$2_0_1 0))
+                  (let
+                     ((result$2_1 result.1$2_0_1))
+                     (=>
+                        (and
+                           (IN_INV m$1_0_old_1 m$2_0_old_1)
+                           cmp$1_0_1
+                           (not cmp$2_0_1))
+                        (INV_REC_tr__1_PRE sub$1_0_1)))))))))
+(rule
+   (let
+      ((m$1_0_1 m$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (> m$1_0_1 0)))
+         (let
+            ((sub$1_0_1 (- m$1_0_1 1))
+             (m$2_0_1 m$2_0_old_1))
+            (let
+               ((cmp$2_0_1 (> m$2_0_1 0)))
+               (let
+                  ((result.1$2_0_1 0))
+                  (let
+                     ((result$2_1 result.1$2_0_1))
+                     (let
+                        ((add$1_0_1 (+ call$1_0_1 m$1_0_1)))
+                        (let
+                           ((result.0$1_0_1 add$1_0_1))
+                           (let
+                              ((result$1_1 result.0$1_0_1))
+                              (=>
+                                 (and
+                                    (IN_INV m$1_0_old_1 m$2_0_old_1)
+                                    cmp$1_0_1
+                                    (not cmp$2_0_1)
+                                    (INV_REC_tr__1 sub$1_0_1 call$1_0_1)
+                                    (not (OUT_INV result$1_1 result$2_1)))
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((m$1_0_1 m$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (> m$1_0_1 0)))
+         (let
+            ((result.0$1_0_1 0))
+            (let
+               ((result$1_1 result.0$1_0_1)
+                (m$2_0_1 m$2_0_old_1))
+               (let
+                  ((cmp$2_0_1 (> m$2_0_1 0)))
+                  (let
+                     ((sub$2_0_1 (- m$2_0_1 1)))
+                     (=>
+                        (and
+                           (IN_INV m$1_0_old_1 m$2_0_old_1)
+                           (not cmp$1_0_1)
+                           cmp$2_0_1)
+                        (INV_REC_tr__2_PRE sub$2_0_1)))))))))
+(rule
+   (let
+      ((m$1_0_1 m$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (> m$1_0_1 0)))
+         (let
+            ((result.0$1_0_1 0))
+            (let
+               ((result$1_1 result.0$1_0_1)
+                (m$2_0_1 m$2_0_old_1))
+               (let
+                  ((cmp$2_0_1 (> m$2_0_1 0)))
+                  (let
+                     ((sub$2_0_1 (- m$2_0_1 1)))
+                     (let
+                        ((cmp1$2_0_1 (>= call$2_0_1 0))
+                         (add$2_0_1 (+ call$2_0_1 m$2_0_1)))
+                        (let
+                           ((add.call$2_0_1 (ite cmp1$2_0_1 add$2_0_1 call$2_0_1)))
+                           (let
+                              ((result.1$2_0_1 add.call$2_0_1))
+                              (let
+                                 ((result$2_1 result.1$2_0_1))
+                                 (=>
+                                    (and
+                                       (IN_INV m$1_0_old_1 m$2_0_old_1)
+                                       (not cmp$1_0_1)
+                                       cmp$2_0_1
+                                       (INV_REC_tr__2 sub$2_0_1 call$2_0_1)
+                                       (not (OUT_INV result$1_1 result$2_1)))
+                                    END_QUERY))))))))))))
+(rule
+   (let
+      ((m$1_0_1 m$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (> m$1_0_1 0)))
+         (let
+            ((result.0$1_0_1 0))
+            (let
+               ((result$1_1 result.0$1_0_1)
+                (m$2_0_1 m$2_0_old_1))
+               (let
+                  ((cmp$2_0_1 (> m$2_0_1 0)))
+                  (let
+                     ((result.1$2_0_1 0))
+                     (let
+                        ((result$2_1 result.1$2_0_1))
+                        (=>
+                           (and
+                              (IN_INV m$1_0_old_1 m$2_0_old_1)
+                              (not cmp$1_0_1)
+                              (not cmp$2_0_1)
+                              (not (OUT_INV result$1_1 result$2_1)))
+                           END_QUERY)))))))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1)
+       (n$2_0_1 n$2_0_old_1))
+      (=>
+         (INV_REC_tr^tr_PRE n$1_0_old_1 n$2_0_old_1)
+         (INV_42_PRE n$1_0_1 n$2_0_1))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1)
+       (n$2_0_1 n$2_0_old_1))
+      (=>
+         (and
+            (INV_REC_tr^tr_PRE n$1_0_old_1 n$2_0_old_1)
+            (INV_42 n$1_0_1 n$2_0_1 result$1_1 result$2_1))
+         (INV_REC_tr^tr n$1_0_old_1 n$2_0_old_1 result$1_1 result$2_1))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (< 0 n$1_0_1)))
+         (let
+            ((result$1_1 0)
+             (n$2_0_1 n$2_0_old_1))
+            (let
+               ((cmp$2_0_1 (< 0 n$2_0_1)))
+               (let
+                  ((result$2_1 0))
+                  (=>
+                     (and
+                        (INV_42_PRE n$1_0_old_1 n$2_0_old_1)
+                        (not cmp$1_0_1)
+                        (not cmp$2_0_1))
+                     (INV_42 n$1_0_old_1 n$2_0_old_1 result$1_1 result$2_1))))))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (< 0 n$1_0_1)))
+         (let
+            ((n$2_0_1 n$2_0_old_1))
+            (let
+               ((cmp$2_0_1 (< 0 n$2_0_1)))
+               (=>
+                  (and
+                     (INV_42_PRE n$1_0_old_1 n$2_0_old_1)
+                     cmp$1_0_1
+                     cmp$2_0_1)
+                  (INV_42_PRE n$1_0_1 n$2_0_1)))))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (< 0 n$1_0_1)))
+         (let
+            ((n$2_0_1 n$2_0_old_1))
+            (let
+               ((cmp$2_0_1 (< 0 n$2_0_1)))
+               (=>
+                  (and
+                     (INV_42_PRE n$1_0_old_1 n$2_0_old_1)
+                     cmp$1_0_1
+                     cmp$2_0_1
+                     (INV_42 n$1_0_1 n$2_0_1 result$1_1 result$2_1))
+                  (INV_42 n$1_0_old_1 n$2_0_old_1 result$1_1 result$2_1)))))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (< 0 n$1_0_1)))
+         (=>
+            (and
+               (INV_42_PRE n$1_0_old_1 n$2_0_old_1)
+               cmp$1_0_1
+               (let
+                  ((n$2_0_1 n$2_0_old_1))
+                  (let
+                     ((cmp$2_0_1 (< 0 n$2_0_1)))
+                     (not cmp$2_0_1))))
+            (INV_42_PRE n$1_0_1 n$2_0_old_1)))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (< 0 n$1_0_1)))
+         (=>
+            (and
+               (INV_42_PRE n$1_0_old_1 n$2_0_old_1)
+               cmp$1_0_1
+               (let
+                  ((n$2_0_1 n$2_0_old_1))
+                  (let
+                     ((cmp$2_0_1 (< 0 n$2_0_1)))
+                     (not cmp$2_0_1)))
+               (INV_42 n$1_0_1 n$2_0_old_1 result$1_1 result$2_1))
+            (INV_42 n$1_0_old_1 n$2_0_old_1 result$1_1 result$2_1)))))
+(rule
+   (let
+      ((n$2_0_1 n$2_0_old_1))
+      (let
+         ((cmp$2_0_1 (< 0 n$2_0_1)))
+         (=>
+            (and
+               (INV_42_PRE n$1_0_old_1 n$2_0_old_1)
+               cmp$2_0_1
+               (let
+                  ((n$1_0_1 n$1_0_old_1))
+                  (let
+                     ((cmp$1_0_1 (< 0 n$1_0_1)))
+                     (not cmp$1_0_1))))
+            (INV_42_PRE n$1_0_old_1 n$2_0_1)))))
+(rule
+   (let
+      ((n$2_0_1 n$2_0_old_1))
+      (let
+         ((cmp$2_0_1 (< 0 n$2_0_1)))
+         (=>
+            (and
+               (INV_42_PRE n$1_0_old_1 n$2_0_old_1)
+               cmp$2_0_1
+               (let
+                  ((n$1_0_1 n$1_0_old_1))
+                  (let
+                     ((cmp$1_0_1 (< 0 n$1_0_1)))
+                     (not cmp$1_0_1)))
+               (INV_42 n$1_0_old_1 n$2_0_1 result$1_1 result$2_1))
+            (INV_42 n$1_0_old_1 n$2_0_old_1 result$1_1 result$2_1)))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (=>
+         (and
+            (INV_REC_tr__1_PRE n$1_0_old_1)
+            (INV_42__1 n$1_0_1 result$1_1))
+         (INV_REC_tr__1 n$1_0_old_1 result$1_1))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (< 0 n$1_0_1)))
+         (let
+            ((result$1_1 0))
+            (=>
+               (and
+                  (INV_42__1_PRE n$1_0_old_1)
+                  (not cmp$1_0_1))
+               (INV_42__1 n$1_0_old_1 result$1_1))))))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (let
+         ((cmp$1_0_1 (< 0 n$1_0_1)))
+         (=>
+            (and
+               (INV_42__1_PRE n$1_0_old_1)
+               cmp$1_0_1
+               (INV_42__1 n$1_0_1 result$1_1))
+            (INV_42__1 n$1_0_old_1 result$1_1)))))
+(rule
+   (let
+      ((n$2_0_1 n$2_0_old_1))
+      (=>
+         (and
+            (INV_REC_tr__2_PRE n$2_0_old_1)
+            (INV_42__2 n$2_0_1 result$2_1))
+         (INV_REC_tr__2 n$2_0_old_1 result$2_1))))
+(rule
+   (let
+      ((n$2_0_1 n$2_0_old_1))
+      (let
+         ((cmp$2_0_1 (< 0 n$2_0_1)))
+         (let
+            ((result$2_1 0))
+            (=>
+               (and
+                  (INV_42__2_PRE n$2_0_old_1)
+                  (not cmp$2_0_1))
+               (INV_42__2 n$2_0_old_1 result$2_1))))))
+(rule
+   (let
+      ((n$2_0_1 n$2_0_old_1))
+      (let
+         ((cmp$2_0_1 (< 0 n$2_0_1)))
+         (=>
+            (and
+               (INV_42__2_PRE n$2_0_old_1)
+               cmp$2_0_1
+               (INV_42__2 n$2_0_1 result$2_1))
+            (INV_42__2 n$2_0_old_1 result$2_1)))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

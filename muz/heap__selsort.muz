@@ -1,0 +1,722 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   HEAP$1_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_old_1
+   (Array Int Int))
+(declare-var
+   a$1_0_old_1
+   Int)
+(declare-var
+   a$2_0_old_1
+   Int)
+(declare-var
+   i.0$1_0_old_1
+   Int)
+(declare-var
+   i.0$2_0_old_1
+   Int)
+(declare-var
+   j.0$1_0_old_1
+   Int)
+(declare-var
+   j.0$2_0_old_1
+   Int)
+(declare-var
+   n$1_0_old_1
+   Int)
+(declare-var
+   n$2_0_old_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((a$1_0 Int)
+    (n$1_0 Int)
+    (HEAP$1 (Array Int Int))
+    (a$2_0 Int)
+    (n$2_0 Int)
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= a$1_0 a$2_0)
+      (= n$1_0 n$2_0)
+      (= HEAP$1 HEAP$2)))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int)
+    (HEAP$1 (Array Int Int))
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= result$1 result$2)
+      (= HEAP$1 HEAP$2)))
+; :annot (INV_MAIN_1 a$1_0 i.0$1_0 n$1_0 HEAP$1 a$2_0 i.0$2_0 n$2_0 HEAP$2)
+(declare-rel
+   INV_MAIN_1
+   (Int
+    Int
+    Int
+    (Array Int Int)
+    Int
+    Int
+    Int
+    (Array Int Int)))
+; :annot (INV_MAIN_2 a$1_0 i.0$1_0 j.0$1_0 n$1_0 HEAP$1 a$2_0 i.0$2_0 j.0$2_0 n$2_0 HEAP$2)
+(declare-rel
+   INV_MAIN_2
+   (Int
+    Int
+    Int
+    Int
+    (Array Int Int)
+    Int
+    Int
+    Int
+    Int
+    (Array Int Int)))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (i.0$1_0_1 0)
+       (a$2_0_1 a$2_0_old_1)
+       (n$2_0_1 n$2_0_old_1)
+       (HEAP$2_1 HEAP$2_old_1)
+       (i.0$2_0_1 0))
+      (=>
+         (IN_INV a$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+         (INV_MAIN_1 a$1_0_1 i.0$1_0_1 n$1_0_1 HEAP$1_1 a$2_0_1 i.0$2_0_1 n$2_0_1 HEAP$2_1))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< i.0$1_0_1 n$1_0_1)))
+         (let
+            ((result$1_1 0)
+             (HEAP$1_res_1 HEAP$1_1)
+             (a$2_0_1 a$2_0_old_1)
+             (i.0$2_0_1 i.0$2_0_old_1)
+             (n$2_0_1 n$2_0_old_1))
+            (let
+               ((HEAP$2_1 HEAP$2_old_1)
+                (cmp$2_0_1 (< i.0$2_0_1 n$2_0_1)))
+               (=>
+                  (and
+                     (INV_MAIN_1 a$1_0_old_1 i.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                     (not cmp$1_0_1)
+                     cmp$2_0_1)
+                  END_QUERY))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< i.0$1_0_1 n$1_0_1)))
+         (let
+            ((j.0$1_0_1 i.0$1_0_1)
+             (a$2_0_1 a$2_0_old_1)
+             (i.0$2_0_1 i.0$2_0_old_1)
+             (n$2_0_1 n$2_0_old_1))
+            (let
+               ((HEAP$2_1 HEAP$2_old_1)
+                (cmp$2_0_1 (< i.0$2_0_1 n$2_0_1)))
+               (=>
+                  (and
+                     (INV_MAIN_1 a$1_0_old_1 i.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                     cmp$1_0_1
+                     (not cmp$2_0_1))
+                  END_QUERY))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< i.0$1_0_1 n$1_0_1)))
+         (let
+            ((result$1_1 0)
+             (HEAP$1_res_1 HEAP$1_1)
+             (a$2_0_1 a$2_0_old_1)
+             (i.0$2_0_1 i.0$2_0_old_1)
+             (n$2_0_1 n$2_0_old_1))
+            (let
+               ((HEAP$2_1 HEAP$2_old_1)
+                (cmp$2_0_1 (< i.0$2_0_1 n$2_0_1)))
+               (let
+                  ((result$2_1 0)
+                   (HEAP$2_res_1 HEAP$2_1))
+                  (=>
+                     (and
+                        (INV_MAIN_1 a$1_0_old_1 i.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                        (not cmp$1_0_1)
+                        (not cmp$2_0_1)
+                        (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                     END_QUERY)))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< i.0$1_0_1 n$1_0_1)))
+         (let
+            ((j.0$1_0_1 i.0$1_0_1)
+             (a$2_0_1 a$2_0_old_1)
+             (i.0$2_0_1 i.0$2_0_old_1)
+             (n$2_0_1 n$2_0_old_1))
+            (let
+               ((HEAP$2_1 HEAP$2_old_1)
+                (cmp$2_0_1 (< i.0$2_0_1 n$2_0_1)))
+               (let
+                  ((j.0$2_0_1 i.0$2_0_1))
+                  (=>
+                     (and
+                        (INV_MAIN_1 a$1_0_old_1 i.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                        cmp$1_0_1
+                        cmp$2_0_1)
+                     (INV_MAIN_2 a$1_0_1 i.0$1_0_1 j.0$1_0_1 n$1_0_1 HEAP$1_1 a$2_0_1 i.0$2_0_1 j.0$2_0_1 n$2_0_1 HEAP$2_1))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((inc20$1_0_1 (+ i.0$1_0_1 1)))
+            (let
+               ((i.0$1_0_2 inc20$1_0_1)
+                (a$2_0_1 a$2_0_old_1)
+                (i.0$2_0_1 i.0$2_0_old_1)
+                (j.0$2_0_1 j.0$2_0_old_1)
+                (n$2_0_1 n$2_0_old_1))
+               (let
+                  ((HEAP$2_1 HEAP$2_old_1)
+                   (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                  (let
+                     ((idxprom$2_0_1 j.0$2_0_1))
+                     (let
+                        ((arrayidx$2_0_1 (+ a$2_0_1 (* 4 idxprom$2_0_1))))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 arrayidx$2_0_1))
+                            (idxprom8$2_0_1 i.0$2_0_1))
+                           (let
+                              ((arrayidx9$2_0_1 (+ a$2_0_1 (* 4 idxprom8$2_0_1))))
+                              (let
+                                 ((_$2_1_1 (select HEAP$2_1 arrayidx9$2_0_1)))
+                                 (let
+                                    ((cmp10$2_0_1 (< _$2_0_1 _$2_1_1)))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                                          (not cmp3$1_0_1)
+                                          cmp3$2_0_1
+                                          cmp10$2_0_1)
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((inc20$1_0_1 (+ i.0$1_0_1 1)))
+            (let
+               ((i.0$1_0_2 inc20$1_0_1)
+                (a$2_0_1 a$2_0_old_1)
+                (i.0$2_0_1 i.0$2_0_old_1)
+                (j.0$2_0_1 j.0$2_0_old_1)
+                (n$2_0_1 n$2_0_old_1))
+               (let
+                  ((HEAP$2_1 HEAP$2_old_1)
+                   (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                  (let
+                     ((idxprom$2_0_1 j.0$2_0_1))
+                     (let
+                        ((arrayidx$2_0_1 (+ a$2_0_1 (* 4 idxprom$2_0_1))))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 arrayidx$2_0_1))
+                            (idxprom8$2_0_1 i.0$2_0_1))
+                           (let
+                              ((arrayidx9$2_0_1 (+ a$2_0_1 (* 4 idxprom8$2_0_1))))
+                              (let
+                                 ((_$2_1_1 (select HEAP$2_1 arrayidx9$2_0_1)))
+                                 (let
+                                    ((cmp10$2_0_1 (< _$2_0_1 _$2_1_1)))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                                          (not cmp3$1_0_1)
+                                          cmp3$2_0_1
+                                          (not cmp10$2_0_1))
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((idxprom$1_0_1 j.0$1_0_1))
+            (let
+               ((arrayidx$1_0_1 (+ a$1_0_1 (* 4 idxprom$1_0_1))))
+               (let
+                  ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                   (idxprom8$1_0_1 i.0$1_0_1))
+                  (let
+                     ((arrayidx9$1_0_1 (+ a$1_0_1 (* 4 idxprom8$1_0_1))))
+                     (let
+                        ((_$1_1_1 (select HEAP$1_1 arrayidx9$1_0_1)))
+                        (let
+                           ((cmp10$1_0_1 (<= _$1_0_1 _$1_1_1)))
+                           (let
+                              ((idxprom12$1_0_1 i.0$1_0_1))
+                              (let
+                                 ((arrayidx13$1_0_1 (+ a$1_0_1 (* 4 idxprom12$1_0_1))))
+                                 (let
+                                    ((_$1_2_1 (select HEAP$1_1 arrayidx13$1_0_1))
+                                     (idxprom14$1_0_1 j.0$1_0_1))
+                                    (let
+                                       ((arrayidx15$1_0_1 (+ a$1_0_1 (* 4 idxprom14$1_0_1))))
+                                       (let
+                                          ((_$1_3_1 (select HEAP$1_1 arrayidx15$1_0_1))
+                                           (idxprom16$1_0_1 i.0$1_0_1))
+                                          (let
+                                             ((arrayidx17$1_0_1 (+ a$1_0_1 (* 4 idxprom16$1_0_1))))
+                                             (let
+                                                ((HEAP$1_2 (store HEAP$1_1 arrayidx17$1_0_1 _$1_3_1))
+                                                 (idxprom18$1_0_1 j.0$1_0_1))
+                                                (let
+                                                   ((arrayidx19$1_0_1 (+ a$1_0_1 (* 4 idxprom18$1_0_1))))
+                                                   (let
+                                                      ((HEAP$1_3 (store HEAP$1_2 arrayidx19$1_0_1 _$1_2_1))
+                                                       (inc$1_0_1 (+ j.0$1_0_1 1)))
+                                                      (let
+                                                         ((j.0$1_0_2 inc$1_0_1)
+                                                          (a$2_0_1 a$2_0_old_1)
+                                                          (i.0$2_0_1 i.0$2_0_old_1)
+                                                          (j.0$2_0_1 j.0$2_0_old_1)
+                                                          (n$2_0_1 n$2_0_old_1))
+                                                         (let
+                                                            ((HEAP$2_1 HEAP$2_old_1)
+                                                             (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                                                            (=>
+                                                               (and
+                                                                  (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                                                                  cmp3$1_0_1
+                                                                  cmp10$1_0_1
+                                                                  (not cmp3$2_0_1))
+                                                               END_QUERY)))))))))))))))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((idxprom$1_0_1 j.0$1_0_1))
+            (let
+               ((arrayidx$1_0_1 (+ a$1_0_1 (* 4 idxprom$1_0_1))))
+               (let
+                  ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                   (idxprom8$1_0_1 i.0$1_0_1))
+                  (let
+                     ((arrayidx9$1_0_1 (+ a$1_0_1 (* 4 idxprom8$1_0_1))))
+                     (let
+                        ((_$1_1_1 (select HEAP$1_1 arrayidx9$1_0_1)))
+                        (let
+                           ((cmp10$1_0_1 (<= _$1_0_1 _$1_1_1)))
+                           (let
+                              ((inc$1_0_1 (+ j.0$1_0_1 1)))
+                              (let
+                                 ((j.0$1_0_2 inc$1_0_1)
+                                  (a$2_0_1 a$2_0_old_1)
+                                  (i.0$2_0_1 i.0$2_0_old_1)
+                                  (j.0$2_0_1 j.0$2_0_old_1)
+                                  (n$2_0_1 n$2_0_old_1))
+                                 (let
+                                    ((HEAP$2_1 HEAP$2_old_1)
+                                     (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                                          cmp3$1_0_1
+                                          (not cmp10$1_0_1)
+                                          (not cmp3$2_0_1))
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((inc20$1_0_1 (+ i.0$1_0_1 1)))
+            (let
+               ((i.0$1_0_2 inc20$1_0_1)
+                (a$2_0_1 a$2_0_old_1)
+                (i.0$2_0_1 i.0$2_0_old_1)
+                (j.0$2_0_1 j.0$2_0_old_1)
+                (n$2_0_1 n$2_0_old_1))
+               (let
+                  ((HEAP$2_1 HEAP$2_old_1)
+                   (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                  (let
+                     ((inc20$2_0_1 (+ i.0$2_0_1 1)))
+                     (let
+                        ((i.0$2_0_2 inc20$2_0_1))
+                        (=>
+                           (and
+                              (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                              (not cmp3$1_0_1)
+                              (not cmp3$2_0_1))
+                           (INV_MAIN_1 a$1_0_1 i.0$1_0_2 n$1_0_1 HEAP$1_1 a$2_0_1 i.0$2_0_2 n$2_0_1 HEAP$2_1))))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((idxprom$1_0_1 j.0$1_0_1))
+            (let
+               ((arrayidx$1_0_1 (+ a$1_0_1 (* 4 idxprom$1_0_1))))
+               (let
+                  ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                   (idxprom8$1_0_1 i.0$1_0_1))
+                  (let
+                     ((arrayidx9$1_0_1 (+ a$1_0_1 (* 4 idxprom8$1_0_1))))
+                     (let
+                        ((_$1_1_1 (select HEAP$1_1 arrayidx9$1_0_1)))
+                        (let
+                           ((cmp10$1_0_1 (<= _$1_0_1 _$1_1_1)))
+                           (let
+                              ((idxprom12$1_0_1 i.0$1_0_1))
+                              (let
+                                 ((arrayidx13$1_0_1 (+ a$1_0_1 (* 4 idxprom12$1_0_1))))
+                                 (let
+                                    ((_$1_2_1 (select HEAP$1_1 arrayidx13$1_0_1))
+                                     (idxprom14$1_0_1 j.0$1_0_1))
+                                    (let
+                                       ((arrayidx15$1_0_1 (+ a$1_0_1 (* 4 idxprom14$1_0_1))))
+                                       (let
+                                          ((_$1_3_1 (select HEAP$1_1 arrayidx15$1_0_1))
+                                           (idxprom16$1_0_1 i.0$1_0_1))
+                                          (let
+                                             ((arrayidx17$1_0_1 (+ a$1_0_1 (* 4 idxprom16$1_0_1))))
+                                             (let
+                                                ((HEAP$1_2 (store HEAP$1_1 arrayidx17$1_0_1 _$1_3_1))
+                                                 (idxprom18$1_0_1 j.0$1_0_1))
+                                                (let
+                                                   ((arrayidx19$1_0_1 (+ a$1_0_1 (* 4 idxprom18$1_0_1))))
+                                                   (let
+                                                      ((HEAP$1_3 (store HEAP$1_2 arrayidx19$1_0_1 _$1_2_1))
+                                                       (inc$1_0_1 (+ j.0$1_0_1 1)))
+                                                      (let
+                                                         ((j.0$1_0_2 inc$1_0_1)
+                                                          (a$2_0_1 a$2_0_old_1)
+                                                          (i.0$2_0_1 i.0$2_0_old_1)
+                                                          (j.0$2_0_1 j.0$2_0_old_1)
+                                                          (n$2_0_1 n$2_0_old_1))
+                                                         (let
+                                                            ((HEAP$2_1 HEAP$2_old_1)
+                                                             (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                                                            (let
+                                                               ((idxprom$2_0_1 j.0$2_0_1))
+                                                               (let
+                                                                  ((arrayidx$2_0_1 (+ a$2_0_1 (* 4 idxprom$2_0_1))))
+                                                                  (let
+                                                                     ((_$2_0_1 (select HEAP$2_1 arrayidx$2_0_1))
+                                                                      (idxprom8$2_0_1 i.0$2_0_1))
+                                                                     (let
+                                                                        ((arrayidx9$2_0_1 (+ a$2_0_1 (* 4 idxprom8$2_0_1))))
+                                                                        (let
+                                                                           ((_$2_1_1 (select HEAP$2_1 arrayidx9$2_0_1)))
+                                                                           (let
+                                                                              ((cmp10$2_0_1 (< _$2_0_1 _$2_1_1)))
+                                                                              (let
+                                                                                 ((idxprom12$2_0_1 i.0$2_0_1))
+                                                                                 (let
+                                                                                    ((arrayidx13$2_0_1 (+ a$2_0_1 (* 4 idxprom12$2_0_1))))
+                                                                                    (let
+                                                                                       ((_$2_2_1 (select HEAP$2_1 arrayidx13$2_0_1))
+                                                                                        (idxprom14$2_0_1 j.0$2_0_1))
+                                                                                       (let
+                                                                                          ((arrayidx15$2_0_1 (+ a$2_0_1 (* 4 idxprom14$2_0_1))))
+                                                                                          (let
+                                                                                             ((_$2_3_1 (select HEAP$2_1 arrayidx15$2_0_1))
+                                                                                              (idxprom16$2_0_1 i.0$2_0_1))
+                                                                                             (let
+                                                                                                ((arrayidx17$2_0_1 (+ a$2_0_1 (* 4 idxprom16$2_0_1))))
+                                                                                                (let
+                                                                                                   ((HEAP$2_2 (store HEAP$2_1 arrayidx17$2_0_1 _$2_3_1))
+                                                                                                    (idxprom18$2_0_1 j.0$2_0_1))
+                                                                                                   (let
+                                                                                                      ((arrayidx19$2_0_1 (+ a$2_0_1 (* 4 idxprom18$2_0_1))))
+                                                                                                      (let
+                                                                                                         ((HEAP$2_3 (store HEAP$2_2 arrayidx19$2_0_1 _$2_2_1))
+                                                                                                          (inc$2_0_1 (+ j.0$2_0_1 1)))
+                                                                                                         (let
+                                                                                                            ((j.0$2_0_2 inc$2_0_1))
+                                                                                                            (=>
+                                                                                                               (and
+                                                                                                                  (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                                                                                                                  cmp3$1_0_1
+                                                                                                                  cmp10$1_0_1
+                                                                                                                  cmp3$2_0_1
+                                                                                                                  cmp10$2_0_1)
+                                                                                                               (INV_MAIN_2 a$1_0_1 i.0$1_0_1 j.0$1_0_2 n$1_0_1 HEAP$1_3 a$2_0_1 i.0$2_0_1 j.0$2_0_2 n$2_0_1 HEAP$2_3))))))))))))))))))))))))))))))))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((idxprom$1_0_1 j.0$1_0_1))
+            (let
+               ((arrayidx$1_0_1 (+ a$1_0_1 (* 4 idxprom$1_0_1))))
+               (let
+                  ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                   (idxprom8$1_0_1 i.0$1_0_1))
+                  (let
+                     ((arrayidx9$1_0_1 (+ a$1_0_1 (* 4 idxprom8$1_0_1))))
+                     (let
+                        ((_$1_1_1 (select HEAP$1_1 arrayidx9$1_0_1)))
+                        (let
+                           ((cmp10$1_0_1 (<= _$1_0_1 _$1_1_1)))
+                           (let
+                              ((idxprom12$1_0_1 i.0$1_0_1))
+                              (let
+                                 ((arrayidx13$1_0_1 (+ a$1_0_1 (* 4 idxprom12$1_0_1))))
+                                 (let
+                                    ((_$1_2_1 (select HEAP$1_1 arrayidx13$1_0_1))
+                                     (idxprom14$1_0_1 j.0$1_0_1))
+                                    (let
+                                       ((arrayidx15$1_0_1 (+ a$1_0_1 (* 4 idxprom14$1_0_1))))
+                                       (let
+                                          ((_$1_3_1 (select HEAP$1_1 arrayidx15$1_0_1))
+                                           (idxprom16$1_0_1 i.0$1_0_1))
+                                          (let
+                                             ((arrayidx17$1_0_1 (+ a$1_0_1 (* 4 idxprom16$1_0_1))))
+                                             (let
+                                                ((HEAP$1_2 (store HEAP$1_1 arrayidx17$1_0_1 _$1_3_1))
+                                                 (idxprom18$1_0_1 j.0$1_0_1))
+                                                (let
+                                                   ((arrayidx19$1_0_1 (+ a$1_0_1 (* 4 idxprom18$1_0_1))))
+                                                   (let
+                                                      ((HEAP$1_3 (store HEAP$1_2 arrayidx19$1_0_1 _$1_2_1))
+                                                       (inc$1_0_1 (+ j.0$1_0_1 1)))
+                                                      (let
+                                                         ((j.0$1_0_2 inc$1_0_1)
+                                                          (a$2_0_1 a$2_0_old_1)
+                                                          (i.0$2_0_1 i.0$2_0_old_1)
+                                                          (j.0$2_0_1 j.0$2_0_old_1)
+                                                          (n$2_0_1 n$2_0_old_1))
+                                                         (let
+                                                            ((HEAP$2_1 HEAP$2_old_1)
+                                                             (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                                                            (let
+                                                               ((idxprom$2_0_1 j.0$2_0_1))
+                                                               (let
+                                                                  ((arrayidx$2_0_1 (+ a$2_0_1 (* 4 idxprom$2_0_1))))
+                                                                  (let
+                                                                     ((_$2_0_1 (select HEAP$2_1 arrayidx$2_0_1))
+                                                                      (idxprom8$2_0_1 i.0$2_0_1))
+                                                                     (let
+                                                                        ((arrayidx9$2_0_1 (+ a$2_0_1 (* 4 idxprom8$2_0_1))))
+                                                                        (let
+                                                                           ((_$2_1_1 (select HEAP$2_1 arrayidx9$2_0_1)))
+                                                                           (let
+                                                                              ((cmp10$2_0_1 (< _$2_0_1 _$2_1_1)))
+                                                                              (let
+                                                                                 ((inc$2_0_1 (+ j.0$2_0_1 1)))
+                                                                                 (let
+                                                                                    ((j.0$2_0_2 inc$2_0_1))
+                                                                                    (=>
+                                                                                       (and
+                                                                                          (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                                                                                          cmp3$1_0_1
+                                                                                          cmp10$1_0_1
+                                                                                          cmp3$2_0_1
+                                                                                          (not cmp10$2_0_1))
+                                                                                       (INV_MAIN_2 a$1_0_1 i.0$1_0_1 j.0$1_0_2 n$1_0_1 HEAP$1_3 a$2_0_1 i.0$2_0_1 j.0$2_0_2 n$2_0_1 HEAP$2_1))))))))))))))))))))))))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((idxprom$1_0_1 j.0$1_0_1))
+            (let
+               ((arrayidx$1_0_1 (+ a$1_0_1 (* 4 idxprom$1_0_1))))
+               (let
+                  ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                   (idxprom8$1_0_1 i.0$1_0_1))
+                  (let
+                     ((arrayidx9$1_0_1 (+ a$1_0_1 (* 4 idxprom8$1_0_1))))
+                     (let
+                        ((_$1_1_1 (select HEAP$1_1 arrayidx9$1_0_1)))
+                        (let
+                           ((cmp10$1_0_1 (<= _$1_0_1 _$1_1_1)))
+                           (let
+                              ((inc$1_0_1 (+ j.0$1_0_1 1)))
+                              (let
+                                 ((j.0$1_0_2 inc$1_0_1)
+                                  (a$2_0_1 a$2_0_old_1)
+                                  (i.0$2_0_1 i.0$2_0_old_1)
+                                  (j.0$2_0_1 j.0$2_0_old_1)
+                                  (n$2_0_1 n$2_0_old_1))
+                                 (let
+                                    ((HEAP$2_1 HEAP$2_old_1)
+                                     (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                                    (let
+                                       ((idxprom$2_0_1 j.0$2_0_1))
+                                       (let
+                                          ((arrayidx$2_0_1 (+ a$2_0_1 (* 4 idxprom$2_0_1))))
+                                          (let
+                                             ((_$2_0_1 (select HEAP$2_1 arrayidx$2_0_1))
+                                              (idxprom8$2_0_1 i.0$2_0_1))
+                                             (let
+                                                ((arrayidx9$2_0_1 (+ a$2_0_1 (* 4 idxprom8$2_0_1))))
+                                                (let
+                                                   ((_$2_1_1 (select HEAP$2_1 arrayidx9$2_0_1)))
+                                                   (let
+                                                      ((cmp10$2_0_1 (< _$2_0_1 _$2_1_1)))
+                                                      (let
+                                                         ((idxprom12$2_0_1 i.0$2_0_1))
+                                                         (let
+                                                            ((arrayidx13$2_0_1 (+ a$2_0_1 (* 4 idxprom12$2_0_1))))
+                                                            (let
+                                                               ((_$2_2_1 (select HEAP$2_1 arrayidx13$2_0_1))
+                                                                (idxprom14$2_0_1 j.0$2_0_1))
+                                                               (let
+                                                                  ((arrayidx15$2_0_1 (+ a$2_0_1 (* 4 idxprom14$2_0_1))))
+                                                                  (let
+                                                                     ((_$2_3_1 (select HEAP$2_1 arrayidx15$2_0_1))
+                                                                      (idxprom16$2_0_1 i.0$2_0_1))
+                                                                     (let
+                                                                        ((arrayidx17$2_0_1 (+ a$2_0_1 (* 4 idxprom16$2_0_1))))
+                                                                        (let
+                                                                           ((HEAP$2_2 (store HEAP$2_1 arrayidx17$2_0_1 _$2_3_1))
+                                                                            (idxprom18$2_0_1 j.0$2_0_1))
+                                                                           (let
+                                                                              ((arrayidx19$2_0_1 (+ a$2_0_1 (* 4 idxprom18$2_0_1))))
+                                                                              (let
+                                                                                 ((HEAP$2_3 (store HEAP$2_2 arrayidx19$2_0_1 _$2_2_1))
+                                                                                  (inc$2_0_1 (+ j.0$2_0_1 1)))
+                                                                                 (let
+                                                                                    ((j.0$2_0_2 inc$2_0_1))
+                                                                                    (=>
+                                                                                       (and
+                                                                                          (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                                                                                          cmp3$1_0_1
+                                                                                          (not cmp10$1_0_1)
+                                                                                          cmp3$2_0_1
+                                                                                          cmp10$2_0_1)
+                                                                                       (INV_MAIN_2 a$1_0_1 i.0$1_0_1 j.0$1_0_2 n$1_0_1 HEAP$1_1 a$2_0_1 i.0$2_0_1 j.0$2_0_2 n$2_0_1 HEAP$2_3))))))))))))))))))))))))))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (j.0$1_0_1 j.0$1_0_old_1)
+       (n$1_0_1 n$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp3$1_0_1 (< j.0$1_0_1 n$1_0_1)))
+         (let
+            ((idxprom$1_0_1 j.0$1_0_1))
+            (let
+               ((arrayidx$1_0_1 (+ a$1_0_1 (* 4 idxprom$1_0_1))))
+               (let
+                  ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                   (idxprom8$1_0_1 i.0$1_0_1))
+                  (let
+                     ((arrayidx9$1_0_1 (+ a$1_0_1 (* 4 idxprom8$1_0_1))))
+                     (let
+                        ((_$1_1_1 (select HEAP$1_1 arrayidx9$1_0_1)))
+                        (let
+                           ((cmp10$1_0_1 (<= _$1_0_1 _$1_1_1)))
+                           (let
+                              ((inc$1_0_1 (+ j.0$1_0_1 1)))
+                              (let
+                                 ((j.0$1_0_2 inc$1_0_1)
+                                  (a$2_0_1 a$2_0_old_1)
+                                  (i.0$2_0_1 i.0$2_0_old_1)
+                                  (j.0$2_0_1 j.0$2_0_old_1)
+                                  (n$2_0_1 n$2_0_old_1))
+                                 (let
+                                    ((HEAP$2_1 HEAP$2_old_1)
+                                     (cmp3$2_0_1 (< j.0$2_0_1 n$2_0_1)))
+                                    (let
+                                       ((idxprom$2_0_1 j.0$2_0_1))
+                                       (let
+                                          ((arrayidx$2_0_1 (+ a$2_0_1 (* 4 idxprom$2_0_1))))
+                                          (let
+                                             ((_$2_0_1 (select HEAP$2_1 arrayidx$2_0_1))
+                                              (idxprom8$2_0_1 i.0$2_0_1))
+                                             (let
+                                                ((arrayidx9$2_0_1 (+ a$2_0_1 (* 4 idxprom8$2_0_1))))
+                                                (let
+                                                   ((_$2_1_1 (select HEAP$2_1 arrayidx9$2_0_1)))
+                                                   (let
+                                                      ((cmp10$2_0_1 (< _$2_0_1 _$2_1_1)))
+                                                      (let
+                                                         ((inc$2_0_1 (+ j.0$2_0_1 1)))
+                                                         (let
+                                                            ((j.0$2_0_2 inc$2_0_1))
+                                                            (=>
+                                                               (and
+                                                                  (INV_MAIN_2 a$1_0_old_1 i.0$1_0_old_1 j.0$1_0_old_1 n$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 i.0$2_0_old_1 j.0$2_0_old_1 n$2_0_old_1 HEAP$2_old_1)
+                                                                  cmp3$1_0_1
+                                                                  (not cmp10$1_0_1)
+                                                                  cmp3$2_0_1
+                                                                  (not cmp10$2_0_1))
+                                                               (INV_MAIN_2 a$1_0_1 i.0$1_0_1 j.0$1_0_2 n$1_0_1 HEAP$1_1 a$2_0_1 i.0$2_0_1 j.0$2_0_2 n$2_0_1 HEAP$2_1))))))))))))))))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

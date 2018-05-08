@@ -1,0 +1,426 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   c$1_0_old_1
+   Int)
+(declare-var
+   c$2_0_old_1
+   Int)
+(declare-var
+   c.addr.0$1_0_old_1
+   Int)
+(declare-var
+   c.addr.0$2_0_old_1
+   Int)
+(declare-var
+   r$1_0_old_1
+   Int)
+(declare-var
+   r$2_0_old_1
+   Int)
+(declare-var
+   r.addr.0$1_0_old_1
+   Int)
+(declare-var
+   r.addr.0$2_0_old_1
+   Int)
+(declare-var
+   t$1_0_old_1
+   Int)
+(declare-var
+   t$2_0_old_1
+   Int)
+(declare-var
+   x.0$1_0_old_1
+   Int)
+(declare-var
+   x.0$2_0_old_1
+   Int)
+(declare-var
+   x.2$1_0_old_1
+   Int)
+(declare-var
+   x.2$2_0_old_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((t$1_0 Int)
+    (c$1_0 Int)
+    (r$1_0 Int)
+    (t$2_0 Int)
+    (c$2_0 Int)
+    (r$2_0 Int))
+   Bool
+   (and
+      (= t$1_0 t$2_0)
+      (= c$1_0 c$2_0)
+      (= r$1_0 r$2_0)))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int))
+   Bool
+   (= result$1 result$2))
+; :annot (INV_MAIN_13 r.addr.0$1_0 x.2$1_0 r.addr.0$2_0 x.2$2_0)
+(declare-rel
+   INV_MAIN_13
+   (Int
+    Int
+    Int
+    Int))
+; :annot (INV_MAIN_23 r$1_0 c.addr.0$2_0 r$2_0 t$2_0 x.0$2_0)
+(declare-rel
+   INV_MAIN_23
+   (Int
+    Int
+    Int
+    Int
+    Int))
+; :annot (INV_MAIN_42 c.addr.0$1_0 r$1_0 x.0$1_0 c.addr.0$2_0 r$2_0 t$2_0 x.0$2_0)
+(declare-rel
+   INV_MAIN_42
+   (Int
+    Int
+    Int
+    Int
+    Int
+    Int
+    Int))
+(rule
+   (let
+      ((t$1_0_1 t$1_0_old_1))
+      (let
+         ((c$1_0_1 c$1_0_old_1)
+          (r$1_0_1 r$1_0_old_1)
+          (cmp$1_0_1 (< 0 t$1_0_1)))
+         (let
+            ((t$2_0_1 t$2_0_old_1)
+             (c$2_0_1 c$2_0_old_1))
+            (let
+               ((r$2_0_1 r$2_0_old_1)
+                (c.addr.0$2_0_1 c$2_0_1)
+                (x.0$2_0_1 0))
+               (=>
+                  (and
+                     (IN_INV t$1_0_old_1 c$1_0_old_1 r$1_0_old_1 t$2_0_old_1 c$2_0_old_1 r$2_0_old_1)
+                     (not cmp$1_0_1))
+                  (INV_MAIN_23 r$1_0_1 c.addr.0$2_0_1 r$2_0_1 t$2_0_1 x.0$2_0_1)))))))
+(rule
+   (let
+      ((t$1_0_1 t$1_0_old_1))
+      (let
+         ((c$1_0_1 c$1_0_old_1)
+          (r$1_0_1 r$1_0_old_1)
+          (cmp$1_0_1 (< 0 t$1_0_1)))
+         (let
+            ((c.addr.0$1_0_1 c$1_0_1)
+             (x.0$1_0_1 0)
+             (t$2_0_1 t$2_0_old_1)
+             (c$2_0_1 c$2_0_old_1))
+            (let
+               ((r$2_0_1 r$2_0_old_1)
+                (c.addr.0$2_0_1 c$2_0_1)
+                (x.0$2_0_1 0))
+               (=>
+                  (and
+                     (IN_INV t$1_0_old_1 c$1_0_old_1 r$1_0_old_1 t$2_0_old_1 c$2_0_old_1 r$2_0_old_1)
+                     cmp$1_0_1)
+                  (INV_MAIN_42 c.addr.0$1_0_1 r$1_0_1 x.0$1_0_1 c.addr.0$2_0_1 r$2_0_1 t$2_0_1 x.0$2_0_1)))))))
+(rule
+   (let
+      ((r.addr.0$1_0_1 r.addr.0$1_0_old_1))
+      (let
+         ((x.2$1_0_1 x.2$1_0_old_1)
+          (cmp5$1_0_1 (> r.addr.0$1_0_1 0)))
+         (let
+            ((result$1_1 x.2$1_0_1)
+             (r.addr.0$2_0_1 r.addr.0$2_0_old_1))
+            (let
+               ((x.2$2_0_1 x.2$2_0_old_1)
+                (cmp7$2_0_1 (> r.addr.0$2_0_1 0)))
+               (let
+                  ((result$2_1 x.2$2_0_1))
+                  (=>
+                     (and
+                        (INV_MAIN_13 r.addr.0$1_0_old_1 x.2$1_0_old_1 r.addr.0$2_0_old_1 x.2$2_0_old_1)
+                        (not cmp5$1_0_1)
+                        (not cmp7$2_0_1)
+                        (not (OUT_INV result$1_1 result$2_1)))
+                     END_QUERY)))))))
+(rule
+   (let
+      ((r.addr.0$1_0_1 r.addr.0$1_0_old_1))
+      (let
+         ((x.2$1_0_1 x.2$1_0_old_1)
+          (cmp5$1_0_1 (> r.addr.0$1_0_1 0)))
+         (let
+            ((add$1_0_1 (+ x.2$1_0_1 2))
+             (dec10$1_0_1 (+ r.addr.0$1_0_1 (- 1))))
+            (let
+               ((r.addr.0$1_0_2 dec10$1_0_1)
+                (x.2$1_0_2 add$1_0_1)
+                (r.addr.0$2_0_1 r.addr.0$2_0_old_1))
+               (let
+                  ((x.2$2_0_1 x.2$2_0_old_1)
+                   (cmp7$2_0_1 (> r.addr.0$2_0_1 0)))
+                  (let
+                     ((add$2_0_1 (+ x.2$2_0_1 2))
+                      (dec12$2_0_1 (+ r.addr.0$2_0_1 (- 1))))
+                     (let
+                        ((r.addr.0$2_0_2 dec12$2_0_1)
+                         (x.2$2_0_2 add$2_0_1))
+                        (=>
+                           (and
+                              (INV_MAIN_13 r.addr.0$1_0_old_1 x.2$1_0_old_1 r.addr.0$2_0_old_1 x.2$2_0_old_1)
+                              cmp5$1_0_1
+                              cmp7$2_0_1)
+                           (INV_MAIN_13 r.addr.0$1_0_2 x.2$1_0_2 r.addr.0$2_0_2 x.2$2_0_2))))))))))
+(rule
+   (let
+      ((r.addr.0$1_0_1 r.addr.0$1_0_old_1))
+      (let
+         ((x.2$1_0_1 x.2$1_0_old_1)
+          (cmp5$1_0_1 (> r.addr.0$1_0_1 0)))
+         (let
+            ((add$1_0_1 (+ x.2$1_0_1 2))
+             (dec10$1_0_1 (+ r.addr.0$1_0_1 (- 1))))
+            (let
+               ((r.addr.0$1_0_2 dec10$1_0_1)
+                (x.2$1_0_2 add$1_0_1))
+               (=>
+                  (and
+                     (INV_MAIN_13 r.addr.0$1_0_old_1 x.2$1_0_old_1 r.addr.0$2_0_old_1 x.2$2_0_old_1)
+                     cmp5$1_0_1
+                     (let
+                        ((r.addr.0$2_0_1 r.addr.0$2_0_old_1))
+                        (let
+                           ((x.2$2_0_1 x.2$2_0_old_1)
+                            (cmp7$2_0_1 (> r.addr.0$2_0_1 0)))
+                           (=>
+                              cmp7$2_0_1
+                              (let
+                                 ((add$2_0_1 (+ x.2$2_0_1 2))
+                                  (dec12$2_0_1 (+ r.addr.0$2_0_1 (- 1))))
+                                 (let
+                                    ((r.addr.0$2_0_2 dec12$2_0_1)
+                                     (x.2$2_0_2 add$2_0_1))
+                                    false))))))
+                  (INV_MAIN_13 r.addr.0$1_0_2 x.2$1_0_2 r.addr.0$2_0_old_1 x.2$2_0_old_1)))))))
+(rule
+   (let
+      ((r.addr.0$2_0_1 r.addr.0$2_0_old_1))
+      (let
+         ((x.2$2_0_1 x.2$2_0_old_1)
+          (cmp7$2_0_1 (> r.addr.0$2_0_1 0)))
+         (let
+            ((add$2_0_1 (+ x.2$2_0_1 2))
+             (dec12$2_0_1 (+ r.addr.0$2_0_1 (- 1))))
+            (let
+               ((r.addr.0$2_0_2 dec12$2_0_1)
+                (x.2$2_0_2 add$2_0_1))
+               (=>
+                  (and
+                     (INV_MAIN_13 r.addr.0$1_0_old_1 x.2$1_0_old_1 r.addr.0$2_0_old_1 x.2$2_0_old_1)
+                     cmp7$2_0_1
+                     (let
+                        ((r.addr.0$1_0_1 r.addr.0$1_0_old_1))
+                        (let
+                           ((x.2$1_0_1 x.2$1_0_old_1)
+                            (cmp5$1_0_1 (> r.addr.0$1_0_1 0)))
+                           (=>
+                              cmp5$1_0_1
+                              (let
+                                 ((add$1_0_1 (+ x.2$1_0_1 2))
+                                  (dec10$1_0_1 (+ r.addr.0$1_0_1 (- 1))))
+                                 (let
+                                    ((r.addr.0$1_0_2 dec10$1_0_1)
+                                     (x.2$1_0_2 add$1_0_1))
+                                    false))))))
+                  (INV_MAIN_13 r.addr.0$1_0_old_1 x.2$1_0_old_1 r.addr.0$2_0_2 x.2$2_0_2)))))))
+(rule
+   (let
+      ((r$1_0_1 r$1_0_old_1))
+      (let
+         ((r.addr.0$1_0_1 r$1_0_1)
+          (x.2$1_0_1 0)
+          (c.addr.0$2_0_1 c.addr.0$2_0_old_1))
+         (let
+            ((r$2_0_1 r$2_0_old_1)
+             (t$2_0_1 t$2_0_old_1)
+             (x.0$2_0_1 x.0$2_0_old_1)
+             (cmp$2_0_1 (< 0 c.addr.0$2_0_1)))
+            (let
+               ((r.addr.0$2_0_1 r$2_0_1)
+                (x.2$2_0_1 x.0$2_0_1))
+               (=>
+                  (and
+                     (INV_MAIN_23 r$1_0_old_1 c.addr.0$2_0_old_1 r$2_0_old_1 t$2_0_old_1 x.0$2_0_old_1)
+                     (not cmp$2_0_1))
+                  (INV_MAIN_13 r.addr.0$1_0_1 x.2$1_0_1 r.addr.0$2_0_1 x.2$2_0_1)))))))
+(rule
+   (let
+      ((c.addr.0$2_0_1 c.addr.0$2_0_old_1))
+      (let
+         ((r$2_0_1 r$2_0_old_1)
+          (t$2_0_1 t$2_0_old_1)
+          (x.0$2_0_1 x.0$2_0_old_1)
+          (cmp$2_0_1 (< 0 c.addr.0$2_0_1)))
+         (let
+            ((cmp3$2_0_1 (< 0 t$2_0_1))
+             (inc$2_0_1 (+ x.0$2_0_1 1)))
+            (let
+               ((inc.x.0$2_0_1 (ite cmp3$2_0_1 inc$2_0_1 x.0$2_0_1))
+                (dec$2_0_1 (+ c.addr.0$2_0_1 (- 1))))
+               (let
+                  ((c.addr.0$2_0_2 dec$2_0_1)
+                   (x.0$2_0_2 inc.x.0$2_0_1))
+                  (=>
+                     (and
+                        (INV_MAIN_23 r$1_0_old_1 c.addr.0$2_0_old_1 r$2_0_old_1 t$2_0_old_1 x.0$2_0_old_1)
+                        cmp$2_0_1)
+                     (INV_MAIN_23 r$1_0_old_1 c.addr.0$2_0_2 r$2_0_1 t$2_0_1 x.0$2_0_2))))))))
+(rule
+   (let
+      ((c.addr.0$1_0_1 c.addr.0$1_0_old_1))
+      (let
+         ((r$1_0_1 r$1_0_old_1)
+          (x.0$1_0_1 x.0$1_0_old_1)
+          (cmp1$1_0_1 (< 0 c.addr.0$1_0_1)))
+         (let
+            ((r.addr.0$1_0_1 r$1_0_1)
+             (x.2$1_0_1 x.0$1_0_1)
+             (c.addr.0$2_0_1 c.addr.0$2_0_old_1))
+            (let
+               ((r$2_0_1 r$2_0_old_1)
+                (t$2_0_1 t$2_0_old_1)
+                (x.0$2_0_1 x.0$2_0_old_1)
+                (cmp$2_0_1 (< 0 c.addr.0$2_0_1)))
+               (let
+                  ((r.addr.0$2_0_1 r$2_0_1)
+                   (x.2$2_0_1 x.0$2_0_1))
+                  (=>
+                     (and
+                        (INV_MAIN_42 c.addr.0$1_0_old_1 r$1_0_old_1 x.0$1_0_old_1 c.addr.0$2_0_old_1 r$2_0_old_1 t$2_0_old_1 x.0$2_0_old_1)
+                        (not cmp1$1_0_1)
+                        (not cmp$2_0_1))
+                     (INV_MAIN_13 r.addr.0$1_0_1 x.2$1_0_1 r.addr.0$2_0_1 x.2$2_0_1))))))))
+(rule
+   (let
+      ((c.addr.0$1_0_1 c.addr.0$1_0_old_1))
+      (let
+         ((r$1_0_1 r$1_0_old_1)
+          (x.0$1_0_1 x.0$1_0_old_1)
+          (cmp1$1_0_1 (< 0 c.addr.0$1_0_1)))
+         (let
+            ((inc$1_0_1 (+ x.0$1_0_1 1))
+             (dec$1_0_1 (+ c.addr.0$1_0_1 (- 1))))
+            (let
+               ((c.addr.0$1_0_2 dec$1_0_1)
+                (x.0$1_0_2 inc$1_0_1)
+                (c.addr.0$2_0_1 c.addr.0$2_0_old_1))
+               (let
+                  ((r$2_0_1 r$2_0_old_1)
+                   (t$2_0_1 t$2_0_old_1)
+                   (x.0$2_0_1 x.0$2_0_old_1)
+                   (cmp$2_0_1 (< 0 c.addr.0$2_0_1)))
+                  (let
+                     ((cmp3$2_0_1 (< 0 t$2_0_1))
+                      (inc$2_0_1 (+ x.0$2_0_1 1)))
+                     (let
+                        ((inc.x.0$2_0_1 (ite cmp3$2_0_1 inc$2_0_1 x.0$2_0_1))
+                         (dec$2_0_1 (+ c.addr.0$2_0_1 (- 1))))
+                        (let
+                           ((c.addr.0$2_0_2 dec$2_0_1)
+                            (x.0$2_0_2 inc.x.0$2_0_1))
+                           (=>
+                              (and
+                                 (INV_MAIN_42 c.addr.0$1_0_old_1 r$1_0_old_1 x.0$1_0_old_1 c.addr.0$2_0_old_1 r$2_0_old_1 t$2_0_old_1 x.0$2_0_old_1)
+                                 cmp1$1_0_1
+                                 cmp$2_0_1)
+                              (INV_MAIN_42 c.addr.0$1_0_2 r$1_0_1 x.0$1_0_2 c.addr.0$2_0_2 r$2_0_1 t$2_0_1 x.0$2_0_2)))))))))))
+(rule
+   (let
+      ((c.addr.0$1_0_1 c.addr.0$1_0_old_1))
+      (let
+         ((r$1_0_1 r$1_0_old_1)
+          (x.0$1_0_1 x.0$1_0_old_1)
+          (cmp1$1_0_1 (< 0 c.addr.0$1_0_1)))
+         (let
+            ((inc$1_0_1 (+ x.0$1_0_1 1))
+             (dec$1_0_1 (+ c.addr.0$1_0_1 (- 1))))
+            (let
+               ((c.addr.0$1_0_2 dec$1_0_1)
+                (x.0$1_0_2 inc$1_0_1))
+               (=>
+                  (and
+                     (INV_MAIN_42 c.addr.0$1_0_old_1 r$1_0_old_1 x.0$1_0_old_1 c.addr.0$2_0_old_1 r$2_0_old_1 t$2_0_old_1 x.0$2_0_old_1)
+                     cmp1$1_0_1
+                     (let
+                        ((c.addr.0$2_0_1 c.addr.0$2_0_old_1))
+                        (let
+                           ((r$2_0_1 r$2_0_old_1)
+                            (t$2_0_1 t$2_0_old_1)
+                            (x.0$2_0_1 x.0$2_0_old_1)
+                            (cmp$2_0_1 (< 0 c.addr.0$2_0_1)))
+                           (=>
+                              cmp$2_0_1
+                              (let
+                                 ((cmp3$2_0_1 (< 0 t$2_0_1))
+                                  (inc$2_0_1 (+ x.0$2_0_1 1)))
+                                 (let
+                                    ((inc.x.0$2_0_1 (ite cmp3$2_0_1 inc$2_0_1 x.0$2_0_1))
+                                     (dec$2_0_1 (+ c.addr.0$2_0_1 (- 1))))
+                                    (let
+                                       ((c.addr.0$2_0_2 dec$2_0_1)
+                                        (x.0$2_0_2 inc.x.0$2_0_1))
+                                       false)))))))
+                  (INV_MAIN_42 c.addr.0$1_0_2 r$1_0_1 x.0$1_0_2 c.addr.0$2_0_old_1 r$2_0_old_1 t$2_0_old_1 x.0$2_0_old_1)))))))
+(rule
+   (let
+      ((c.addr.0$2_0_1 c.addr.0$2_0_old_1))
+      (let
+         ((r$2_0_1 r$2_0_old_1)
+          (t$2_0_1 t$2_0_old_1)
+          (x.0$2_0_1 x.0$2_0_old_1)
+          (cmp$2_0_1 (< 0 c.addr.0$2_0_1)))
+         (let
+            ((cmp3$2_0_1 (< 0 t$2_0_1))
+             (inc$2_0_1 (+ x.0$2_0_1 1)))
+            (let
+               ((inc.x.0$2_0_1 (ite cmp3$2_0_1 inc$2_0_1 x.0$2_0_1))
+                (dec$2_0_1 (+ c.addr.0$2_0_1 (- 1))))
+               (let
+                  ((c.addr.0$2_0_2 dec$2_0_1)
+                   (x.0$2_0_2 inc.x.0$2_0_1))
+                  (=>
+                     (and
+                        (INV_MAIN_42 c.addr.0$1_0_old_1 r$1_0_old_1 x.0$1_0_old_1 c.addr.0$2_0_old_1 r$2_0_old_1 t$2_0_old_1 x.0$2_0_old_1)
+                        cmp$2_0_1
+                        (let
+                           ((c.addr.0$1_0_1 c.addr.0$1_0_old_1))
+                           (let
+                              ((r$1_0_1 r$1_0_old_1)
+                               (x.0$1_0_1 x.0$1_0_old_1)
+                               (cmp1$1_0_1 (< 0 c.addr.0$1_0_1)))
+                              (=>
+                                 cmp1$1_0_1
+                                 (let
+                                    ((inc$1_0_1 (+ x.0$1_0_1 1))
+                                     (dec$1_0_1 (+ c.addr.0$1_0_1 (- 1))))
+                                    (let
+                                       ((c.addr.0$1_0_2 dec$1_0_1)
+                                        (x.0$1_0_2 inc$1_0_1))
+                                       false))))))
+                     (INV_MAIN_42 c.addr.0$1_0_old_1 r$1_0_old_1 x.0$1_0_old_1 c.addr.0$2_0_2 r$2_0_1 t$2_0_1 x.0$2_0_2))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

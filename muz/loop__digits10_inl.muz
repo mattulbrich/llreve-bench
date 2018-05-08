@@ -1,0 +1,2665 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   b.0$2_0_old_1
+   Int)
+(declare-var
+   n$1_0_old_1
+   Int)
+(declare-var
+   n$2_0_old_1
+   Int)
+(declare-var
+   n.addr.0$1_0_old_1
+   Int)
+(declare-var
+   n.addr.0$2_0_old_1
+   Int)
+(declare-var
+   result.0$1_0_old_1
+   Int)
+(declare-var
+   result.0$2_0_old_1
+   Int)
+(declare-var
+   retval1.0$2_0_old_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((n$1_0 Int)
+    (n$2_0 Int))
+   Bool
+   (= n$1_0 n$2_0))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int))
+   Bool
+   (= result$1 result$2))
+; :annot (INV_MAIN_42 n.addr.0$1_0 result.0$1_0 b.0$2_0 n.addr.0$2_0 result.0$2_0 retval1.0$2_0)
+(declare-rel
+   INV_MAIN_42
+   (Int
+    Int
+    Int
+    Int
+    Int
+    Int))
+(rule
+   (let
+      ((n$1_0_1 n$1_0_old_1))
+      (let
+         ((div$1_0_1 (div n$1_0_1 10)))
+         (let
+            ((result.0$1_0_1 1)
+             (n.addr.0$1_0_1 div$1_0_1)
+             (n$2_0_1 n$2_0_old_1))
+            (let
+               ((retval1.0$2_0_1 (- 1))
+                (b.0$2_0_1 1)
+                (result.0$2_0_1 1)
+                (n.addr.0$2_0_1 n$2_0_1))
+               (=>
+                  (IN_INV n$1_0_old_1 n$2_0_old_1)
+                  (INV_MAIN_42 n.addr.0$1_0_1 result.0$1_0_1 b.0$2_0_1 n.addr.0$2_0_1 result.0$2_0_1 retval1.0$2_0_1)))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((result$1_1 result.0$1_0_1)
+             (b.0$2_0_1 b.0$2_0_old_1))
+            (let
+               ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                (result.0$2_0_1 result.0$2_0_old_1)
+                (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                (cmp$2_0_1 (= b.0$2_0_1 0)))
+               (let
+                  ((lnot$2_0_1 (xor
+                                   cmp$2_0_1
+                                   true)))
+                  (let
+                     ((result$2_1 retval1.0$2_0_1))
+                     (=>
+                        (and
+                           (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                           (not cmp$1_0_1)
+                           (not lnot$2_0_1)
+                           (not (OUT_INV result$1_1 result$2_1)))
+                        END_QUERY))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                               (div15$1_0_1 (div div10$1_0_1 10)))
+                              (let
+                                 ((result.0$1_0_2 inc14$1_0_1)
+                                  (n.addr.0$1_0_2 div15$1_0_1)
+                                  (b.0$2_0_1 b.0$2_0_old_1))
+                                 (let
+                                    ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                     (result.0$2_0_1 result.0$2_0_old_1)
+                                     (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                     (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                    (let
+                                       ((lnot$2_0_1 (xor
+                                                        cmp$2_0_1
+                                                        true)))
+                                       (let
+                                          ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                          (let
+                                             ((retval1.0$2_0_2 result.0$2_0_1)
+                                              (b.0$2_0_2 0)
+                                              (result.0$2_0_2 result.0$2_0_1)
+                                              (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                             (=>
+                                                (and
+                                                   (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                   cmp$1_0_1
+                                                   cmp2$1_0_1
+                                                   cmp6$1_0_1
+                                                   cmp11$1_0_1
+                                                   lnot$2_0_1
+                                                   cmp2$2_0_1)
+                                                (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2)))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                               (div15$1_0_1 (div div10$1_0_1 10)))
+                              (let
+                                 ((result.0$1_0_2 inc14$1_0_1)
+                                  (n.addr.0$1_0_2 div15$1_0_1)
+                                  (b.0$2_0_1 b.0$2_0_old_1))
+                                 (let
+                                    ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                     (result.0$2_0_1 result.0$2_0_old_1)
+                                     (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                     (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                    (let
+                                       ((lnot$2_0_1 (xor
+                                                        cmp$2_0_1
+                                                        true)))
+                                       (let
+                                          ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                          (let
+                                             ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                             (let
+                                                ((add$2_0_1 (+ result.0$2_0_1 1)))
+                                                (let
+                                                   ((retval1.0$2_0_2 add$2_0_1)
+                                                    (b.0$2_0_2 0)
+                                                    (result.0$2_0_2 result.0$2_0_1)
+                                                    (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                   (=>
+                                                      (and
+                                                         (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                         cmp$1_0_1
+                                                         cmp2$1_0_1
+                                                         cmp6$1_0_1
+                                                         cmp11$1_0_1
+                                                         lnot$2_0_1
+                                                         (not cmp2$2_0_1)
+                                                         cmp3$2_0_1)
+                                                      (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2)))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                               (div15$1_0_1 (div div10$1_0_1 10)))
+                              (let
+                                 ((result.0$1_0_2 inc14$1_0_1)
+                                  (n.addr.0$1_0_2 div15$1_0_1)
+                                  (b.0$2_0_1 b.0$2_0_old_1))
+                                 (let
+                                    ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                     (result.0$2_0_1 result.0$2_0_old_1)
+                                     (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                     (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                    (let
+                                       ((lnot$2_0_1 (xor
+                                                        cmp$2_0_1
+                                                        true)))
+                                       (let
+                                          ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                          (let
+                                             ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                             (let
+                                                ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                                (let
+                                                   ((add8$2_0_1 (+ result.0$2_0_1 2)))
+                                                   (let
+                                                      ((retval1.0$2_0_2 add8$2_0_1)
+                                                       (b.0$2_0_2 0)
+                                                       (result.0$2_0_2 result.0$2_0_1)
+                                                       (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                      (=>
+                                                         (and
+                                                            (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                            cmp$1_0_1
+                                                            cmp2$1_0_1
+                                                            cmp6$1_0_1
+                                                            cmp11$1_0_1
+                                                            lnot$2_0_1
+                                                            (not cmp2$2_0_1)
+                                                            (not cmp3$2_0_1)
+                                                            cmp6$2_0_1)
+                                                         (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                               (div15$1_0_1 (div div10$1_0_1 10)))
+                              (let
+                                 ((result.0$1_0_2 inc14$1_0_1)
+                                  (n.addr.0$1_0_2 div15$1_0_1)
+                                  (b.0$2_0_1 b.0$2_0_old_1))
+                                 (let
+                                    ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                     (result.0$2_0_1 result.0$2_0_old_1)
+                                     (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                     (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                    (let
+                                       ((lnot$2_0_1 (xor
+                                                        cmp$2_0_1
+                                                        true)))
+                                       (let
+                                          ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                          (let
+                                             ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                             (let
+                                                ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                                (let
+                                                   ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                                                   (let
+                                                      ((add12$2_0_1 (+ result.0$2_0_1 3)))
+                                                      (let
+                                                         ((retval1.0$2_0_2 add12$2_0_1)
+                                                          (b.0$2_0_2 0)
+                                                          (result.0$2_0_2 result.0$2_0_1)
+                                                          (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                         (=>
+                                                            (and
+                                                               (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                               cmp$1_0_1
+                                                               cmp2$1_0_1
+                                                               cmp6$1_0_1
+                                                               cmp11$1_0_1
+                                                               lnot$2_0_1
+                                                               (not cmp2$2_0_1)
+                                                               (not cmp3$2_0_1)
+                                                               (not cmp6$2_0_1)
+                                                               cmp10$2_0_1)
+                                                            (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2)))))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                               (div15$1_0_1 (div div10$1_0_1 10)))
+                              (let
+                                 ((result.0$1_0_2 inc14$1_0_1)
+                                  (n.addr.0$1_0_2 div15$1_0_1)
+                                  (b.0$2_0_1 b.0$2_0_old_1))
+                                 (let
+                                    ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                     (result.0$2_0_1 result.0$2_0_old_1)
+                                     (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                     (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                    (let
+                                       ((lnot$2_0_1 (xor
+                                                        cmp$2_0_1
+                                                        true)))
+                                       (let
+                                          ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                          (let
+                                             ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                             (let
+                                                ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                                (let
+                                                   ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                                                   (let
+                                                      ((div$2_0_1 (div n.addr.0$2_0_1 10000))
+                                                       (add14$2_0_1 (+ result.0$2_0_1 4)))
+                                                      (let
+                                                         ((retval1.0$2_0_2 retval1.0$2_0_1)
+                                                          (b.0$2_0_2 b.0$2_0_1)
+                                                          (result.0$2_0_2 add14$2_0_1)
+                                                          (n.addr.0$2_0_2 div$2_0_1))
+                                                         (=>
+                                                            (and
+                                                               (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                               cmp$1_0_1
+                                                               cmp2$1_0_1
+                                                               cmp6$1_0_1
+                                                               cmp11$1_0_1
+                                                               lnot$2_0_1
+                                                               (not cmp2$2_0_1)
+                                                               (not cmp3$2_0_1)
+                                                               (not cmp6$2_0_1)
+                                                               (not cmp10$2_0_1))
+                                                            (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2)))))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((result.0$1_0_2 inc9$1_0_1)
+                               (n.addr.0$1_0_2 div10$1_0_1)
+                               (b.0$2_0_1 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_1 result.0$2_0_old_1)
+                                  (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                  (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                 (let
+                                    ((lnot$2_0_1 (xor
+                                                     cmp$2_0_1
+                                                     true)))
+                                    (let
+                                       ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                       (let
+                                          ((retval1.0$2_0_2 result.0$2_0_1)
+                                           (b.0$2_0_2 0)
+                                           (result.0$2_0_2 result.0$2_0_1)
+                                           (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                          (=>
+                                             (and
+                                                (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                cmp$1_0_1
+                                                cmp2$1_0_1
+                                                cmp6$1_0_1
+                                                (not cmp11$1_0_1)
+                                                lnot$2_0_1
+                                                cmp2$2_0_1)
+                                             (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((result.0$1_0_2 inc9$1_0_1)
+                               (n.addr.0$1_0_2 div10$1_0_1)
+                               (b.0$2_0_1 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_1 result.0$2_0_old_1)
+                                  (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                  (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                 (let
+                                    ((lnot$2_0_1 (xor
+                                                     cmp$2_0_1
+                                                     true)))
+                                    (let
+                                       ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                       (let
+                                          ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                          (let
+                                             ((add$2_0_1 (+ result.0$2_0_1 1)))
+                                             (let
+                                                ((retval1.0$2_0_2 add$2_0_1)
+                                                 (b.0$2_0_2 0)
+                                                 (result.0$2_0_2 result.0$2_0_1)
+                                                 (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                (=>
+                                                   (and
+                                                      (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                      cmp$1_0_1
+                                                      cmp2$1_0_1
+                                                      cmp6$1_0_1
+                                                      (not cmp11$1_0_1)
+                                                      lnot$2_0_1
+                                                      (not cmp2$2_0_1)
+                                                      cmp3$2_0_1)
+                                                   (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((result.0$1_0_2 inc9$1_0_1)
+                               (n.addr.0$1_0_2 div10$1_0_1)
+                               (b.0$2_0_1 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_1 result.0$2_0_old_1)
+                                  (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                  (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                 (let
+                                    ((lnot$2_0_1 (xor
+                                                     cmp$2_0_1
+                                                     true)))
+                                    (let
+                                       ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                       (let
+                                          ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                          (let
+                                             ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                             (let
+                                                ((add8$2_0_1 (+ result.0$2_0_1 2)))
+                                                (let
+                                                   ((retval1.0$2_0_2 add8$2_0_1)
+                                                    (b.0$2_0_2 0)
+                                                    (result.0$2_0_2 result.0$2_0_1)
+                                                    (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                   (=>
+                                                      (and
+                                                         (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                         cmp$1_0_1
+                                                         cmp2$1_0_1
+                                                         cmp6$1_0_1
+                                                         (not cmp11$1_0_1)
+                                                         lnot$2_0_1
+                                                         (not cmp2$2_0_1)
+                                                         (not cmp3$2_0_1)
+                                                         cmp6$2_0_1)
+                                                      (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2)))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((result.0$1_0_2 inc9$1_0_1)
+                               (n.addr.0$1_0_2 div10$1_0_1)
+                               (b.0$2_0_1 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_1 result.0$2_0_old_1)
+                                  (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                  (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                 (let
+                                    ((lnot$2_0_1 (xor
+                                                     cmp$2_0_1
+                                                     true)))
+                                    (let
+                                       ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                       (let
+                                          ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                          (let
+                                             ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                             (let
+                                                ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                                                (let
+                                                   ((add12$2_0_1 (+ result.0$2_0_1 3)))
+                                                   (let
+                                                      ((retval1.0$2_0_2 add12$2_0_1)
+                                                       (b.0$2_0_2 0)
+                                                       (result.0$2_0_2 result.0$2_0_1)
+                                                       (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                      (=>
+                                                         (and
+                                                            (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                            cmp$1_0_1
+                                                            cmp2$1_0_1
+                                                            cmp6$1_0_1
+                                                            (not cmp11$1_0_1)
+                                                            lnot$2_0_1
+                                                            (not cmp2$2_0_1)
+                                                            (not cmp3$2_0_1)
+                                                            (not cmp6$2_0_1)
+                                                            cmp10$2_0_1)
+                                                         (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((result.0$1_0_2 inc9$1_0_1)
+                               (n.addr.0$1_0_2 div10$1_0_1)
+                               (b.0$2_0_1 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_1 result.0$2_0_old_1)
+                                  (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                  (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                 (let
+                                    ((lnot$2_0_1 (xor
+                                                     cmp$2_0_1
+                                                     true)))
+                                    (let
+                                       ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                       (let
+                                          ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                          (let
+                                             ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                             (let
+                                                ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                                                (let
+                                                   ((div$2_0_1 (div n.addr.0$2_0_1 10000))
+                                                    (add14$2_0_1 (+ result.0$2_0_1 4)))
+                                                   (let
+                                                      ((retval1.0$2_0_2 retval1.0$2_0_1)
+                                                       (b.0$2_0_2 b.0$2_0_1)
+                                                       (result.0$2_0_2 add14$2_0_1)
+                                                       (n.addr.0$2_0_2 div$2_0_1))
+                                                      (=>
+                                                         (and
+                                                            (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                            cmp$1_0_1
+                                                            cmp2$1_0_1
+                                                            cmp6$1_0_1
+                                                            (not cmp11$1_0_1)
+                                                            lnot$2_0_1
+                                                            (not cmp2$2_0_1)
+                                                            (not cmp3$2_0_1)
+                                                            (not cmp6$2_0_1)
+                                                            (not cmp10$2_0_1))
+                                                         (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((result.0$1_0_2 inc4$1_0_1)
+                         (n.addr.0$1_0_2 div5$1_0_1)
+                         (b.0$2_0_1 b.0$2_0_old_1))
+                        (let
+                           ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                            (result.0$2_0_1 result.0$2_0_old_1)
+                            (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                            (cmp$2_0_1 (= b.0$2_0_1 0)))
+                           (let
+                              ((lnot$2_0_1 (xor
+                                               cmp$2_0_1
+                                               true)))
+                              (let
+                                 ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                 (let
+                                    ((retval1.0$2_0_2 result.0$2_0_1)
+                                     (b.0$2_0_2 0)
+                                     (result.0$2_0_2 result.0$2_0_1)
+                                     (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                          cmp$1_0_1
+                                          cmp2$1_0_1
+                                          (not cmp6$1_0_1)
+                                          lnot$2_0_1
+                                          cmp2$2_0_1)
+                                       (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((result.0$1_0_2 inc4$1_0_1)
+                         (n.addr.0$1_0_2 div5$1_0_1)
+                         (b.0$2_0_1 b.0$2_0_old_1))
+                        (let
+                           ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                            (result.0$2_0_1 result.0$2_0_old_1)
+                            (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                            (cmp$2_0_1 (= b.0$2_0_1 0)))
+                           (let
+                              ((lnot$2_0_1 (xor
+                                               cmp$2_0_1
+                                               true)))
+                              (let
+                                 ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                 (let
+                                    ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                    (let
+                                       ((add$2_0_1 (+ result.0$2_0_1 1)))
+                                       (let
+                                          ((retval1.0$2_0_2 add$2_0_1)
+                                           (b.0$2_0_2 0)
+                                           (result.0$2_0_2 result.0$2_0_1)
+                                           (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                          (=>
+                                             (and
+                                                (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                cmp$1_0_1
+                                                cmp2$1_0_1
+                                                (not cmp6$1_0_1)
+                                                lnot$2_0_1
+                                                (not cmp2$2_0_1)
+                                                cmp3$2_0_1)
+                                             (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((result.0$1_0_2 inc4$1_0_1)
+                         (n.addr.0$1_0_2 div5$1_0_1)
+                         (b.0$2_0_1 b.0$2_0_old_1))
+                        (let
+                           ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                            (result.0$2_0_1 result.0$2_0_old_1)
+                            (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                            (cmp$2_0_1 (= b.0$2_0_1 0)))
+                           (let
+                              ((lnot$2_0_1 (xor
+                                               cmp$2_0_1
+                                               true)))
+                              (let
+                                 ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                 (let
+                                    ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                    (let
+                                       ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                       (let
+                                          ((add8$2_0_1 (+ result.0$2_0_1 2)))
+                                          (let
+                                             ((retval1.0$2_0_2 add8$2_0_1)
+                                              (b.0$2_0_2 0)
+                                              (result.0$2_0_2 result.0$2_0_1)
+                                              (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                             (=>
+                                                (and
+                                                   (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                   cmp$1_0_1
+                                                   cmp2$1_0_1
+                                                   (not cmp6$1_0_1)
+                                                   lnot$2_0_1
+                                                   (not cmp2$2_0_1)
+                                                   (not cmp3$2_0_1)
+                                                   cmp6$2_0_1)
+                                                (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2)))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((result.0$1_0_2 inc4$1_0_1)
+                         (n.addr.0$1_0_2 div5$1_0_1)
+                         (b.0$2_0_1 b.0$2_0_old_1))
+                        (let
+                           ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                            (result.0$2_0_1 result.0$2_0_old_1)
+                            (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                            (cmp$2_0_1 (= b.0$2_0_1 0)))
+                           (let
+                              ((lnot$2_0_1 (xor
+                                               cmp$2_0_1
+                                               true)))
+                              (let
+                                 ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                 (let
+                                    ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                    (let
+                                       ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                       (let
+                                          ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                                          (let
+                                             ((add12$2_0_1 (+ result.0$2_0_1 3)))
+                                             (let
+                                                ((retval1.0$2_0_2 add12$2_0_1)
+                                                 (b.0$2_0_2 0)
+                                                 (result.0$2_0_2 result.0$2_0_1)
+                                                 (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                (=>
+                                                   (and
+                                                      (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                      cmp$1_0_1
+                                                      cmp2$1_0_1
+                                                      (not cmp6$1_0_1)
+                                                      lnot$2_0_1
+                                                      (not cmp2$2_0_1)
+                                                      (not cmp3$2_0_1)
+                                                      (not cmp6$2_0_1)
+                                                      cmp10$2_0_1)
+                                                   (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((result.0$1_0_2 inc4$1_0_1)
+                         (n.addr.0$1_0_2 div5$1_0_1)
+                         (b.0$2_0_1 b.0$2_0_old_1))
+                        (let
+                           ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                            (result.0$2_0_1 result.0$2_0_old_1)
+                            (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                            (cmp$2_0_1 (= b.0$2_0_1 0)))
+                           (let
+                              ((lnot$2_0_1 (xor
+                                               cmp$2_0_1
+                                               true)))
+                              (let
+                                 ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                 (let
+                                    ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                                    (let
+                                       ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                       (let
+                                          ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                                          (let
+                                             ((div$2_0_1 (div n.addr.0$2_0_1 10000))
+                                              (add14$2_0_1 (+ result.0$2_0_1 4)))
+                                             (let
+                                                ((retval1.0$2_0_2 retval1.0$2_0_1)
+                                                 (b.0$2_0_2 b.0$2_0_1)
+                                                 (result.0$2_0_2 add14$2_0_1)
+                                                 (n.addr.0$2_0_2 div$2_0_1))
+                                                (=>
+                                                   (and
+                                                      (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                      cmp$1_0_1
+                                                      cmp2$1_0_1
+                                                      (not cmp6$1_0_1)
+                                                      lnot$2_0_1
+                                                      (not cmp2$2_0_1)
+                                                      (not cmp3$2_0_1)
+                                                      (not cmp6$2_0_1)
+                                                      (not cmp10$2_0_1))
+                                                   (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((result.0$1_0_2 inc$1_0_1)
+                   (n.addr.0$1_0_2 div1$1_0_1)
+                   (b.0$2_0_1 b.0$2_0_old_1))
+                  (let
+                     ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                      (result.0$2_0_1 result.0$2_0_old_1)
+                      (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                      (cmp$2_0_1 (= b.0$2_0_1 0)))
+                     (let
+                        ((lnot$2_0_1 (xor
+                                         cmp$2_0_1
+                                         true)))
+                        (let
+                           ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                           (let
+                              ((retval1.0$2_0_2 result.0$2_0_1)
+                               (b.0$2_0_2 0)
+                               (result.0$2_0_2 result.0$2_0_1)
+                               (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                              (=>
+                                 (and
+                                    (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                    cmp$1_0_1
+                                    (not cmp2$1_0_1)
+                                    lnot$2_0_1
+                                    cmp2$2_0_1)
+                                 (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((result.0$1_0_2 inc$1_0_1)
+                   (n.addr.0$1_0_2 div1$1_0_1)
+                   (b.0$2_0_1 b.0$2_0_old_1))
+                  (let
+                     ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                      (result.0$2_0_1 result.0$2_0_old_1)
+                      (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                      (cmp$2_0_1 (= b.0$2_0_1 0)))
+                     (let
+                        ((lnot$2_0_1 (xor
+                                         cmp$2_0_1
+                                         true)))
+                        (let
+                           ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                           (let
+                              ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                              (let
+                                 ((add$2_0_1 (+ result.0$2_0_1 1)))
+                                 (let
+                                    ((retval1.0$2_0_2 add$2_0_1)
+                                     (b.0$2_0_2 0)
+                                     (result.0$2_0_2 result.0$2_0_1)
+                                     (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                          cmp$1_0_1
+                                          (not cmp2$1_0_1)
+                                          lnot$2_0_1
+                                          (not cmp2$2_0_1)
+                                          cmp3$2_0_1)
+                                       (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((result.0$1_0_2 inc$1_0_1)
+                   (n.addr.0$1_0_2 div1$1_0_1)
+                   (b.0$2_0_1 b.0$2_0_old_1))
+                  (let
+                     ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                      (result.0$2_0_1 result.0$2_0_old_1)
+                      (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                      (cmp$2_0_1 (= b.0$2_0_1 0)))
+                     (let
+                        ((lnot$2_0_1 (xor
+                                         cmp$2_0_1
+                                         true)))
+                        (let
+                           ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                           (let
+                              ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                              (let
+                                 ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                 (let
+                                    ((add8$2_0_1 (+ result.0$2_0_1 2)))
+                                    (let
+                                       ((retval1.0$2_0_2 add8$2_0_1)
+                                        (b.0$2_0_2 0)
+                                        (result.0$2_0_2 result.0$2_0_1)
+                                        (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                       (=>
+                                          (and
+                                             (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                             cmp$1_0_1
+                                             (not cmp2$1_0_1)
+                                             lnot$2_0_1
+                                             (not cmp2$2_0_1)
+                                             (not cmp3$2_0_1)
+                                             cmp6$2_0_1)
+                                          (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2)))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((result.0$1_0_2 inc$1_0_1)
+                   (n.addr.0$1_0_2 div1$1_0_1)
+                   (b.0$2_0_1 b.0$2_0_old_1))
+                  (let
+                     ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                      (result.0$2_0_1 result.0$2_0_old_1)
+                      (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                      (cmp$2_0_1 (= b.0$2_0_1 0)))
+                     (let
+                        ((lnot$2_0_1 (xor
+                                         cmp$2_0_1
+                                         true)))
+                        (let
+                           ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                           (let
+                              ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                              (let
+                                 ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                 (let
+                                    ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                                    (let
+                                       ((add12$2_0_1 (+ result.0$2_0_1 3)))
+                                       (let
+                                          ((retval1.0$2_0_2 add12$2_0_1)
+                                           (b.0$2_0_2 0)
+                                           (result.0$2_0_2 result.0$2_0_1)
+                                           (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                          (=>
+                                             (and
+                                                (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                cmp$1_0_1
+                                                (not cmp2$1_0_1)
+                                                lnot$2_0_1
+                                                (not cmp2$2_0_1)
+                                                (not cmp3$2_0_1)
+                                                (not cmp6$2_0_1)
+                                                cmp10$2_0_1)
+                                             (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((result.0$1_0_2 inc$1_0_1)
+                   (n.addr.0$1_0_2 div1$1_0_1)
+                   (b.0$2_0_1 b.0$2_0_old_1))
+                  (let
+                     ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                      (result.0$2_0_1 result.0$2_0_old_1)
+                      (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                      (cmp$2_0_1 (= b.0$2_0_1 0)))
+                     (let
+                        ((lnot$2_0_1 (xor
+                                         cmp$2_0_1
+                                         true)))
+                        (let
+                           ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                           (let
+                              ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                              (let
+                                 ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                                 (let
+                                    ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                                    (let
+                                       ((div$2_0_1 (div n.addr.0$2_0_1 10000))
+                                        (add14$2_0_1 (+ result.0$2_0_1 4)))
+                                       (let
+                                          ((retval1.0$2_0_2 retval1.0$2_0_1)
+                                           (b.0$2_0_2 b.0$2_0_1)
+                                           (result.0$2_0_2 add14$2_0_1)
+                                           (n.addr.0$2_0_2 div$2_0_1))
+                                          (=>
+                                             (and
+                                                (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                                cmp$1_0_1
+                                                (not cmp2$1_0_1)
+                                                lnot$2_0_1
+                                                (not cmp2$2_0_1)
+                                                (not cmp3$2_0_1)
+                                                (not cmp6$2_0_1)
+                                                (not cmp10$2_0_1))
+                                             (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                               (div15$1_0_1 (div div10$1_0_1 10)))
+                              (let
+                                 ((result.0$1_0_2 inc14$1_0_1)
+                                  (n.addr.0$1_0_2 div15$1_0_1))
+                                 (=>
+                                    (and
+                                       (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                       cmp$1_0_1
+                                       cmp2$1_0_1
+                                       cmp6$1_0_1
+                                       cmp11$1_0_1
+                                       (and
+                                          (let
+                                             ((b.0$2_0_1 b.0$2_0_old_1))
+                                             (let
+                                                ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                                 (result.0$2_0_1 result.0$2_0_old_1)
+                                                 (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                                 (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                                (let
+                                                   ((lnot$2_0_1 (xor
+                                                                    cmp$2_0_1
+                                                                    true)))
+                                                   (=>
+                                                      lnot$2_0_1
+                                                      (let
+                                                         ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                                         (=>
+                                                            cmp2$2_0_1
+                                                            (let
+                                                               ((retval1.0$2_0_2 result.0$2_0_1)
+                                                                (b.0$2_0_2 0)
+                                                                (result.0$2_0_2 result.0$2_0_1)
+                                                                (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                               false)))))))
+                                          (let
+                                             ((b.0$2_0_3 b.0$2_0_old_1))
+                                             (let
+                                                ((n.addr.0$2_0_3 n.addr.0$2_0_old_1)
+                                                 (result.0$2_0_3 result.0$2_0_old_1)
+                                                 (retval1.0$2_0_3 retval1.0$2_0_old_1)
+                                                 (cmp$2_0_2 (= b.0$2_0_3 0)))
+                                                (let
+                                                   ((lnot$2_0_2 (xor
+                                                                    cmp$2_0_2
+                                                                    true)))
+                                                   (=>
+                                                      lnot$2_0_2
+                                                      (let
+                                                         ((cmp2$2_0_2 (< n.addr.0$2_0_3 10)))
+                                                         (=>
+                                                            (not cmp2$2_0_2)
+                                                            (let
+                                                               ((cmp3$2_0_1 (< n.addr.0$2_0_3 100)))
+                                                               (=>
+                                                                  cmp3$2_0_1
+                                                                  (let
+                                                                     ((add$2_0_1 (+ result.0$2_0_3 1)))
+                                                                     (let
+                                                                        ((retval1.0$2_0_4 add$2_0_1)
+                                                                         (b.0$2_0_4 0)
+                                                                         (result.0$2_0_4 result.0$2_0_3)
+                                                                         (n.addr.0$2_0_4 n.addr.0$2_0_3))
+                                                                        false))))))))))
+                                          (let
+                                             ((b.0$2_0_5 b.0$2_0_old_1))
+                                             (let
+                                                ((n.addr.0$2_0_5 n.addr.0$2_0_old_1)
+                                                 (result.0$2_0_5 result.0$2_0_old_1)
+                                                 (retval1.0$2_0_5 retval1.0$2_0_old_1)
+                                                 (cmp$2_0_3 (= b.0$2_0_5 0)))
+                                                (let
+                                                   ((lnot$2_0_3 (xor
+                                                                    cmp$2_0_3
+                                                                    true)))
+                                                   (=>
+                                                      lnot$2_0_3
+                                                      (let
+                                                         ((cmp2$2_0_3 (< n.addr.0$2_0_5 10)))
+                                                         (=>
+                                                            (not cmp2$2_0_3)
+                                                            (let
+                                                               ((cmp3$2_0_2 (< n.addr.0$2_0_5 100)))
+                                                               (=>
+                                                                  (not cmp3$2_0_2)
+                                                                  (let
+                                                                     ((cmp6$2_0_1 (< n.addr.0$2_0_5 1000)))
+                                                                     (=>
+                                                                        cmp6$2_0_1
+                                                                        (let
+                                                                           ((add8$2_0_1 (+ result.0$2_0_5 2)))
+                                                                           (let
+                                                                              ((retval1.0$2_0_6 add8$2_0_1)
+                                                                               (b.0$2_0_6 0)
+                                                                               (result.0$2_0_6 result.0$2_0_5)
+                                                                               (n.addr.0$2_0_6 n.addr.0$2_0_5))
+                                                                              false))))))))))))
+                                          (let
+                                             ((b.0$2_0_7 b.0$2_0_old_1))
+                                             (let
+                                                ((n.addr.0$2_0_7 n.addr.0$2_0_old_1)
+                                                 (result.0$2_0_7 result.0$2_0_old_1)
+                                                 (retval1.0$2_0_7 retval1.0$2_0_old_1)
+                                                 (cmp$2_0_4 (= b.0$2_0_7 0)))
+                                                (let
+                                                   ((lnot$2_0_4 (xor
+                                                                    cmp$2_0_4
+                                                                    true)))
+                                                   (=>
+                                                      lnot$2_0_4
+                                                      (let
+                                                         ((cmp2$2_0_4 (< n.addr.0$2_0_7 10)))
+                                                         (=>
+                                                            (not cmp2$2_0_4)
+                                                            (let
+                                                               ((cmp3$2_0_3 (< n.addr.0$2_0_7 100)))
+                                                               (=>
+                                                                  (not cmp3$2_0_3)
+                                                                  (let
+                                                                     ((cmp6$2_0_2 (< n.addr.0$2_0_7 1000)))
+                                                                     (=>
+                                                                        (not cmp6$2_0_2)
+                                                                        (let
+                                                                           ((cmp10$2_0_1 (< n.addr.0$2_0_7 10000)))
+                                                                           (=>
+                                                                              cmp10$2_0_1
+                                                                              (let
+                                                                                 ((add12$2_0_1 (+ result.0$2_0_7 3)))
+                                                                                 (let
+                                                                                    ((retval1.0$2_0_8 add12$2_0_1)
+                                                                                     (b.0$2_0_8 0)
+                                                                                     (result.0$2_0_8 result.0$2_0_7)
+                                                                                     (n.addr.0$2_0_8 n.addr.0$2_0_7))
+                                                                                    false))))))))))))))
+                                          (let
+                                             ((b.0$2_0_9 b.0$2_0_old_1))
+                                             (let
+                                                ((n.addr.0$2_0_9 n.addr.0$2_0_old_1)
+                                                 (result.0$2_0_9 result.0$2_0_old_1)
+                                                 (retval1.0$2_0_9 retval1.0$2_0_old_1)
+                                                 (cmp$2_0_5 (= b.0$2_0_9 0)))
+                                                (let
+                                                   ((lnot$2_0_5 (xor
+                                                                    cmp$2_0_5
+                                                                    true)))
+                                                   (=>
+                                                      lnot$2_0_5
+                                                      (let
+                                                         ((cmp2$2_0_5 (< n.addr.0$2_0_9 10)))
+                                                         (=>
+                                                            (not cmp2$2_0_5)
+                                                            (let
+                                                               ((cmp3$2_0_4 (< n.addr.0$2_0_9 100)))
+                                                               (=>
+                                                                  (not cmp3$2_0_4)
+                                                                  (let
+                                                                     ((cmp6$2_0_3 (< n.addr.0$2_0_9 1000)))
+                                                                     (=>
+                                                                        (not cmp6$2_0_3)
+                                                                        (let
+                                                                           ((cmp10$2_0_2 (< n.addr.0$2_0_9 10000)))
+                                                                           (=>
+                                                                              (not cmp10$2_0_2)
+                                                                              (let
+                                                                                 ((div$2_0_1 (div n.addr.0$2_0_9 10000))
+                                                                                  (add14$2_0_1 (+ result.0$2_0_9 4)))
+                                                                                 (let
+                                                                                    ((retval1.0$2_0_10 retval1.0$2_0_9)
+                                                                                     (b.0$2_0_10 b.0$2_0_9)
+                                                                                     (result.0$2_0_10 add14$2_0_1)
+                                                                                     (n.addr.0$2_0_10 div$2_0_1))
+                                                                                    false))))))))))))))))
+                                    (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                         (div10$1_0_1 (div div5$1_0_1 10)))
+                        (let
+                           ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                           (let
+                              ((result.0$1_0_2 inc9$1_0_1)
+                               (n.addr.0$1_0_2 div10$1_0_1))
+                              (=>
+                                 (and
+                                    (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                    cmp$1_0_1
+                                    cmp2$1_0_1
+                                    cmp6$1_0_1
+                                    (not cmp11$1_0_1)
+                                    (and
+                                       (let
+                                          ((b.0$2_0_1 b.0$2_0_old_1))
+                                          (let
+                                             ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                              (result.0$2_0_1 result.0$2_0_old_1)
+                                              (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                              (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                             (let
+                                                ((lnot$2_0_1 (xor
+                                                                 cmp$2_0_1
+                                                                 true)))
+                                                (=>
+                                                   lnot$2_0_1
+                                                   (let
+                                                      ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                                      (=>
+                                                         cmp2$2_0_1
+                                                         (let
+                                                            ((retval1.0$2_0_2 result.0$2_0_1)
+                                                             (b.0$2_0_2 0)
+                                                             (result.0$2_0_2 result.0$2_0_1)
+                                                             (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                            false)))))))
+                                       (let
+                                          ((b.0$2_0_3 b.0$2_0_old_1))
+                                          (let
+                                             ((n.addr.0$2_0_3 n.addr.0$2_0_old_1)
+                                              (result.0$2_0_3 result.0$2_0_old_1)
+                                              (retval1.0$2_0_3 retval1.0$2_0_old_1)
+                                              (cmp$2_0_2 (= b.0$2_0_3 0)))
+                                             (let
+                                                ((lnot$2_0_2 (xor
+                                                                 cmp$2_0_2
+                                                                 true)))
+                                                (=>
+                                                   lnot$2_0_2
+                                                   (let
+                                                      ((cmp2$2_0_2 (< n.addr.0$2_0_3 10)))
+                                                      (=>
+                                                         (not cmp2$2_0_2)
+                                                         (let
+                                                            ((cmp3$2_0_1 (< n.addr.0$2_0_3 100)))
+                                                            (=>
+                                                               cmp3$2_0_1
+                                                               (let
+                                                                  ((add$2_0_1 (+ result.0$2_0_3 1)))
+                                                                  (let
+                                                                     ((retval1.0$2_0_4 add$2_0_1)
+                                                                      (b.0$2_0_4 0)
+                                                                      (result.0$2_0_4 result.0$2_0_3)
+                                                                      (n.addr.0$2_0_4 n.addr.0$2_0_3))
+                                                                     false))))))))))
+                                       (let
+                                          ((b.0$2_0_5 b.0$2_0_old_1))
+                                          (let
+                                             ((n.addr.0$2_0_5 n.addr.0$2_0_old_1)
+                                              (result.0$2_0_5 result.0$2_0_old_1)
+                                              (retval1.0$2_0_5 retval1.0$2_0_old_1)
+                                              (cmp$2_0_3 (= b.0$2_0_5 0)))
+                                             (let
+                                                ((lnot$2_0_3 (xor
+                                                                 cmp$2_0_3
+                                                                 true)))
+                                                (=>
+                                                   lnot$2_0_3
+                                                   (let
+                                                      ((cmp2$2_0_3 (< n.addr.0$2_0_5 10)))
+                                                      (=>
+                                                         (not cmp2$2_0_3)
+                                                         (let
+                                                            ((cmp3$2_0_2 (< n.addr.0$2_0_5 100)))
+                                                            (=>
+                                                               (not cmp3$2_0_2)
+                                                               (let
+                                                                  ((cmp6$2_0_1 (< n.addr.0$2_0_5 1000)))
+                                                                  (=>
+                                                                     cmp6$2_0_1
+                                                                     (let
+                                                                        ((add8$2_0_1 (+ result.0$2_0_5 2)))
+                                                                        (let
+                                                                           ((retval1.0$2_0_6 add8$2_0_1)
+                                                                            (b.0$2_0_6 0)
+                                                                            (result.0$2_0_6 result.0$2_0_5)
+                                                                            (n.addr.0$2_0_6 n.addr.0$2_0_5))
+                                                                           false))))))))))))
+                                       (let
+                                          ((b.0$2_0_7 b.0$2_0_old_1))
+                                          (let
+                                             ((n.addr.0$2_0_7 n.addr.0$2_0_old_1)
+                                              (result.0$2_0_7 result.0$2_0_old_1)
+                                              (retval1.0$2_0_7 retval1.0$2_0_old_1)
+                                              (cmp$2_0_4 (= b.0$2_0_7 0)))
+                                             (let
+                                                ((lnot$2_0_4 (xor
+                                                                 cmp$2_0_4
+                                                                 true)))
+                                                (=>
+                                                   lnot$2_0_4
+                                                   (let
+                                                      ((cmp2$2_0_4 (< n.addr.0$2_0_7 10)))
+                                                      (=>
+                                                         (not cmp2$2_0_4)
+                                                         (let
+                                                            ((cmp3$2_0_3 (< n.addr.0$2_0_7 100)))
+                                                            (=>
+                                                               (not cmp3$2_0_3)
+                                                               (let
+                                                                  ((cmp6$2_0_2 (< n.addr.0$2_0_7 1000)))
+                                                                  (=>
+                                                                     (not cmp6$2_0_2)
+                                                                     (let
+                                                                        ((cmp10$2_0_1 (< n.addr.0$2_0_7 10000)))
+                                                                        (=>
+                                                                           cmp10$2_0_1
+                                                                           (let
+                                                                              ((add12$2_0_1 (+ result.0$2_0_7 3)))
+                                                                              (let
+                                                                                 ((retval1.0$2_0_8 add12$2_0_1)
+                                                                                  (b.0$2_0_8 0)
+                                                                                  (result.0$2_0_8 result.0$2_0_7)
+                                                                                  (n.addr.0$2_0_8 n.addr.0$2_0_7))
+                                                                                 false))))))))))))))
+                                       (let
+                                          ((b.0$2_0_9 b.0$2_0_old_1))
+                                          (let
+                                             ((n.addr.0$2_0_9 n.addr.0$2_0_old_1)
+                                              (result.0$2_0_9 result.0$2_0_old_1)
+                                              (retval1.0$2_0_9 retval1.0$2_0_old_1)
+                                              (cmp$2_0_5 (= b.0$2_0_9 0)))
+                                             (let
+                                                ((lnot$2_0_5 (xor
+                                                                 cmp$2_0_5
+                                                                 true)))
+                                                (=>
+                                                   lnot$2_0_5
+                                                   (let
+                                                      ((cmp2$2_0_5 (< n.addr.0$2_0_9 10)))
+                                                      (=>
+                                                         (not cmp2$2_0_5)
+                                                         (let
+                                                            ((cmp3$2_0_4 (< n.addr.0$2_0_9 100)))
+                                                            (=>
+                                                               (not cmp3$2_0_4)
+                                                               (let
+                                                                  ((cmp6$2_0_3 (< n.addr.0$2_0_9 1000)))
+                                                                  (=>
+                                                                     (not cmp6$2_0_3)
+                                                                     (let
+                                                                        ((cmp10$2_0_2 (< n.addr.0$2_0_9 10000)))
+                                                                        (=>
+                                                                           (not cmp10$2_0_2)
+                                                                           (let
+                                                                              ((div$2_0_1 (div n.addr.0$2_0_9 10000))
+                                                                               (add14$2_0_1 (+ result.0$2_0_9 4)))
+                                                                              (let
+                                                                                 ((retval1.0$2_0_10 retval1.0$2_0_9)
+                                                                                  (b.0$2_0_10 b.0$2_0_9)
+                                                                                  (result.0$2_0_10 add14$2_0_1)
+                                                                                  (n.addr.0$2_0_10 div$2_0_1))
+                                                                                 false))))))))))))))))
+                                 (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1))))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((inc4$1_0_1 (+ inc$1_0_1 1))
+                   (div5$1_0_1 (div div1$1_0_1 10)))
+                  (let
+                     ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                     (let
+                        ((result.0$1_0_2 inc4$1_0_1)
+                         (n.addr.0$1_0_2 div5$1_0_1))
+                        (=>
+                           (and
+                              (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                              cmp$1_0_1
+                              cmp2$1_0_1
+                              (not cmp6$1_0_1)
+                              (and
+                                 (let
+                                    ((b.0$2_0_1 b.0$2_0_old_1))
+                                    (let
+                                       ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                        (result.0$2_0_1 result.0$2_0_old_1)
+                                        (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                        (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                       (let
+                                          ((lnot$2_0_1 (xor
+                                                           cmp$2_0_1
+                                                           true)))
+                                          (=>
+                                             lnot$2_0_1
+                                             (let
+                                                ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                                (=>
+                                                   cmp2$2_0_1
+                                                   (let
+                                                      ((retval1.0$2_0_2 result.0$2_0_1)
+                                                       (b.0$2_0_2 0)
+                                                       (result.0$2_0_2 result.0$2_0_1)
+                                                       (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                      false)))))))
+                                 (let
+                                    ((b.0$2_0_3 b.0$2_0_old_1))
+                                    (let
+                                       ((n.addr.0$2_0_3 n.addr.0$2_0_old_1)
+                                        (result.0$2_0_3 result.0$2_0_old_1)
+                                        (retval1.0$2_0_3 retval1.0$2_0_old_1)
+                                        (cmp$2_0_2 (= b.0$2_0_3 0)))
+                                       (let
+                                          ((lnot$2_0_2 (xor
+                                                           cmp$2_0_2
+                                                           true)))
+                                          (=>
+                                             lnot$2_0_2
+                                             (let
+                                                ((cmp2$2_0_2 (< n.addr.0$2_0_3 10)))
+                                                (=>
+                                                   (not cmp2$2_0_2)
+                                                   (let
+                                                      ((cmp3$2_0_1 (< n.addr.0$2_0_3 100)))
+                                                      (=>
+                                                         cmp3$2_0_1
+                                                         (let
+                                                            ((add$2_0_1 (+ result.0$2_0_3 1)))
+                                                            (let
+                                                               ((retval1.0$2_0_4 add$2_0_1)
+                                                                (b.0$2_0_4 0)
+                                                                (result.0$2_0_4 result.0$2_0_3)
+                                                                (n.addr.0$2_0_4 n.addr.0$2_0_3))
+                                                               false))))))))))
+                                 (let
+                                    ((b.0$2_0_5 b.0$2_0_old_1))
+                                    (let
+                                       ((n.addr.0$2_0_5 n.addr.0$2_0_old_1)
+                                        (result.0$2_0_5 result.0$2_0_old_1)
+                                        (retval1.0$2_0_5 retval1.0$2_0_old_1)
+                                        (cmp$2_0_3 (= b.0$2_0_5 0)))
+                                       (let
+                                          ((lnot$2_0_3 (xor
+                                                           cmp$2_0_3
+                                                           true)))
+                                          (=>
+                                             lnot$2_0_3
+                                             (let
+                                                ((cmp2$2_0_3 (< n.addr.0$2_0_5 10)))
+                                                (=>
+                                                   (not cmp2$2_0_3)
+                                                   (let
+                                                      ((cmp3$2_0_2 (< n.addr.0$2_0_5 100)))
+                                                      (=>
+                                                         (not cmp3$2_0_2)
+                                                         (let
+                                                            ((cmp6$2_0_1 (< n.addr.0$2_0_5 1000)))
+                                                            (=>
+                                                               cmp6$2_0_1
+                                                               (let
+                                                                  ((add8$2_0_1 (+ result.0$2_0_5 2)))
+                                                                  (let
+                                                                     ((retval1.0$2_0_6 add8$2_0_1)
+                                                                      (b.0$2_0_6 0)
+                                                                      (result.0$2_0_6 result.0$2_0_5)
+                                                                      (n.addr.0$2_0_6 n.addr.0$2_0_5))
+                                                                     false))))))))))))
+                                 (let
+                                    ((b.0$2_0_7 b.0$2_0_old_1))
+                                    (let
+                                       ((n.addr.0$2_0_7 n.addr.0$2_0_old_1)
+                                        (result.0$2_0_7 result.0$2_0_old_1)
+                                        (retval1.0$2_0_7 retval1.0$2_0_old_1)
+                                        (cmp$2_0_4 (= b.0$2_0_7 0)))
+                                       (let
+                                          ((lnot$2_0_4 (xor
+                                                           cmp$2_0_4
+                                                           true)))
+                                          (=>
+                                             lnot$2_0_4
+                                             (let
+                                                ((cmp2$2_0_4 (< n.addr.0$2_0_7 10)))
+                                                (=>
+                                                   (not cmp2$2_0_4)
+                                                   (let
+                                                      ((cmp3$2_0_3 (< n.addr.0$2_0_7 100)))
+                                                      (=>
+                                                         (not cmp3$2_0_3)
+                                                         (let
+                                                            ((cmp6$2_0_2 (< n.addr.0$2_0_7 1000)))
+                                                            (=>
+                                                               (not cmp6$2_0_2)
+                                                               (let
+                                                                  ((cmp10$2_0_1 (< n.addr.0$2_0_7 10000)))
+                                                                  (=>
+                                                                     cmp10$2_0_1
+                                                                     (let
+                                                                        ((add12$2_0_1 (+ result.0$2_0_7 3)))
+                                                                        (let
+                                                                           ((retval1.0$2_0_8 add12$2_0_1)
+                                                                            (b.0$2_0_8 0)
+                                                                            (result.0$2_0_8 result.0$2_0_7)
+                                                                            (n.addr.0$2_0_8 n.addr.0$2_0_7))
+                                                                           false))))))))))))))
+                                 (let
+                                    ((b.0$2_0_9 b.0$2_0_old_1))
+                                    (let
+                                       ((n.addr.0$2_0_9 n.addr.0$2_0_old_1)
+                                        (result.0$2_0_9 result.0$2_0_old_1)
+                                        (retval1.0$2_0_9 retval1.0$2_0_old_1)
+                                        (cmp$2_0_5 (= b.0$2_0_9 0)))
+                                       (let
+                                          ((lnot$2_0_5 (xor
+                                                           cmp$2_0_5
+                                                           true)))
+                                          (=>
+                                             lnot$2_0_5
+                                             (let
+                                                ((cmp2$2_0_5 (< n.addr.0$2_0_9 10)))
+                                                (=>
+                                                   (not cmp2$2_0_5)
+                                                   (let
+                                                      ((cmp3$2_0_4 (< n.addr.0$2_0_9 100)))
+                                                      (=>
+                                                         (not cmp3$2_0_4)
+                                                         (let
+                                                            ((cmp6$2_0_3 (< n.addr.0$2_0_9 1000)))
+                                                            (=>
+                                                               (not cmp6$2_0_3)
+                                                               (let
+                                                                  ((cmp10$2_0_2 (< n.addr.0$2_0_9 10000)))
+                                                                  (=>
+                                                                     (not cmp10$2_0_2)
+                                                                     (let
+                                                                        ((div$2_0_1 (div n.addr.0$2_0_9 10000))
+                                                                         (add14$2_0_1 (+ result.0$2_0_9 4)))
+                                                                        (let
+                                                                           ((retval1.0$2_0_10 retval1.0$2_0_9)
+                                                                            (b.0$2_0_10 b.0$2_0_9)
+                                                                            (result.0$2_0_10 add14$2_0_1)
+                                                                            (n.addr.0$2_0_10 div$2_0_1))
+                                                                           false))))))))))))))))
+                           (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1))))))))))
+(rule
+   (let
+      ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+      (let
+         ((result.0$1_0_1 result.0$1_0_old_1)
+          (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+         (let
+            ((inc$1_0_1 (+ result.0$1_0_1 1))
+             (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+            (let
+               ((cmp2$1_0_1 (> div1$1_0_1 0)))
+               (let
+                  ((result.0$1_0_2 inc$1_0_1)
+                   (n.addr.0$1_0_2 div1$1_0_1))
+                  (=>
+                     (and
+                        (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                        cmp$1_0_1
+                        (not cmp2$1_0_1)
+                        (and
+                           (let
+                              ((b.0$2_0_1 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_1 result.0$2_0_old_1)
+                                  (retval1.0$2_0_1 retval1.0$2_0_old_1)
+                                  (cmp$2_0_1 (= b.0$2_0_1 0)))
+                                 (let
+                                    ((lnot$2_0_1 (xor
+                                                     cmp$2_0_1
+                                                     true)))
+                                    (=>
+                                       lnot$2_0_1
+                                       (let
+                                          ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+                                          (=>
+                                             cmp2$2_0_1
+                                             (let
+                                                ((retval1.0$2_0_2 result.0$2_0_1)
+                                                 (b.0$2_0_2 0)
+                                                 (result.0$2_0_2 result.0$2_0_1)
+                                                 (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                                                false)))))))
+                           (let
+                              ((b.0$2_0_3 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_3 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_3 result.0$2_0_old_1)
+                                  (retval1.0$2_0_3 retval1.0$2_0_old_1)
+                                  (cmp$2_0_2 (= b.0$2_0_3 0)))
+                                 (let
+                                    ((lnot$2_0_2 (xor
+                                                     cmp$2_0_2
+                                                     true)))
+                                    (=>
+                                       lnot$2_0_2
+                                       (let
+                                          ((cmp2$2_0_2 (< n.addr.0$2_0_3 10)))
+                                          (=>
+                                             (not cmp2$2_0_2)
+                                             (let
+                                                ((cmp3$2_0_1 (< n.addr.0$2_0_3 100)))
+                                                (=>
+                                                   cmp3$2_0_1
+                                                   (let
+                                                      ((add$2_0_1 (+ result.0$2_0_3 1)))
+                                                      (let
+                                                         ((retval1.0$2_0_4 add$2_0_1)
+                                                          (b.0$2_0_4 0)
+                                                          (result.0$2_0_4 result.0$2_0_3)
+                                                          (n.addr.0$2_0_4 n.addr.0$2_0_3))
+                                                         false))))))))))
+                           (let
+                              ((b.0$2_0_5 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_5 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_5 result.0$2_0_old_1)
+                                  (retval1.0$2_0_5 retval1.0$2_0_old_1)
+                                  (cmp$2_0_3 (= b.0$2_0_5 0)))
+                                 (let
+                                    ((lnot$2_0_3 (xor
+                                                     cmp$2_0_3
+                                                     true)))
+                                    (=>
+                                       lnot$2_0_3
+                                       (let
+                                          ((cmp2$2_0_3 (< n.addr.0$2_0_5 10)))
+                                          (=>
+                                             (not cmp2$2_0_3)
+                                             (let
+                                                ((cmp3$2_0_2 (< n.addr.0$2_0_5 100)))
+                                                (=>
+                                                   (not cmp3$2_0_2)
+                                                   (let
+                                                      ((cmp6$2_0_1 (< n.addr.0$2_0_5 1000)))
+                                                      (=>
+                                                         cmp6$2_0_1
+                                                         (let
+                                                            ((add8$2_0_1 (+ result.0$2_0_5 2)))
+                                                            (let
+                                                               ((retval1.0$2_0_6 add8$2_0_1)
+                                                                (b.0$2_0_6 0)
+                                                                (result.0$2_0_6 result.0$2_0_5)
+                                                                (n.addr.0$2_0_6 n.addr.0$2_0_5))
+                                                               false))))))))))))
+                           (let
+                              ((b.0$2_0_7 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_7 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_7 result.0$2_0_old_1)
+                                  (retval1.0$2_0_7 retval1.0$2_0_old_1)
+                                  (cmp$2_0_4 (= b.0$2_0_7 0)))
+                                 (let
+                                    ((lnot$2_0_4 (xor
+                                                     cmp$2_0_4
+                                                     true)))
+                                    (=>
+                                       lnot$2_0_4
+                                       (let
+                                          ((cmp2$2_0_4 (< n.addr.0$2_0_7 10)))
+                                          (=>
+                                             (not cmp2$2_0_4)
+                                             (let
+                                                ((cmp3$2_0_3 (< n.addr.0$2_0_7 100)))
+                                                (=>
+                                                   (not cmp3$2_0_3)
+                                                   (let
+                                                      ((cmp6$2_0_2 (< n.addr.0$2_0_7 1000)))
+                                                      (=>
+                                                         (not cmp6$2_0_2)
+                                                         (let
+                                                            ((cmp10$2_0_1 (< n.addr.0$2_0_7 10000)))
+                                                            (=>
+                                                               cmp10$2_0_1
+                                                               (let
+                                                                  ((add12$2_0_1 (+ result.0$2_0_7 3)))
+                                                                  (let
+                                                                     ((retval1.0$2_0_8 add12$2_0_1)
+                                                                      (b.0$2_0_8 0)
+                                                                      (result.0$2_0_8 result.0$2_0_7)
+                                                                      (n.addr.0$2_0_8 n.addr.0$2_0_7))
+                                                                     false))))))))))))))
+                           (let
+                              ((b.0$2_0_9 b.0$2_0_old_1))
+                              (let
+                                 ((n.addr.0$2_0_9 n.addr.0$2_0_old_1)
+                                  (result.0$2_0_9 result.0$2_0_old_1)
+                                  (retval1.0$2_0_9 retval1.0$2_0_old_1)
+                                  (cmp$2_0_5 (= b.0$2_0_9 0)))
+                                 (let
+                                    ((lnot$2_0_5 (xor
+                                                     cmp$2_0_5
+                                                     true)))
+                                    (=>
+                                       lnot$2_0_5
+                                       (let
+                                          ((cmp2$2_0_5 (< n.addr.0$2_0_9 10)))
+                                          (=>
+                                             (not cmp2$2_0_5)
+                                             (let
+                                                ((cmp3$2_0_4 (< n.addr.0$2_0_9 100)))
+                                                (=>
+                                                   (not cmp3$2_0_4)
+                                                   (let
+                                                      ((cmp6$2_0_3 (< n.addr.0$2_0_9 1000)))
+                                                      (=>
+                                                         (not cmp6$2_0_3)
+                                                         (let
+                                                            ((cmp10$2_0_2 (< n.addr.0$2_0_9 10000)))
+                                                            (=>
+                                                               (not cmp10$2_0_2)
+                                                               (let
+                                                                  ((div$2_0_1 (div n.addr.0$2_0_9 10000))
+                                                                   (add14$2_0_1 (+ result.0$2_0_9 4)))
+                                                                  (let
+                                                                     ((retval1.0$2_0_10 retval1.0$2_0_9)
+                                                                      (b.0$2_0_10 b.0$2_0_9)
+                                                                      (result.0$2_0_10 add14$2_0_1)
+                                                                      (n.addr.0$2_0_10 div$2_0_1))
+                                                                     false))))))))))))))))
+                     (INV_MAIN_42 n.addr.0$1_0_2 result.0$1_0_2 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1))))))))
+(rule
+   (let
+      ((b.0$2_0_1 b.0$2_0_old_1))
+      (let
+         ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+          (result.0$2_0_1 result.0$2_0_old_1)
+          (retval1.0$2_0_1 retval1.0$2_0_old_1)
+          (cmp$2_0_1 (= b.0$2_0_1 0)))
+         (let
+            ((lnot$2_0_1 (xor
+                             cmp$2_0_1
+                             true)))
+            (let
+               ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+               (let
+                  ((retval1.0$2_0_2 result.0$2_0_1)
+                   (b.0$2_0_2 0)
+                   (result.0$2_0_2 result.0$2_0_1)
+                   (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                  (=>
+                     (and
+                        (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                        lnot$2_0_1
+                        cmp2$2_0_1
+                        (and
+                           (let
+                              ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+                              (let
+                                 ((result.0$1_0_1 result.0$1_0_old_1)
+                                  (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+                                 (=>
+                                    cmp$1_0_1
+                                    (let
+                                       ((inc$1_0_1 (+ result.0$1_0_1 1))
+                                        (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+                                       (let
+                                          ((cmp2$1_0_1 (> div1$1_0_1 0)))
+                                          (=>
+                                             cmp2$1_0_1
+                                             (let
+                                                ((inc4$1_0_1 (+ inc$1_0_1 1))
+                                                 (div5$1_0_1 (div div1$1_0_1 10)))
+                                                (let
+                                                   ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                                                   (=>
+                                                      cmp6$1_0_1
+                                                      (let
+                                                         ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                                                          (div10$1_0_1 (div div5$1_0_1 10)))
+                                                         (let
+                                                            ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                                                            (=>
+                                                               cmp11$1_0_1
+                                                               (let
+                                                                  ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                                                                   (div15$1_0_1 (div div10$1_0_1 10)))
+                                                                  (let
+                                                                     ((result.0$1_0_2 inc14$1_0_1)
+                                                                      (n.addr.0$1_0_2 div15$1_0_1))
+                                                                     false))))))))))))))
+                           (let
+                              ((n.addr.0$1_0_3 n.addr.0$1_0_old_1))
+                              (let
+                                 ((result.0$1_0_3 result.0$1_0_old_1)
+                                  (cmp$1_0_2 (> n.addr.0$1_0_3 0)))
+                                 (=>
+                                    cmp$1_0_2
+                                    (let
+                                       ((inc$1_0_2 (+ result.0$1_0_3 1))
+                                        (div1$1_0_2 (div n.addr.0$1_0_3 10)))
+                                       (let
+                                          ((cmp2$1_0_2 (> div1$1_0_2 0)))
+                                          (=>
+                                             cmp2$1_0_2
+                                             (let
+                                                ((inc4$1_0_2 (+ inc$1_0_2 1))
+                                                 (div5$1_0_2 (div div1$1_0_2 10)))
+                                                (let
+                                                   ((cmp6$1_0_2 (> div5$1_0_2 0)))
+                                                   (=>
+                                                      cmp6$1_0_2
+                                                      (let
+                                                         ((inc9$1_0_2 (+ inc4$1_0_2 1))
+                                                          (div10$1_0_2 (div div5$1_0_2 10)))
+                                                         (let
+                                                            ((cmp11$1_0_2 (> div10$1_0_2 0)))
+                                                            (=>
+                                                               (not cmp11$1_0_2)
+                                                               (let
+                                                                  ((result.0$1_0_4 inc9$1_0_2)
+                                                                   (n.addr.0$1_0_4 div10$1_0_2))
+                                                                  false)))))))))))))
+                           (let
+                              ((n.addr.0$1_0_5 n.addr.0$1_0_old_1))
+                              (let
+                                 ((result.0$1_0_5 result.0$1_0_old_1)
+                                  (cmp$1_0_3 (> n.addr.0$1_0_5 0)))
+                                 (=>
+                                    cmp$1_0_3
+                                    (let
+                                       ((inc$1_0_3 (+ result.0$1_0_5 1))
+                                        (div1$1_0_3 (div n.addr.0$1_0_5 10)))
+                                       (let
+                                          ((cmp2$1_0_3 (> div1$1_0_3 0)))
+                                          (=>
+                                             cmp2$1_0_3
+                                             (let
+                                                ((inc4$1_0_3 (+ inc$1_0_3 1))
+                                                 (div5$1_0_3 (div div1$1_0_3 10)))
+                                                (let
+                                                   ((cmp6$1_0_3 (> div5$1_0_3 0)))
+                                                   (=>
+                                                      (not cmp6$1_0_3)
+                                                      (let
+                                                         ((result.0$1_0_6 inc4$1_0_3)
+                                                          (n.addr.0$1_0_6 div5$1_0_3))
+                                                         false))))))))))
+                           (let
+                              ((n.addr.0$1_0_7 n.addr.0$1_0_old_1))
+                              (let
+                                 ((result.0$1_0_7 result.0$1_0_old_1)
+                                  (cmp$1_0_4 (> n.addr.0$1_0_7 0)))
+                                 (=>
+                                    cmp$1_0_4
+                                    (let
+                                       ((inc$1_0_4 (+ result.0$1_0_7 1))
+                                        (div1$1_0_4 (div n.addr.0$1_0_7 10)))
+                                       (let
+                                          ((cmp2$1_0_4 (> div1$1_0_4 0)))
+                                          (=>
+                                             (not cmp2$1_0_4)
+                                             (let
+                                                ((result.0$1_0_8 inc$1_0_4)
+                                                 (n.addr.0$1_0_8 div1$1_0_4))
+                                                false)))))))))
+                     (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))
+(rule
+   (let
+      ((b.0$2_0_1 b.0$2_0_old_1))
+      (let
+         ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+          (result.0$2_0_1 result.0$2_0_old_1)
+          (retval1.0$2_0_1 retval1.0$2_0_old_1)
+          (cmp$2_0_1 (= b.0$2_0_1 0)))
+         (let
+            ((lnot$2_0_1 (xor
+                             cmp$2_0_1
+                             true)))
+            (let
+               ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+               (let
+                  ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                  (let
+                     ((add$2_0_1 (+ result.0$2_0_1 1)))
+                     (let
+                        ((retval1.0$2_0_2 add$2_0_1)
+                         (b.0$2_0_2 0)
+                         (result.0$2_0_2 result.0$2_0_1)
+                         (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                        (=>
+                           (and
+                              (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                              lnot$2_0_1
+                              (not cmp2$2_0_1)
+                              cmp3$2_0_1
+                              (and
+                                 (let
+                                    ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+                                    (let
+                                       ((result.0$1_0_1 result.0$1_0_old_1)
+                                        (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+                                       (=>
+                                          cmp$1_0_1
+                                          (let
+                                             ((inc$1_0_1 (+ result.0$1_0_1 1))
+                                              (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+                                             (let
+                                                ((cmp2$1_0_1 (> div1$1_0_1 0)))
+                                                (=>
+                                                   cmp2$1_0_1
+                                                   (let
+                                                      ((inc4$1_0_1 (+ inc$1_0_1 1))
+                                                       (div5$1_0_1 (div div1$1_0_1 10)))
+                                                      (let
+                                                         ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                                                         (=>
+                                                            cmp6$1_0_1
+                                                            (let
+                                                               ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                                                                (div10$1_0_1 (div div5$1_0_1 10)))
+                                                               (let
+                                                                  ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                                                                  (=>
+                                                                     cmp11$1_0_1
+                                                                     (let
+                                                                        ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                                                                         (div15$1_0_1 (div div10$1_0_1 10)))
+                                                                        (let
+                                                                           ((result.0$1_0_2 inc14$1_0_1)
+                                                                            (n.addr.0$1_0_2 div15$1_0_1))
+                                                                           false))))))))))))))
+                                 (let
+                                    ((n.addr.0$1_0_3 n.addr.0$1_0_old_1))
+                                    (let
+                                       ((result.0$1_0_3 result.0$1_0_old_1)
+                                        (cmp$1_0_2 (> n.addr.0$1_0_3 0)))
+                                       (=>
+                                          cmp$1_0_2
+                                          (let
+                                             ((inc$1_0_2 (+ result.0$1_0_3 1))
+                                              (div1$1_0_2 (div n.addr.0$1_0_3 10)))
+                                             (let
+                                                ((cmp2$1_0_2 (> div1$1_0_2 0)))
+                                                (=>
+                                                   cmp2$1_0_2
+                                                   (let
+                                                      ((inc4$1_0_2 (+ inc$1_0_2 1))
+                                                       (div5$1_0_2 (div div1$1_0_2 10)))
+                                                      (let
+                                                         ((cmp6$1_0_2 (> div5$1_0_2 0)))
+                                                         (=>
+                                                            cmp6$1_0_2
+                                                            (let
+                                                               ((inc9$1_0_2 (+ inc4$1_0_2 1))
+                                                                (div10$1_0_2 (div div5$1_0_2 10)))
+                                                               (let
+                                                                  ((cmp11$1_0_2 (> div10$1_0_2 0)))
+                                                                  (=>
+                                                                     (not cmp11$1_0_2)
+                                                                     (let
+                                                                        ((result.0$1_0_4 inc9$1_0_2)
+                                                                         (n.addr.0$1_0_4 div10$1_0_2))
+                                                                        false)))))))))))))
+                                 (let
+                                    ((n.addr.0$1_0_5 n.addr.0$1_0_old_1))
+                                    (let
+                                       ((result.0$1_0_5 result.0$1_0_old_1)
+                                        (cmp$1_0_3 (> n.addr.0$1_0_5 0)))
+                                       (=>
+                                          cmp$1_0_3
+                                          (let
+                                             ((inc$1_0_3 (+ result.0$1_0_5 1))
+                                              (div1$1_0_3 (div n.addr.0$1_0_5 10)))
+                                             (let
+                                                ((cmp2$1_0_3 (> div1$1_0_3 0)))
+                                                (=>
+                                                   cmp2$1_0_3
+                                                   (let
+                                                      ((inc4$1_0_3 (+ inc$1_0_3 1))
+                                                       (div5$1_0_3 (div div1$1_0_3 10)))
+                                                      (let
+                                                         ((cmp6$1_0_3 (> div5$1_0_3 0)))
+                                                         (=>
+                                                            (not cmp6$1_0_3)
+                                                            (let
+                                                               ((result.0$1_0_6 inc4$1_0_3)
+                                                                (n.addr.0$1_0_6 div5$1_0_3))
+                                                               false))))))))))
+                                 (let
+                                    ((n.addr.0$1_0_7 n.addr.0$1_0_old_1))
+                                    (let
+                                       ((result.0$1_0_7 result.0$1_0_old_1)
+                                        (cmp$1_0_4 (> n.addr.0$1_0_7 0)))
+                                       (=>
+                                          cmp$1_0_4
+                                          (let
+                                             ((inc$1_0_4 (+ result.0$1_0_7 1))
+                                              (div1$1_0_4 (div n.addr.0$1_0_7 10)))
+                                             (let
+                                                ((cmp2$1_0_4 (> div1$1_0_4 0)))
+                                                (=>
+                                                   (not cmp2$1_0_4)
+                                                   (let
+                                                      ((result.0$1_0_8 inc$1_0_4)
+                                                       (n.addr.0$1_0_8 div1$1_0_4))
+                                                      false)))))))))
+                           (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))
+(rule
+   (let
+      ((b.0$2_0_1 b.0$2_0_old_1))
+      (let
+         ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+          (result.0$2_0_1 result.0$2_0_old_1)
+          (retval1.0$2_0_1 retval1.0$2_0_old_1)
+          (cmp$2_0_1 (= b.0$2_0_1 0)))
+         (let
+            ((lnot$2_0_1 (xor
+                             cmp$2_0_1
+                             true)))
+            (let
+               ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+               (let
+                  ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                  (let
+                     ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                     (let
+                        ((add8$2_0_1 (+ result.0$2_0_1 2)))
+                        (let
+                           ((retval1.0$2_0_2 add8$2_0_1)
+                            (b.0$2_0_2 0)
+                            (result.0$2_0_2 result.0$2_0_1)
+                            (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                           (=>
+                              (and
+                                 (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                 lnot$2_0_1
+                                 (not cmp2$2_0_1)
+                                 (not cmp3$2_0_1)
+                                 cmp6$2_0_1
+                                 (and
+                                    (let
+                                       ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+                                       (let
+                                          ((result.0$1_0_1 result.0$1_0_old_1)
+                                           (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+                                          (=>
+                                             cmp$1_0_1
+                                             (let
+                                                ((inc$1_0_1 (+ result.0$1_0_1 1))
+                                                 (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+                                                (let
+                                                   ((cmp2$1_0_1 (> div1$1_0_1 0)))
+                                                   (=>
+                                                      cmp2$1_0_1
+                                                      (let
+                                                         ((inc4$1_0_1 (+ inc$1_0_1 1))
+                                                          (div5$1_0_1 (div div1$1_0_1 10)))
+                                                         (let
+                                                            ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                                                            (=>
+                                                               cmp6$1_0_1
+                                                               (let
+                                                                  ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                                                                   (div10$1_0_1 (div div5$1_0_1 10)))
+                                                                  (let
+                                                                     ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                                                                     (=>
+                                                                        cmp11$1_0_1
+                                                                        (let
+                                                                           ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                                                                            (div15$1_0_1 (div div10$1_0_1 10)))
+                                                                           (let
+                                                                              ((result.0$1_0_2 inc14$1_0_1)
+                                                                               (n.addr.0$1_0_2 div15$1_0_1))
+                                                                              false))))))))))))))
+                                    (let
+                                       ((n.addr.0$1_0_3 n.addr.0$1_0_old_1))
+                                       (let
+                                          ((result.0$1_0_3 result.0$1_0_old_1)
+                                           (cmp$1_0_2 (> n.addr.0$1_0_3 0)))
+                                          (=>
+                                             cmp$1_0_2
+                                             (let
+                                                ((inc$1_0_2 (+ result.0$1_0_3 1))
+                                                 (div1$1_0_2 (div n.addr.0$1_0_3 10)))
+                                                (let
+                                                   ((cmp2$1_0_2 (> div1$1_0_2 0)))
+                                                   (=>
+                                                      cmp2$1_0_2
+                                                      (let
+                                                         ((inc4$1_0_2 (+ inc$1_0_2 1))
+                                                          (div5$1_0_2 (div div1$1_0_2 10)))
+                                                         (let
+                                                            ((cmp6$1_0_2 (> div5$1_0_2 0)))
+                                                            (=>
+                                                               cmp6$1_0_2
+                                                               (let
+                                                                  ((inc9$1_0_2 (+ inc4$1_0_2 1))
+                                                                   (div10$1_0_2 (div div5$1_0_2 10)))
+                                                                  (let
+                                                                     ((cmp11$1_0_2 (> div10$1_0_2 0)))
+                                                                     (=>
+                                                                        (not cmp11$1_0_2)
+                                                                        (let
+                                                                           ((result.0$1_0_4 inc9$1_0_2)
+                                                                            (n.addr.0$1_0_4 div10$1_0_2))
+                                                                           false)))))))))))))
+                                    (let
+                                       ((n.addr.0$1_0_5 n.addr.0$1_0_old_1))
+                                       (let
+                                          ((result.0$1_0_5 result.0$1_0_old_1)
+                                           (cmp$1_0_3 (> n.addr.0$1_0_5 0)))
+                                          (=>
+                                             cmp$1_0_3
+                                             (let
+                                                ((inc$1_0_3 (+ result.0$1_0_5 1))
+                                                 (div1$1_0_3 (div n.addr.0$1_0_5 10)))
+                                                (let
+                                                   ((cmp2$1_0_3 (> div1$1_0_3 0)))
+                                                   (=>
+                                                      cmp2$1_0_3
+                                                      (let
+                                                         ((inc4$1_0_3 (+ inc$1_0_3 1))
+                                                          (div5$1_0_3 (div div1$1_0_3 10)))
+                                                         (let
+                                                            ((cmp6$1_0_3 (> div5$1_0_3 0)))
+                                                            (=>
+                                                               (not cmp6$1_0_3)
+                                                               (let
+                                                                  ((result.0$1_0_6 inc4$1_0_3)
+                                                                   (n.addr.0$1_0_6 div5$1_0_3))
+                                                                  false))))))))))
+                                    (let
+                                       ((n.addr.0$1_0_7 n.addr.0$1_0_old_1))
+                                       (let
+                                          ((result.0$1_0_7 result.0$1_0_old_1)
+                                           (cmp$1_0_4 (> n.addr.0$1_0_7 0)))
+                                          (=>
+                                             cmp$1_0_4
+                                             (let
+                                                ((inc$1_0_4 (+ result.0$1_0_7 1))
+                                                 (div1$1_0_4 (div n.addr.0$1_0_7 10)))
+                                                (let
+                                                   ((cmp2$1_0_4 (> div1$1_0_4 0)))
+                                                   (=>
+                                                      (not cmp2$1_0_4)
+                                                      (let
+                                                         ((result.0$1_0_8 inc$1_0_4)
+                                                          (n.addr.0$1_0_8 div1$1_0_4))
+                                                         false)))))))))
+                              (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2)))))))))))
+(rule
+   (let
+      ((b.0$2_0_1 b.0$2_0_old_1))
+      (let
+         ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+          (result.0$2_0_1 result.0$2_0_old_1)
+          (retval1.0$2_0_1 retval1.0$2_0_old_1)
+          (cmp$2_0_1 (= b.0$2_0_1 0)))
+         (let
+            ((lnot$2_0_1 (xor
+                             cmp$2_0_1
+                             true)))
+            (let
+               ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+               (let
+                  ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                  (let
+                     ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                     (let
+                        ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                        (let
+                           ((add12$2_0_1 (+ result.0$2_0_1 3)))
+                           (let
+                              ((retval1.0$2_0_2 add12$2_0_1)
+                               (b.0$2_0_2 0)
+                               (result.0$2_0_2 result.0$2_0_1)
+                               (n.addr.0$2_0_2 n.addr.0$2_0_1))
+                              (=>
+                                 (and
+                                    (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                    lnot$2_0_1
+                                    (not cmp2$2_0_1)
+                                    (not cmp3$2_0_1)
+                                    (not cmp6$2_0_1)
+                                    cmp10$2_0_1
+                                    (and
+                                       (let
+                                          ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+                                          (let
+                                             ((result.0$1_0_1 result.0$1_0_old_1)
+                                              (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+                                             (=>
+                                                cmp$1_0_1
+                                                (let
+                                                   ((inc$1_0_1 (+ result.0$1_0_1 1))
+                                                    (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+                                                   (let
+                                                      ((cmp2$1_0_1 (> div1$1_0_1 0)))
+                                                      (=>
+                                                         cmp2$1_0_1
+                                                         (let
+                                                            ((inc4$1_0_1 (+ inc$1_0_1 1))
+                                                             (div5$1_0_1 (div div1$1_0_1 10)))
+                                                            (let
+                                                               ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                                                               (=>
+                                                                  cmp6$1_0_1
+                                                                  (let
+                                                                     ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                                                                      (div10$1_0_1 (div div5$1_0_1 10)))
+                                                                     (let
+                                                                        ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                                                                        (=>
+                                                                           cmp11$1_0_1
+                                                                           (let
+                                                                              ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                                                                               (div15$1_0_1 (div div10$1_0_1 10)))
+                                                                              (let
+                                                                                 ((result.0$1_0_2 inc14$1_0_1)
+                                                                                  (n.addr.0$1_0_2 div15$1_0_1))
+                                                                                 false))))))))))))))
+                                       (let
+                                          ((n.addr.0$1_0_3 n.addr.0$1_0_old_1))
+                                          (let
+                                             ((result.0$1_0_3 result.0$1_0_old_1)
+                                              (cmp$1_0_2 (> n.addr.0$1_0_3 0)))
+                                             (=>
+                                                cmp$1_0_2
+                                                (let
+                                                   ((inc$1_0_2 (+ result.0$1_0_3 1))
+                                                    (div1$1_0_2 (div n.addr.0$1_0_3 10)))
+                                                   (let
+                                                      ((cmp2$1_0_2 (> div1$1_0_2 0)))
+                                                      (=>
+                                                         cmp2$1_0_2
+                                                         (let
+                                                            ((inc4$1_0_2 (+ inc$1_0_2 1))
+                                                             (div5$1_0_2 (div div1$1_0_2 10)))
+                                                            (let
+                                                               ((cmp6$1_0_2 (> div5$1_0_2 0)))
+                                                               (=>
+                                                                  cmp6$1_0_2
+                                                                  (let
+                                                                     ((inc9$1_0_2 (+ inc4$1_0_2 1))
+                                                                      (div10$1_0_2 (div div5$1_0_2 10)))
+                                                                     (let
+                                                                        ((cmp11$1_0_2 (> div10$1_0_2 0)))
+                                                                        (=>
+                                                                           (not cmp11$1_0_2)
+                                                                           (let
+                                                                              ((result.0$1_0_4 inc9$1_0_2)
+                                                                               (n.addr.0$1_0_4 div10$1_0_2))
+                                                                              false)))))))))))))
+                                       (let
+                                          ((n.addr.0$1_0_5 n.addr.0$1_0_old_1))
+                                          (let
+                                             ((result.0$1_0_5 result.0$1_0_old_1)
+                                              (cmp$1_0_3 (> n.addr.0$1_0_5 0)))
+                                             (=>
+                                                cmp$1_0_3
+                                                (let
+                                                   ((inc$1_0_3 (+ result.0$1_0_5 1))
+                                                    (div1$1_0_3 (div n.addr.0$1_0_5 10)))
+                                                   (let
+                                                      ((cmp2$1_0_3 (> div1$1_0_3 0)))
+                                                      (=>
+                                                         cmp2$1_0_3
+                                                         (let
+                                                            ((inc4$1_0_3 (+ inc$1_0_3 1))
+                                                             (div5$1_0_3 (div div1$1_0_3 10)))
+                                                            (let
+                                                               ((cmp6$1_0_3 (> div5$1_0_3 0)))
+                                                               (=>
+                                                                  (not cmp6$1_0_3)
+                                                                  (let
+                                                                     ((result.0$1_0_6 inc4$1_0_3)
+                                                                      (n.addr.0$1_0_6 div5$1_0_3))
+                                                                     false))))))))))
+                                       (let
+                                          ((n.addr.0$1_0_7 n.addr.0$1_0_old_1))
+                                          (let
+                                             ((result.0$1_0_7 result.0$1_0_old_1)
+                                              (cmp$1_0_4 (> n.addr.0$1_0_7 0)))
+                                             (=>
+                                                cmp$1_0_4
+                                                (let
+                                                   ((inc$1_0_4 (+ result.0$1_0_7 1))
+                                                    (div1$1_0_4 (div n.addr.0$1_0_7 10)))
+                                                   (let
+                                                      ((cmp2$1_0_4 (> div1$1_0_4 0)))
+                                                      (=>
+                                                         (not cmp2$1_0_4)
+                                                         (let
+                                                            ((result.0$1_0_8 inc$1_0_4)
+                                                             (n.addr.0$1_0_8 div1$1_0_4))
+                                                            false)))))))))
+                                 (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))
+(rule
+   (let
+      ((b.0$2_0_1 b.0$2_0_old_1))
+      (let
+         ((n.addr.0$2_0_1 n.addr.0$2_0_old_1)
+          (result.0$2_0_1 result.0$2_0_old_1)
+          (retval1.0$2_0_1 retval1.0$2_0_old_1)
+          (cmp$2_0_1 (= b.0$2_0_1 0)))
+         (let
+            ((lnot$2_0_1 (xor
+                             cmp$2_0_1
+                             true)))
+            (let
+               ((cmp2$2_0_1 (< n.addr.0$2_0_1 10)))
+               (let
+                  ((cmp3$2_0_1 (< n.addr.0$2_0_1 100)))
+                  (let
+                     ((cmp6$2_0_1 (< n.addr.0$2_0_1 1000)))
+                     (let
+                        ((cmp10$2_0_1 (< n.addr.0$2_0_1 10000)))
+                        (let
+                           ((div$2_0_1 (div n.addr.0$2_0_1 10000))
+                            (add14$2_0_1 (+ result.0$2_0_1 4)))
+                           (let
+                              ((retval1.0$2_0_2 retval1.0$2_0_1)
+                               (b.0$2_0_2 b.0$2_0_1)
+                               (result.0$2_0_2 add14$2_0_1)
+                               (n.addr.0$2_0_2 div$2_0_1))
+                              (=>
+                                 (and
+                                    (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_old_1 n.addr.0$2_0_old_1 result.0$2_0_old_1 retval1.0$2_0_old_1)
+                                    lnot$2_0_1
+                                    (not cmp2$2_0_1)
+                                    (not cmp3$2_0_1)
+                                    (not cmp6$2_0_1)
+                                    (not cmp10$2_0_1)
+                                    (and
+                                       (let
+                                          ((n.addr.0$1_0_1 n.addr.0$1_0_old_1))
+                                          (let
+                                             ((result.0$1_0_1 result.0$1_0_old_1)
+                                              (cmp$1_0_1 (> n.addr.0$1_0_1 0)))
+                                             (=>
+                                                cmp$1_0_1
+                                                (let
+                                                   ((inc$1_0_1 (+ result.0$1_0_1 1))
+                                                    (div1$1_0_1 (div n.addr.0$1_0_1 10)))
+                                                   (let
+                                                      ((cmp2$1_0_1 (> div1$1_0_1 0)))
+                                                      (=>
+                                                         cmp2$1_0_1
+                                                         (let
+                                                            ((inc4$1_0_1 (+ inc$1_0_1 1))
+                                                             (div5$1_0_1 (div div1$1_0_1 10)))
+                                                            (let
+                                                               ((cmp6$1_0_1 (> div5$1_0_1 0)))
+                                                               (=>
+                                                                  cmp6$1_0_1
+                                                                  (let
+                                                                     ((inc9$1_0_1 (+ inc4$1_0_1 1))
+                                                                      (div10$1_0_1 (div div5$1_0_1 10)))
+                                                                     (let
+                                                                        ((cmp11$1_0_1 (> div10$1_0_1 0)))
+                                                                        (=>
+                                                                           cmp11$1_0_1
+                                                                           (let
+                                                                              ((inc14$1_0_1 (+ inc9$1_0_1 1))
+                                                                               (div15$1_0_1 (div div10$1_0_1 10)))
+                                                                              (let
+                                                                                 ((result.0$1_0_2 inc14$1_0_1)
+                                                                                  (n.addr.0$1_0_2 div15$1_0_1))
+                                                                                 false))))))))))))))
+                                       (let
+                                          ((n.addr.0$1_0_3 n.addr.0$1_0_old_1))
+                                          (let
+                                             ((result.0$1_0_3 result.0$1_0_old_1)
+                                              (cmp$1_0_2 (> n.addr.0$1_0_3 0)))
+                                             (=>
+                                                cmp$1_0_2
+                                                (let
+                                                   ((inc$1_0_2 (+ result.0$1_0_3 1))
+                                                    (div1$1_0_2 (div n.addr.0$1_0_3 10)))
+                                                   (let
+                                                      ((cmp2$1_0_2 (> div1$1_0_2 0)))
+                                                      (=>
+                                                         cmp2$1_0_2
+                                                         (let
+                                                            ((inc4$1_0_2 (+ inc$1_0_2 1))
+                                                             (div5$1_0_2 (div div1$1_0_2 10)))
+                                                            (let
+                                                               ((cmp6$1_0_2 (> div5$1_0_2 0)))
+                                                               (=>
+                                                                  cmp6$1_0_2
+                                                                  (let
+                                                                     ((inc9$1_0_2 (+ inc4$1_0_2 1))
+                                                                      (div10$1_0_2 (div div5$1_0_2 10)))
+                                                                     (let
+                                                                        ((cmp11$1_0_2 (> div10$1_0_2 0)))
+                                                                        (=>
+                                                                           (not cmp11$1_0_2)
+                                                                           (let
+                                                                              ((result.0$1_0_4 inc9$1_0_2)
+                                                                               (n.addr.0$1_0_4 div10$1_0_2))
+                                                                              false)))))))))))))
+                                       (let
+                                          ((n.addr.0$1_0_5 n.addr.0$1_0_old_1))
+                                          (let
+                                             ((result.0$1_0_5 result.0$1_0_old_1)
+                                              (cmp$1_0_3 (> n.addr.0$1_0_5 0)))
+                                             (=>
+                                                cmp$1_0_3
+                                                (let
+                                                   ((inc$1_0_3 (+ result.0$1_0_5 1))
+                                                    (div1$1_0_3 (div n.addr.0$1_0_5 10)))
+                                                   (let
+                                                      ((cmp2$1_0_3 (> div1$1_0_3 0)))
+                                                      (=>
+                                                         cmp2$1_0_3
+                                                         (let
+                                                            ((inc4$1_0_3 (+ inc$1_0_3 1))
+                                                             (div5$1_0_3 (div div1$1_0_3 10)))
+                                                            (let
+                                                               ((cmp6$1_0_3 (> div5$1_0_3 0)))
+                                                               (=>
+                                                                  (not cmp6$1_0_3)
+                                                                  (let
+                                                                     ((result.0$1_0_6 inc4$1_0_3)
+                                                                      (n.addr.0$1_0_6 div5$1_0_3))
+                                                                     false))))))))))
+                                       (let
+                                          ((n.addr.0$1_0_7 n.addr.0$1_0_old_1))
+                                          (let
+                                             ((result.0$1_0_7 result.0$1_0_old_1)
+                                              (cmp$1_0_4 (> n.addr.0$1_0_7 0)))
+                                             (=>
+                                                cmp$1_0_4
+                                                (let
+                                                   ((inc$1_0_4 (+ result.0$1_0_7 1))
+                                                    (div1$1_0_4 (div n.addr.0$1_0_7 10)))
+                                                   (let
+                                                      ((cmp2$1_0_4 (> div1$1_0_4 0)))
+                                                      (=>
+                                                         (not cmp2$1_0_4)
+                                                         (let
+                                                            ((result.0$1_0_8 inc$1_0_4)
+                                                             (n.addr.0$1_0_8 div1$1_0_4))
+                                                            false)))))))))
+                                 (INV_MAIN_42 n.addr.0$1_0_old_1 result.0$1_0_old_1 b.0$2_0_2 n.addr.0$2_0_2 result.0$2_0_2 retval1.0$2_0_2))))))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

@@ -1,0 +1,192 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   HEAP$1_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$1_res_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_res_1
+   (Array Int Int))
+(declare-var
+   a$1_0_old_1
+   Int)
+(declare-var
+   a$2_0_old_1
+   Int)
+(declare-var
+   b$1_0_old_1
+   Int)
+(declare-var
+   b$2_0_old_1
+   Int)
+(declare-var
+   call$1_0_1
+   Int)
+(declare-var
+   call$2_0_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((a$1_0 Int)
+    (b$1_0 Int)
+    (HEAP$1 (Array Int Int))
+    (a$2_0 Int)
+    (b$2_0 Int)
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= a$1_0 a$2_0)
+      (= b$1_0 b$2_0)
+      (= HEAP$1 HEAP$2)))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int)
+    (HEAP$1 (Array Int Int))
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= result$1 result$2)
+      (= HEAP$1 HEAP$2)))
+(declare-rel
+   INV_REC_g^g
+   (Int
+    (Array Int Int)
+    Int
+    (Array Int Int)
+    Int
+    Int
+    (Array Int Int)
+    (Array Int Int)))
+(declare-rel
+   INV_REC_g^g_PRE
+   (Int
+    (Array Int Int)
+    Int
+    (Array Int Int)))
+(declare-rel
+   INV_REC_g__1
+   (Int
+    (Array Int Int)
+    Int
+    (Array Int Int)))
+(declare-rel
+   INV_REC_g__1_PRE
+   (Int
+    (Array Int Int)))
+(declare-rel
+   INV_REC_g__2
+   (Int
+    (Array Int Int)
+    Int
+    (Array Int Int)))
+(declare-rel
+   INV_REC_g__2_PRE
+   (Int
+    (Array Int Int)))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (b$1_0_1 b$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((HEAP$1_2 HEAP$1_1)
+          (a$2_0_1 a$2_0_old_1)
+          (b$2_0_1 b$2_0_old_1)
+          (HEAP$2_1 HEAP$2_old_1))
+         (let
+            ((HEAP$2_2 HEAP$2_1))
+            (=>
+               (IN_INV a$1_0_old_1 b$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 b$2_0_old_1 HEAP$2_old_1)
+               (INV_REC_g^g_PRE b$1_0_1 HEAP$1_2 b$2_0_1 HEAP$2_2))))))
+(rule
+   (let
+      ((a$1_0_1 a$1_0_old_1)
+       (b$1_0_1 b$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((HEAP$1_2 HEAP$1_1)
+          (a$2_0_1 a$2_0_old_1)
+          (b$2_0_1 b$2_0_old_1)
+          (HEAP$2_1 HEAP$2_old_1))
+         (let
+            ((HEAP$2_2 HEAP$2_1))
+            (let
+               ((HEAP$1_3 HEAP$1_res_1))
+               (let
+                  ((_$1_0_1 (select HEAP$1_3 b$1_0_1)))
+                  (let
+                     ((result$1_1 _$1_0_1)
+                      (HEAP$1_res_2 HEAP$1_3)
+                      (HEAP$2_3 HEAP$2_res_1))
+                     (let
+                        ((_$2_0_1 (select HEAP$2_3 b$2_0_1)))
+                        (let
+                           ((result$2_1 _$2_0_1)
+                            (HEAP$2_res_2 HEAP$2_3))
+                           (=>
+                              (and
+                                 (IN_INV a$1_0_old_1 b$1_0_old_1 HEAP$1_old_1 a$2_0_old_1 b$2_0_old_1 HEAP$2_old_1)
+                                 (INV_REC_g^g b$1_0_1 HEAP$1_2 b$2_0_1 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                 (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                              END_QUERY))))))))))
+(rule
+   (let
+      ((b$1_0_1 b$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((HEAP$1_2 (store HEAP$1_1 b$1_0_1 1)))
+         (let
+            ((result$1_1 0)
+             (HEAP$1_res_1 HEAP$1_2)
+             (b$2_0_1 b$2_0_old_1)
+             (HEAP$2_1 HEAP$2_old_1))
+            (let
+               ((HEAP$2_2 (store HEAP$2_1 b$2_0_1 1)))
+               (let
+                  ((result$2_1 0)
+                   (HEAP$2_res_1 HEAP$2_2))
+                  (=>
+                     (INV_REC_g^g_PRE b$1_0_old_1 HEAP$1_old_1 b$2_0_old_1 HEAP$2_old_1)
+                     (INV_REC_g^g b$1_0_old_1 HEAP$1_old_1 b$2_0_old_1 HEAP$2_old_1 result$1_1 result$2_1 HEAP$1_res_1 HEAP$2_res_1))))))))
+(rule
+   (let
+      ((b$1_0_1 b$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((HEAP$1_2 (store HEAP$1_1 b$1_0_1 1)))
+         (let
+            ((result$1_1 0)
+             (HEAP$1_res_1 HEAP$1_2))
+            (=>
+               (INV_REC_g__1_PRE b$1_0_old_1 HEAP$1_old_1)
+               (INV_REC_g__1 b$1_0_old_1 HEAP$1_old_1 result$1_1 HEAP$1_res_1))))))
+(rule
+   (let
+      ((b$2_0_1 b$2_0_old_1)
+       (HEAP$2_1 HEAP$2_old_1))
+      (let
+         ((HEAP$2_2 (store HEAP$2_1 b$2_0_1 1)))
+         (let
+            ((result$2_1 0)
+             (HEAP$2_res_1 HEAP$2_2))
+            (=>
+               (INV_REC_g__2_PRE b$2_0_old_1 HEAP$2_old_1)
+               (INV_REC_g__2 b$2_0_old_1 HEAP$2_old_1 result$2_1 HEAP$2_res_1))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

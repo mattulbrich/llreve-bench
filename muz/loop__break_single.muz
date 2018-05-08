@@ -1,0 +1,201 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   i.0$1_0_old_1
+   Int)
+(declare-var
+   i.0$2_0_old_1
+   Int)
+(declare-var
+   x$1_0_old_1
+   Int)
+(declare-var
+   x$2_0_old_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((x$1_0 Int)
+    (x$2_0 Int))
+   Bool
+   (= x$1_0 x$2_0))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int))
+   Bool
+   (= result$1 result$2))
+; :annot (INV_MAIN_42 i.0$1_0 x$1_0 i.0$2_0 x$2_0)
+(declare-rel
+   INV_MAIN_42
+   (Int
+    Int
+    Int
+    Int))
+(rule
+   (let
+      ((x$1_0_1 x$1_0_old_1)
+       (i.0$1_0_1 0)
+       (x$2_0_1 x$2_0_old_1)
+       (i.0$2_0_1 0))
+      (=>
+         (IN_INV x$1_0_old_1 x$2_0_old_1)
+         (INV_MAIN_42 i.0$1_0_1 x$1_0_1 i.0$2_0_1 x$2_0_1))))
+(rule
+   (let
+      ((i.0$1_0_1 i.0$1_0_old_1))
+      (let
+         ((x$1_0_1 x$1_0_old_1)
+          (cmp$1_0_1 (<= i.0$1_0_1 10)))
+         (let
+            ((conv$1_0_1 (ite cmp$1_0_1 1 0)))
+            (let
+               ((tobool$1_0_1 (= conv$1_0_1 0))
+                (cmp1$1_0_1 (= i.0$1_0_1 x$1_0_1)))
+               (let
+                  ((or.cond$1_0_1 (or
+                                      tobool$1_0_1
+                                      cmp1$1_0_1)))
+                  (let
+                     ((result$1_1 i.0$1_0_1)
+                      (i.0$2_0_1 i.0$2_0_old_1)
+                      (x$2_0_1 x$2_0_old_1))
+                     (let
+                        ((cmp$2_0_1 (<= i.0$2_0_1 10))
+                         (cmp1$2_0_1 (distinct i.0$2_0_1 x$2_0_1)))
+                        (let
+                           ((cmp1.$2_0_1 (ite cmp$2_0_1 cmp1$2_0_1 false)))
+                           (let
+                              ((result$2_1 i.0$2_0_1))
+                              (=>
+                                 (and
+                                    (INV_MAIN_42 i.0$1_0_old_1 x$1_0_old_1 i.0$2_0_old_1 x$2_0_old_1)
+                                    or.cond$1_0_1
+                                    (not cmp1.$2_0_1)
+                                    (not (OUT_INV result$1_1 result$2_1)))
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((i.0$1_0_1 i.0$1_0_old_1))
+      (let
+         ((x$1_0_1 x$1_0_old_1)
+          (cmp$1_0_1 (<= i.0$1_0_1 10)))
+         (let
+            ((conv$1_0_1 (ite cmp$1_0_1 1 0)))
+            (let
+               ((tobool$1_0_1 (= conv$1_0_1 0))
+                (cmp1$1_0_1 (= i.0$1_0_1 x$1_0_1)))
+               (let
+                  ((or.cond$1_0_1 (or
+                                      tobool$1_0_1
+                                      cmp1$1_0_1)))
+                  (let
+                     ((inc$1_0_1 (+ i.0$1_0_1 1)))
+                     (let
+                        ((i.0$1_0_2 inc$1_0_1)
+                         (i.0$2_0_1 i.0$2_0_old_1)
+                         (x$2_0_1 x$2_0_old_1))
+                        (let
+                           ((cmp$2_0_1 (<= i.0$2_0_1 10))
+                            (cmp1$2_0_1 (distinct i.0$2_0_1 x$2_0_1)))
+                           (let
+                              ((cmp1.$2_0_1 (ite cmp$2_0_1 cmp1$2_0_1 false)))
+                              (let
+                                 ((inc$2_0_1 (+ i.0$2_0_1 1)))
+                                 (let
+                                    ((i.0$2_0_2 inc$2_0_1))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_42 i.0$1_0_old_1 x$1_0_old_1 i.0$2_0_old_1 x$2_0_old_1)
+                                          (not or.cond$1_0_1)
+                                          cmp1.$2_0_1)
+                                       (INV_MAIN_42 i.0$1_0_2 x$1_0_1 i.0$2_0_2 x$2_0_1))))))))))))))
+(rule
+   (let
+      ((i.0$1_0_1 i.0$1_0_old_1))
+      (let
+         ((x$1_0_1 x$1_0_old_1)
+          (cmp$1_0_1 (<= i.0$1_0_1 10)))
+         (let
+            ((conv$1_0_1 (ite cmp$1_0_1 1 0)))
+            (let
+               ((tobool$1_0_1 (= conv$1_0_1 0))
+                (cmp1$1_0_1 (= i.0$1_0_1 x$1_0_1)))
+               (let
+                  ((or.cond$1_0_1 (or
+                                      tobool$1_0_1
+                                      cmp1$1_0_1)))
+                  (let
+                     ((inc$1_0_1 (+ i.0$1_0_1 1)))
+                     (let
+                        ((i.0$1_0_2 inc$1_0_1))
+                        (=>
+                           (and
+                              (INV_MAIN_42 i.0$1_0_old_1 x$1_0_old_1 i.0$2_0_old_1 x$2_0_old_1)
+                              (not or.cond$1_0_1)
+                              (let
+                                 ((i.0$2_0_1 i.0$2_0_old_1)
+                                  (x$2_0_1 x$2_0_old_1))
+                                 (let
+                                    ((cmp$2_0_1 (<= i.0$2_0_1 10))
+                                     (cmp1$2_0_1 (distinct i.0$2_0_1 x$2_0_1)))
+                                    (let
+                                       ((cmp1.$2_0_1 (ite cmp$2_0_1 cmp1$2_0_1 false)))
+                                       (=>
+                                          cmp1.$2_0_1
+                                          (let
+                                             ((inc$2_0_1 (+ i.0$2_0_1 1)))
+                                             (let
+                                                ((i.0$2_0_2 inc$2_0_1))
+                                                false)))))))
+                           (INV_MAIN_42 i.0$1_0_2 x$1_0_1 i.0$2_0_old_1 x$2_0_old_1))))))))))
+(rule
+   (let
+      ((i.0$2_0_1 i.0$2_0_old_1)
+       (x$2_0_1 x$2_0_old_1))
+      (let
+         ((cmp$2_0_1 (<= i.0$2_0_1 10))
+          (cmp1$2_0_1 (distinct i.0$2_0_1 x$2_0_1)))
+         (let
+            ((cmp1.$2_0_1 (ite cmp$2_0_1 cmp1$2_0_1 false)))
+            (let
+               ((inc$2_0_1 (+ i.0$2_0_1 1)))
+               (let
+                  ((i.0$2_0_2 inc$2_0_1))
+                  (=>
+                     (and
+                        (INV_MAIN_42 i.0$1_0_old_1 x$1_0_old_1 i.0$2_0_old_1 x$2_0_old_1)
+                        cmp1.$2_0_1
+                        (let
+                           ((i.0$1_0_1 i.0$1_0_old_1))
+                           (let
+                              ((x$1_0_1 x$1_0_old_1)
+                               (cmp$1_0_1 (<= i.0$1_0_1 10)))
+                              (let
+                                 ((conv$1_0_1 (ite cmp$1_0_1 1 0)))
+                                 (let
+                                    ((tobool$1_0_1 (= conv$1_0_1 0))
+                                     (cmp1$1_0_1 (= i.0$1_0_1 x$1_0_1)))
+                                    (let
+                                       ((or.cond$1_0_1 (or
+                                                           tobool$1_0_1
+                                                           cmp1$1_0_1)))
+                                       (=>
+                                          (not or.cond$1_0_1)
+                                          (let
+                                             ((inc$1_0_1 (+ i.0$1_0_1 1)))
+                                             (let
+                                                ((i.0$1_0_2 inc$1_0_1))
+                                                false)))))))))
+                     (INV_MAIN_42 i.0$1_0_old_1 x$1_0_old_1 i.0$2_0_2 x$2_0_1))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

@@ -1,0 +1,284 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   HEAP$1_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_old_1
+   (Array Int Int))
+(declare-var
+   dest$1_0_old_1
+   Int)
+(declare-var
+   dest$2_0_old_1
+   Int)
+(declare-var
+   dest.addr.0$2_0_old_1
+   Int)
+(declare-var
+   i.0$1_0_old_1
+   Int)
+(declare-var
+   size$1_0_old_1
+   Int)
+(declare-var
+   size$2_0_old_1
+   Int)
+(declare-var
+   size.addr.0$2_0_old_1
+   Int)
+(declare-var
+   src$1_0_old_1
+   Int)
+(declare-var
+   src$2_0_old_1
+   Int)
+(declare-var
+   src.addr.0$2_0_old_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((dest$1_0 Int)
+    (src$1_0 Int)
+    (size$1_0 Int)
+    (HEAP$1 (Array Int Int))
+    (dest$2_0 Int)
+    (src$2_0 Int)
+    (size$2_0 Int)
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= dest$1_0 dest$2_0)
+      (= src$1_0 src$2_0)
+      (= size$1_0 size$2_0)
+      (= HEAP$1 HEAP$2)))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int)
+    (HEAP$1 (Array Int Int))
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= result$1 result$2)
+      (= HEAP$1 HEAP$2)))
+; :annot (INV_MAIN_42 dest$1_0 i.0$1_0 size$1_0 src$1_0 HEAP$1 dest.addr.0$2_0 size.addr.0$2_0 src.addr.0$2_0 HEAP$2)
+(declare-rel
+   INV_MAIN_42
+   (Int
+    Int
+    Int
+    Int
+    (Array Int Int)
+    Int
+    Int
+    Int
+    (Array Int Int)))
+(rule
+   (let
+      ((dest$1_0_1 dest$1_0_old_1)
+       (src$1_0_1 src$1_0_old_1)
+       (size$1_0_1 size$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (i.0$1_0_1 0)
+       (dest$2_0_1 dest$2_0_old_1)
+       (src$2_0_1 src$2_0_old_1))
+      (let
+         ((size$2_0_1 size$2_0_old_1)
+          (HEAP$2_1 HEAP$2_old_1)
+          (incdec.ptr$2_0_1 (+ src$2_0_1 (* 4 (- 1))))
+          (incdec.ptr1$2_0_1 (+ dest$2_0_1 (* 4 (- 1)))))
+         (let
+            ((size.addr.0$2_0_1 size$2_0_1)
+             (src.addr.0$2_0_1 incdec.ptr$2_0_1)
+             (dest.addr.0$2_0_1 incdec.ptr1$2_0_1))
+            (=>
+               (IN_INV dest$1_0_old_1 src$1_0_old_1 size$1_0_old_1 HEAP$1_old_1 dest$2_0_old_1 src$2_0_old_1 size$2_0_old_1 HEAP$2_old_1)
+               (INV_MAIN_42 dest$1_0_1 i.0$1_0_1 size$1_0_1 src$1_0_1 HEAP$1_1 dest.addr.0$2_0_1 size.addr.0$2_0_1 src.addr.0$2_0_1 HEAP$2_1))))))
+(rule
+   (let
+      ((dest$1_0_1 dest$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (size$1_0_1 size$1_0_old_1))
+      (let
+         ((src$1_0_1 src$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< i.0$1_0_1 size$1_0_1)))
+         (let
+            ((result$1_1 0)
+             (HEAP$1_res_1 HEAP$1_1)
+             (dest.addr.0$2_0_1 dest.addr.0$2_0_old_1)
+             (size.addr.0$2_0_1 size.addr.0$2_0_old_1))
+            (let
+               ((src.addr.0$2_0_1 src.addr.0$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1)
+                (cmp$2_0_1 (> size.addr.0$2_0_1 0)))
+               (let
+                  ((result$2_1 0)
+                   (HEAP$2_res_1 HEAP$2_1))
+                  (=>
+                     (and
+                        (INV_MAIN_42 dest$1_0_old_1 i.0$1_0_old_1 size$1_0_old_1 src$1_0_old_1 HEAP$1_old_1 dest.addr.0$2_0_old_1 size.addr.0$2_0_old_1 src.addr.0$2_0_old_1 HEAP$2_old_1)
+                        (not cmp$1_0_1)
+                        (not cmp$2_0_1)
+                        (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                     END_QUERY)))))))
+(rule
+   (let
+      ((dest$1_0_1 dest$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (size$1_0_1 size$1_0_old_1))
+      (let
+         ((src$1_0_1 src$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< i.0$1_0_1 size$1_0_1)))
+         (let
+            ((idxprom$1_0_1 i.0$1_0_1))
+            (let
+               ((arrayidx$1_0_1 (+ src$1_0_1 (* 4 idxprom$1_0_1))))
+               (let
+                  ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                   (idxprom1$1_0_1 i.0$1_0_1))
+                  (let
+                     ((arrayidx2$1_0_1 (+ dest$1_0_1 (* 4 idxprom1$1_0_1))))
+                     (let
+                        ((HEAP$1_2 (store HEAP$1_1 arrayidx2$1_0_1 _$1_0_1))
+                         (inc$1_0_1 (+ i.0$1_0_1 1)))
+                        (let
+                           ((i.0$1_0_2 inc$1_0_1)
+                            (dest.addr.0$2_0_1 dest.addr.0$2_0_old_1)
+                            (size.addr.0$2_0_1 size.addr.0$2_0_old_1))
+                           (let
+                              ((src.addr.0$2_0_1 src.addr.0$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (cmp$2_0_1 (> size.addr.0$2_0_1 0)))
+                              (let
+                                 ((incdec.ptr2$2_0_1 (+ dest.addr.0$2_0_1 (* 4 1)))
+                                  (incdec.ptr3$2_0_1 (+ src.addr.0$2_0_1 (* 4 1))))
+                                 (let
+                                    ((_$2_0_1 (select HEAP$2_1 incdec.ptr3$2_0_1)))
+                                    (let
+                                       ((HEAP$2_2 (store HEAP$2_1 incdec.ptr2$2_0_1 _$2_0_1))
+                                        (dec$2_0_1 (+ size.addr.0$2_0_1 (- 1))))
+                                       (let
+                                          ((size.addr.0$2_0_2 dec$2_0_1)
+                                           (src.addr.0$2_0_2 incdec.ptr3$2_0_1)
+                                           (dest.addr.0$2_0_2 incdec.ptr2$2_0_1))
+                                          (=>
+                                             (and
+                                                (INV_MAIN_42 dest$1_0_old_1 i.0$1_0_old_1 size$1_0_old_1 src$1_0_old_1 HEAP$1_old_1 dest.addr.0$2_0_old_1 size.addr.0$2_0_old_1 src.addr.0$2_0_old_1 HEAP$2_old_1)
+                                                cmp$1_0_1
+                                                cmp$2_0_1)
+                                             (INV_MAIN_42 dest$1_0_1 i.0$1_0_2 size$1_0_1 src$1_0_1 HEAP$1_2 dest.addr.0$2_0_2 size.addr.0$2_0_2 src.addr.0$2_0_2 HEAP$2_2))))))))))))))))
+(rule
+   (let
+      ((dest$1_0_1 dest$1_0_old_1)
+       (i.0$1_0_1 i.0$1_0_old_1)
+       (size$1_0_1 size$1_0_old_1))
+      (let
+         ((src$1_0_1 src$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< i.0$1_0_1 size$1_0_1)))
+         (let
+            ((idxprom$1_0_1 i.0$1_0_1))
+            (let
+               ((arrayidx$1_0_1 (+ src$1_0_1 (* 4 idxprom$1_0_1))))
+               (let
+                  ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                   (idxprom1$1_0_1 i.0$1_0_1))
+                  (let
+                     ((arrayidx2$1_0_1 (+ dest$1_0_1 (* 4 idxprom1$1_0_1))))
+                     (let
+                        ((HEAP$1_2 (store HEAP$1_1 arrayidx2$1_0_1 _$1_0_1))
+                         (inc$1_0_1 (+ i.0$1_0_1 1)))
+                        (let
+                           ((i.0$1_0_2 inc$1_0_1))
+                           (=>
+                              (and
+                                 (INV_MAIN_42 dest$1_0_old_1 i.0$1_0_old_1 size$1_0_old_1 src$1_0_old_1 HEAP$1_old_1 dest.addr.0$2_0_old_1 size.addr.0$2_0_old_1 src.addr.0$2_0_old_1 HEAP$2_old_1)
+                                 cmp$1_0_1
+                                 (let
+                                    ((dest.addr.0$2_0_1 dest.addr.0$2_0_old_1)
+                                     (size.addr.0$2_0_1 size.addr.0$2_0_old_1))
+                                    (let
+                                       ((src.addr.0$2_0_1 src.addr.0$2_0_old_1)
+                                        (HEAP$2_1 HEAP$2_old_1)
+                                        (cmp$2_0_1 (> size.addr.0$2_0_1 0)))
+                                       (=>
+                                          cmp$2_0_1
+                                          (let
+                                             ((incdec.ptr2$2_0_1 (+ dest.addr.0$2_0_1 (* 4 1)))
+                                              (incdec.ptr3$2_0_1 (+ src.addr.0$2_0_1 (* 4 1))))
+                                             (let
+                                                ((_$2_0_1 (select HEAP$2_1 incdec.ptr3$2_0_1)))
+                                                (let
+                                                   ((HEAP$2_2 (store HEAP$2_1 incdec.ptr2$2_0_1 _$2_0_1))
+                                                    (dec$2_0_1 (+ size.addr.0$2_0_1 (- 1))))
+                                                   (let
+                                                      ((size.addr.0$2_0_2 dec$2_0_1)
+                                                       (src.addr.0$2_0_2 incdec.ptr3$2_0_1)
+                                                       (dest.addr.0$2_0_2 incdec.ptr2$2_0_1))
+                                                      false))))))))
+                              (INV_MAIN_42 dest$1_0_1 i.0$1_0_2 size$1_0_1 src$1_0_1 HEAP$1_2 dest.addr.0$2_0_old_1 size.addr.0$2_0_old_1 src.addr.0$2_0_old_1 HEAP$2_old_1)))))))))))
+(rule
+   (let
+      ((dest.addr.0$2_0_1 dest.addr.0$2_0_old_1)
+       (size.addr.0$2_0_1 size.addr.0$2_0_old_1))
+      (let
+         ((src.addr.0$2_0_1 src.addr.0$2_0_old_1)
+          (HEAP$2_1 HEAP$2_old_1)
+          (cmp$2_0_1 (> size.addr.0$2_0_1 0)))
+         (let
+            ((incdec.ptr2$2_0_1 (+ dest.addr.0$2_0_1 (* 4 1)))
+             (incdec.ptr3$2_0_1 (+ src.addr.0$2_0_1 (* 4 1))))
+            (let
+               ((_$2_0_1 (select HEAP$2_1 incdec.ptr3$2_0_1)))
+               (let
+                  ((HEAP$2_2 (store HEAP$2_1 incdec.ptr2$2_0_1 _$2_0_1))
+                   (dec$2_0_1 (+ size.addr.0$2_0_1 (- 1))))
+                  (let
+                     ((size.addr.0$2_0_2 dec$2_0_1)
+                      (src.addr.0$2_0_2 incdec.ptr3$2_0_1)
+                      (dest.addr.0$2_0_2 incdec.ptr2$2_0_1))
+                     (=>
+                        (and
+                           (INV_MAIN_42 dest$1_0_old_1 i.0$1_0_old_1 size$1_0_old_1 src$1_0_old_1 HEAP$1_old_1 dest.addr.0$2_0_old_1 size.addr.0$2_0_old_1 src.addr.0$2_0_old_1 HEAP$2_old_1)
+                           cmp$2_0_1
+                           (let
+                              ((dest$1_0_1 dest$1_0_old_1)
+                               (i.0$1_0_1 i.0$1_0_old_1)
+                               (size$1_0_1 size$1_0_old_1))
+                              (let
+                                 ((src$1_0_1 src$1_0_old_1)
+                                  (HEAP$1_1 HEAP$1_old_1)
+                                  (cmp$1_0_1 (< i.0$1_0_1 size$1_0_1)))
+                                 (=>
+                                    cmp$1_0_1
+                                    (let
+                                       ((idxprom$1_0_1 i.0$1_0_1))
+                                       (let
+                                          ((arrayidx$1_0_1 (+ src$1_0_1 (* 4 idxprom$1_0_1))))
+                                          (let
+                                             ((_$1_0_1 (select HEAP$1_1 arrayidx$1_0_1))
+                                              (idxprom1$1_0_1 i.0$1_0_1))
+                                             (let
+                                                ((arrayidx2$1_0_1 (+ dest$1_0_1 (* 4 idxprom1$1_0_1))))
+                                                (let
+                                                   ((HEAP$1_2 (store HEAP$1_1 arrayidx2$1_0_1 _$1_0_1))
+                                                    (inc$1_0_1 (+ i.0$1_0_1 1)))
+                                                   (let
+                                                      ((i.0$1_0_2 inc$1_0_1))
+                                                      false))))))))))
+                        (INV_MAIN_42 dest$1_0_old_1 i.0$1_0_old_1 size$1_0_old_1 src$1_0_old_1 HEAP$1_old_1 dest.addr.0$2_0_2 size.addr.0$2_0_2 src.addr.0$2_0_2 HEAP$2_2)))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

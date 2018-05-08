@@ -1,0 +1,2283 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   HEAP$1_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_old_1
+   (Array Int Int))
+(declare-var
+   errno$1_0_old_1
+   Int)
+(declare-var
+   errno$2_0_old_1
+   Int)
+(declare-var
+   fd$1_0_old_1
+   Int)
+(declare-var
+   fd$2_0_old_1
+   Int)
+(declare-var
+   file$1_0_old_1
+   Int)
+(declare-var
+   file$2_0_old_1
+   Int)
+(declare-var
+   flag$1_0_old_1
+   Int)
+(declare-var
+   flag$2_0_old_1
+   Int)
+(declare-var
+   fstatat$1_0_old_1
+   Int)
+(declare-var
+   fstatat$2_0_old_1
+   Int)
+(declare-var
+   i_0_1
+   Int)
+(declare-var
+   st_ino$1_0_old_1
+   Int)
+(declare-var
+   st_ino$2_0_old_1
+   Int)
+(declare-var
+   st_size$1_0_old_1
+   Int)
+(declare-var
+   st_size$2_0_old_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((fd$1_0 Int)
+    (file$1_0 Int)
+    (st_size$1_0 Int)
+    (st_ino$1_0 Int)
+    (flag$1_0 Int)
+    (errno$1_0 Int)
+    (fstatat$1_0 Int)
+    (HEAP$1 (Array Int Int))
+    (fd$2_0 Int)
+    (file$2_0 Int)
+    (st_size$2_0 Int)
+    (st_ino$2_0 Int)
+    (flag$2_0 Int)
+    (errno$2_0 Int)
+    (fstatat$2_0 Int)
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= fd$1_0 fd$2_0)
+      (= file$1_0 file$2_0)
+      (= st_size$1_0 st_size$2_0)
+      (= st_ino$1_0 st_ino$2_0)
+      (= flag$1_0 flag$2_0)
+      (= errno$1_0 errno$2_0)
+      (= fstatat$1_0 fstatat$2_0)
+      (= (select HEAP$1 i_0_1) (select HEAP$2 i_0_1))
+      (>= file$1_0 0)
+      (>= errno$1_0 0)
+      (>= fstatat$1_0 0)
+      (>= file$2_0 0)
+      (>= errno$2_0 0)
+      (>= fstatat$2_0 0)
+      (distinct st_size$1_0 (- 1))
+      (= st_ino$2_0 (- (- 1) st_size$1_0))))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int)
+    (HEAP$1 (Array Int Int))
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= result$1 result$2)
+      (= HEAP$1 HEAP$2)))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((retval.0$1_0_1 0))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_1 HEAP$1_1)
+                                  (fd$2_0_1 fd$2_0_old_1)
+                                  (file$2_0_1 file$2_0_old_1)
+                                  (st_size$2_0_1 st_size$2_0_old_1))
+                                 (let
+                                    ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                     (flag$2_0_1 flag$2_0_old_1)
+                                     (errno$2_0_1 errno$2_0_old_1)
+                                     (fstatat$2_0_1 fstatat$2_0_old_1)
+                                     (HEAP$2_1 HEAP$2_old_1)
+                                     (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                    (let
+                                       ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                       (let
+                                          ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                          (let
+                                             ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                              (st_size.addr.0$2_0_1 (- 2)))
+                                             (let
+                                                ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                                 (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                                (let
+                                                   ((retval.0$2_0_1 0))
+                                                   (let
+                                                      ((result$2_1 retval.0$2_0_1)
+                                                       (HEAP$2_res_1 HEAP$2_1))
+                                                      (=>
+                                                         (and
+                                                            (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                            cmp$1_0_1
+                                                            cmp1$1_0_1
+                                                            cmp2$1_0_1
+                                                            cmp$2_0_1
+                                                            cmp1$2_0_1
+                                                            cmp2$2_0_1
+                                                            (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                                         END_QUERY)))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((retval.0$1_0_1 0))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_1 HEAP$1_1)
+                                  (fd$2_0_1 fd$2_0_old_1)
+                                  (file$2_0_1 file$2_0_old_1)
+                                  (st_size$2_0_1 st_size$2_0_old_1))
+                                 (let
+                                    ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                     (flag$2_0_1 flag$2_0_old_1)
+                                     (errno$2_0_1 errno$2_0_old_1)
+                                     (fstatat$2_0_1 fstatat$2_0_old_1)
+                                     (HEAP$2_1 HEAP$2_old_1)
+                                     (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                    (let
+                                       ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                       (let
+                                          ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                          (let
+                                             ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                              (st_size.addr.0$2_0_1 (- 2)))
+                                             (let
+                                                ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                                 (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                                (let
+                                                   ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                                    (retval.0$2_0_1 (- 1)))
+                                                   (let
+                                                      ((result$2_1 retval.0$2_0_1)
+                                                       (HEAP$2_res_1 HEAP$2_2))
+                                                      (=>
+                                                         (and
+                                                            (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                            cmp$1_0_1
+                                                            cmp1$1_0_1
+                                                            cmp2$1_0_1
+                                                            cmp$2_0_1
+                                                            cmp1$2_0_1
+                                                            (not cmp2$2_0_1)
+                                                            (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                                         END_QUERY)))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((retval.0$1_0_1 0))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_1 HEAP$1_1)
+                                  (fd$2_0_1 fd$2_0_old_1)
+                                  (file$2_0_1 file$2_0_old_1)
+                                  (st_size$2_0_1 st_size$2_0_old_1))
+                                 (let
+                                    ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                     (flag$2_0_1 flag$2_0_old_1)
+                                     (errno$2_0_1 errno$2_0_old_1)
+                                     (fstatat$2_0_1 fstatat$2_0_old_1)
+                                     (HEAP$2_1 HEAP$2_old_1)
+                                     (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                    (let
+                                       ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                       (let
+                                          ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                          (let
+                                             ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                             (let
+                                                ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                                 (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                                (let
+                                                   ((retval.0$2_0_1 0))
+                                                   (let
+                                                      ((result$2_1 retval.0$2_0_1)
+                                                       (HEAP$2_res_1 HEAP$2_1))
+                                                      (=>
+                                                         (and
+                                                            (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                            cmp$1_0_1
+                                                            cmp1$1_0_1
+                                                            cmp2$1_0_1
+                                                            cmp$2_0_1
+                                                            (not cmp1$2_0_1)
+                                                            cmp2$2_0_1
+                                                            (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                                         END_QUERY)))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((retval.0$1_0_1 0))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_1 HEAP$1_1)
+                                  (fd$2_0_1 fd$2_0_old_1)
+                                  (file$2_0_1 file$2_0_old_1)
+                                  (st_size$2_0_1 st_size$2_0_old_1))
+                                 (let
+                                    ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                     (flag$2_0_1 flag$2_0_old_1)
+                                     (errno$2_0_1 errno$2_0_old_1)
+                                     (fstatat$2_0_1 fstatat$2_0_old_1)
+                                     (HEAP$2_1 HEAP$2_old_1)
+                                     (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                    (let
+                                       ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                       (let
+                                          ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                          (let
+                                             ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                             (let
+                                                ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                                 (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                                (let
+                                                   ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                                    (retval.0$2_0_1 (- 1)))
+                                                   (let
+                                                      ((result$2_1 retval.0$2_0_1)
+                                                       (HEAP$2_res_1 HEAP$2_2))
+                                                      (=>
+                                                         (and
+                                                            (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                            cmp$1_0_1
+                                                            cmp1$1_0_1
+                                                            cmp2$1_0_1
+                                                            cmp$2_0_1
+                                                            (not cmp1$2_0_1)
+                                                            (not cmp2$2_0_1)
+                                                            (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                                         END_QUERY)))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((retval.0$1_0_1 0))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_1 HEAP$1_1)
+                                  (fd$2_0_1 fd$2_0_old_1)
+                                  (file$2_0_1 file$2_0_old_1)
+                                  (st_size$2_0_1 st_size$2_0_old_1))
+                                 (let
+                                    ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                     (flag$2_0_1 flag$2_0_old_1)
+                                     (errno$2_0_1 errno$2_0_old_1)
+                                     (fstatat$2_0_1 fstatat$2_0_old_1)
+                                     (HEAP$2_1 HEAP$2_old_1)
+                                     (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                    (let
+                                       ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                       (let
+                                          ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                           (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                          (let
+                                             ((retval.0$2_0_1 0))
+                                             (let
+                                                ((result$2_1 retval.0$2_0_1)
+                                                 (HEAP$2_res_1 HEAP$2_1))
+                                                (=>
+                                                   (and
+                                                      (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                      cmp$1_0_1
+                                                      cmp1$1_0_1
+                                                      cmp2$1_0_1
+                                                      (not cmp$2_0_1)
+                                                      cmp2$2_0_1
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((retval.0$1_0_1 0))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_1 HEAP$1_1)
+                                  (fd$2_0_1 fd$2_0_old_1)
+                                  (file$2_0_1 file$2_0_old_1)
+                                  (st_size$2_0_1 st_size$2_0_old_1))
+                                 (let
+                                    ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                     (flag$2_0_1 flag$2_0_old_1)
+                                     (errno$2_0_1 errno$2_0_old_1)
+                                     (fstatat$2_0_1 fstatat$2_0_old_1)
+                                     (HEAP$2_1 HEAP$2_old_1)
+                                     (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                    (let
+                                       ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                       (let
+                                          ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                           (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                          (let
+                                             ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                              (retval.0$2_0_1 (- 1)))
+                                             (let
+                                                ((result$2_1 retval.0$2_0_1)
+                                                 (HEAP$2_res_1 HEAP$2_2))
+                                                (=>
+                                                   (and
+                                                      (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                      cmp$1_0_1
+                                                      cmp1$1_0_1
+                                                      cmp2$1_0_1
+                                                      (not cmp$2_0_1)
+                                                      (not cmp2$2_0_1)
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                              (let
+                                 ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                                  (retval.0$1_0_1 (- 1)))
+                                 (let
+                                    ((result$1_1 retval.0$1_0_1)
+                                     (HEAP$1_res_1 HEAP$1_2)
+                                     (fd$2_0_1 fd$2_0_old_1)
+                                     (file$2_0_1 file$2_0_old_1)
+                                     (st_size$2_0_1 st_size$2_0_old_1))
+                                    (let
+                                       ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                        (flag$2_0_1 flag$2_0_old_1)
+                                        (errno$2_0_1 errno$2_0_old_1)
+                                        (fstatat$2_0_1 fstatat$2_0_old_1)
+                                        (HEAP$2_1 HEAP$2_old_1)
+                                        (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                       (let
+                                          ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                          (let
+                                             ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                             (let
+                                                ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                                 (st_size.addr.0$2_0_1 (- 2)))
+                                                (let
+                                                   ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                                    (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                                   (let
+                                                      ((retval.0$2_0_1 0))
+                                                      (let
+                                                         ((result$2_1 retval.0$2_0_1)
+                                                          (HEAP$2_res_1 HEAP$2_1))
+                                                         (=>
+                                                            (and
+                                                               (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                               cmp$1_0_1
+                                                               cmp1$1_0_1
+                                                               (not cmp2$1_0_1)
+                                                               cmp$2_0_1
+                                                               cmp1$2_0_1
+                                                               cmp2$2_0_1
+                                                               (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                                            END_QUERY))))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                              (let
+                                 ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                                  (retval.0$1_0_1 (- 1)))
+                                 (let
+                                    ((result$1_1 retval.0$1_0_1)
+                                     (HEAP$1_res_1 HEAP$1_2)
+                                     (fd$2_0_1 fd$2_0_old_1)
+                                     (file$2_0_1 file$2_0_old_1)
+                                     (st_size$2_0_1 st_size$2_0_old_1))
+                                    (let
+                                       ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                        (flag$2_0_1 flag$2_0_old_1)
+                                        (errno$2_0_1 errno$2_0_old_1)
+                                        (fstatat$2_0_1 fstatat$2_0_old_1)
+                                        (HEAP$2_1 HEAP$2_old_1)
+                                        (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                       (let
+                                          ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                          (let
+                                             ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                             (let
+                                                ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                                 (st_size.addr.0$2_0_1 (- 2)))
+                                                (let
+                                                   ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                                    (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                                   (let
+                                                      ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                                       (retval.0$2_0_1 (- 1)))
+                                                      (let
+                                                         ((result$2_1 retval.0$2_0_1)
+                                                          (HEAP$2_res_1 HEAP$2_2))
+                                                         (=>
+                                                            (and
+                                                               (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                               cmp$1_0_1
+                                                               cmp1$1_0_1
+                                                               (not cmp2$1_0_1)
+                                                               cmp$2_0_1
+                                                               cmp1$2_0_1
+                                                               (not cmp2$2_0_1)
+                                                               (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                                            END_QUERY))))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                              (let
+                                 ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                                  (retval.0$1_0_1 (- 1)))
+                                 (let
+                                    ((result$1_1 retval.0$1_0_1)
+                                     (HEAP$1_res_1 HEAP$1_2)
+                                     (fd$2_0_1 fd$2_0_old_1)
+                                     (file$2_0_1 file$2_0_old_1)
+                                     (st_size$2_0_1 st_size$2_0_old_1))
+                                    (let
+                                       ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                        (flag$2_0_1 flag$2_0_old_1)
+                                        (errno$2_0_1 errno$2_0_old_1)
+                                        (fstatat$2_0_1 fstatat$2_0_old_1)
+                                        (HEAP$2_1 HEAP$2_old_1)
+                                        (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                       (let
+                                          ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                          (let
+                                             ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                             (let
+                                                ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                                (let
+                                                   ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                                    (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                                   (let
+                                                      ((retval.0$2_0_1 0))
+                                                      (let
+                                                         ((result$2_1 retval.0$2_0_1)
+                                                          (HEAP$2_res_1 HEAP$2_1))
+                                                         (=>
+                                                            (and
+                                                               (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                               cmp$1_0_1
+                                                               cmp1$1_0_1
+                                                               (not cmp2$1_0_1)
+                                                               cmp$2_0_1
+                                                               (not cmp1$2_0_1)
+                                                               cmp2$2_0_1
+                                                               (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                                            END_QUERY))))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                              (let
+                                 ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                                  (retval.0$1_0_1 (- 1)))
+                                 (let
+                                    ((result$1_1 retval.0$1_0_1)
+                                     (HEAP$1_res_1 HEAP$1_2)
+                                     (fd$2_0_1 fd$2_0_old_1)
+                                     (file$2_0_1 file$2_0_old_1)
+                                     (st_size$2_0_1 st_size$2_0_old_1))
+                                    (let
+                                       ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                        (flag$2_0_1 flag$2_0_old_1)
+                                        (errno$2_0_1 errno$2_0_old_1)
+                                        (fstatat$2_0_1 fstatat$2_0_old_1)
+                                        (HEAP$2_1 HEAP$2_old_1)
+                                        (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                       (let
+                                          ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                          (let
+                                             ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                             (let
+                                                ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                                (let
+                                                   ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                                    (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                                   (let
+                                                      ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                                       (retval.0$2_0_1 (- 1)))
+                                                      (let
+                                                         ((result$2_1 retval.0$2_0_1)
+                                                          (HEAP$2_res_1 HEAP$2_2))
+                                                         (=>
+                                                            (and
+                                                               (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                               cmp$1_0_1
+                                                               cmp1$1_0_1
+                                                               (not cmp2$1_0_1)
+                                                               cmp$2_0_1
+                                                               (not cmp1$2_0_1)
+                                                               (not cmp2$2_0_1)
+                                                               (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                                            END_QUERY))))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                              (let
+                                 ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                                  (retval.0$1_0_1 (- 1)))
+                                 (let
+                                    ((result$1_1 retval.0$1_0_1)
+                                     (HEAP$1_res_1 HEAP$1_2)
+                                     (fd$2_0_1 fd$2_0_old_1)
+                                     (file$2_0_1 file$2_0_old_1)
+                                     (st_size$2_0_1 st_size$2_0_old_1))
+                                    (let
+                                       ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                        (flag$2_0_1 flag$2_0_old_1)
+                                        (errno$2_0_1 errno$2_0_old_1)
+                                        (fstatat$2_0_1 fstatat$2_0_old_1)
+                                        (HEAP$2_1 HEAP$2_old_1)
+                                        (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                       (let
+                                          ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                          (let
+                                             ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                              (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                             (let
+                                                ((retval.0$2_0_1 0))
+                                                (let
+                                                   ((result$2_1 retval.0$2_0_1)
+                                                    (HEAP$2_res_1 HEAP$2_1))
+                                                   (=>
+                                                      (and
+                                                         (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                         cmp$1_0_1
+                                                         cmp1$1_0_1
+                                                         (not cmp2$1_0_1)
+                                                         (not cmp$2_0_1)
+                                                         cmp2$2_0_1
+                                                         (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                                      END_QUERY))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 errno$1_0_1)))
+                  (let
+                     ((sub$1_0_1 (- (- 1) _$1_1_1)))
+                     (let
+                        ((st_size.addr.0$1_0_1 sub$1_0_1))
+                        (let
+                           ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                           (let
+                              ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                              (let
+                                 ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                                  (retval.0$1_0_1 (- 1)))
+                                 (let
+                                    ((result$1_1 retval.0$1_0_1)
+                                     (HEAP$1_res_1 HEAP$1_2)
+                                     (fd$2_0_1 fd$2_0_old_1)
+                                     (file$2_0_1 file$2_0_old_1)
+                                     (st_size$2_0_1 st_size$2_0_old_1))
+                                    (let
+                                       ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                        (flag$2_0_1 flag$2_0_old_1)
+                                        (errno$2_0_1 errno$2_0_old_1)
+                                        (fstatat$2_0_1 fstatat$2_0_old_1)
+                                        (HEAP$2_1 HEAP$2_old_1)
+                                        (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                       (let
+                                          ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                          (let
+                                             ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                              (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                             (let
+                                                ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                                 (retval.0$2_0_1 (- 1)))
+                                                (let
+                                                   ((result$2_1 retval.0$2_0_1)
+                                                    (HEAP$2_res_1 HEAP$2_2))
+                                                   (=>
+                                                      (and
+                                                         (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                         cmp$1_0_1
+                                                         cmp1$1_0_1
+                                                         (not cmp2$1_0_1)
+                                                         (not cmp$2_0_1)
+                                                         (not cmp2$2_0_1)
+                                                         (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                                      END_QUERY))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((retval.0$1_0_1 0))
+                        (let
+                           ((result$1_1 retval.0$1_0_1)
+                            (HEAP$1_res_1 HEAP$1_1)
+                            (fd$2_0_1 fd$2_0_old_1)
+                            (file$2_0_1 file$2_0_old_1)
+                            (st_size$2_0_1 st_size$2_0_old_1))
+                           (let
+                              ((st_ino$2_0_1 st_ino$2_0_old_1)
+                               (flag$2_0_1 flag$2_0_old_1)
+                               (errno$2_0_1 errno$2_0_old_1)
+                               (fstatat$2_0_1 fstatat$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                              (let
+                                 ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                 (let
+                                    ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                    (let
+                                       ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                        (st_size.addr.0$2_0_1 (- 2)))
+                                       (let
+                                          ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                           (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                          (let
+                                             ((retval.0$2_0_1 0))
+                                             (let
+                                                ((result$2_1 retval.0$2_0_1)
+                                                 (HEAP$2_res_1 HEAP$2_1))
+                                                (=>
+                                                   (and
+                                                      (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                      cmp$1_0_1
+                                                      (not cmp1$1_0_1)
+                                                      cmp2$1_0_1
+                                                      cmp$2_0_1
+                                                      cmp1$2_0_1
+                                                      cmp2$2_0_1
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((retval.0$1_0_1 0))
+                        (let
+                           ((result$1_1 retval.0$1_0_1)
+                            (HEAP$1_res_1 HEAP$1_1)
+                            (fd$2_0_1 fd$2_0_old_1)
+                            (file$2_0_1 file$2_0_old_1)
+                            (st_size$2_0_1 st_size$2_0_old_1))
+                           (let
+                              ((st_ino$2_0_1 st_ino$2_0_old_1)
+                               (flag$2_0_1 flag$2_0_old_1)
+                               (errno$2_0_1 errno$2_0_old_1)
+                               (fstatat$2_0_1 fstatat$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                              (let
+                                 ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                 (let
+                                    ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                    (let
+                                       ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                        (st_size.addr.0$2_0_1 (- 2)))
+                                       (let
+                                          ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                           (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                          (let
+                                             ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                              (retval.0$2_0_1 (- 1)))
+                                             (let
+                                                ((result$2_1 retval.0$2_0_1)
+                                                 (HEAP$2_res_1 HEAP$2_2))
+                                                (=>
+                                                   (and
+                                                      (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                      cmp$1_0_1
+                                                      (not cmp1$1_0_1)
+                                                      cmp2$1_0_1
+                                                      cmp$2_0_1
+                                                      cmp1$2_0_1
+                                                      (not cmp2$2_0_1)
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((retval.0$1_0_1 0))
+                        (let
+                           ((result$1_1 retval.0$1_0_1)
+                            (HEAP$1_res_1 HEAP$1_1)
+                            (fd$2_0_1 fd$2_0_old_1)
+                            (file$2_0_1 file$2_0_old_1)
+                            (st_size$2_0_1 st_size$2_0_old_1))
+                           (let
+                              ((st_ino$2_0_1 st_ino$2_0_old_1)
+                               (flag$2_0_1 flag$2_0_old_1)
+                               (errno$2_0_1 errno$2_0_old_1)
+                               (fstatat$2_0_1 fstatat$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                              (let
+                                 ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                 (let
+                                    ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                    (let
+                                       ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                       (let
+                                          ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                           (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                          (let
+                                             ((retval.0$2_0_1 0))
+                                             (let
+                                                ((result$2_1 retval.0$2_0_1)
+                                                 (HEAP$2_res_1 HEAP$2_1))
+                                                (=>
+                                                   (and
+                                                      (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                      cmp$1_0_1
+                                                      (not cmp1$1_0_1)
+                                                      cmp2$1_0_1
+                                                      cmp$2_0_1
+                                                      (not cmp1$2_0_1)
+                                                      cmp2$2_0_1
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((retval.0$1_0_1 0))
+                        (let
+                           ((result$1_1 retval.0$1_0_1)
+                            (HEAP$1_res_1 HEAP$1_1)
+                            (fd$2_0_1 fd$2_0_old_1)
+                            (file$2_0_1 file$2_0_old_1)
+                            (st_size$2_0_1 st_size$2_0_old_1))
+                           (let
+                              ((st_ino$2_0_1 st_ino$2_0_old_1)
+                               (flag$2_0_1 flag$2_0_old_1)
+                               (errno$2_0_1 errno$2_0_old_1)
+                               (fstatat$2_0_1 fstatat$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                              (let
+                                 ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                 (let
+                                    ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                    (let
+                                       ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                       (let
+                                          ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                           (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                          (let
+                                             ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                              (retval.0$2_0_1 (- 1)))
+                                             (let
+                                                ((result$2_1 retval.0$2_0_1)
+                                                 (HEAP$2_res_1 HEAP$2_2))
+                                                (=>
+                                                   (and
+                                                      (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                      cmp$1_0_1
+                                                      (not cmp1$1_0_1)
+                                                      cmp2$1_0_1
+                                                      cmp$2_0_1
+                                                      (not cmp1$2_0_1)
+                                                      (not cmp2$2_0_1)
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((retval.0$1_0_1 0))
+                        (let
+                           ((result$1_1 retval.0$1_0_1)
+                            (HEAP$1_res_1 HEAP$1_1)
+                            (fd$2_0_1 fd$2_0_old_1)
+                            (file$2_0_1 file$2_0_old_1)
+                            (st_size$2_0_1 st_size$2_0_old_1))
+                           (let
+                              ((st_ino$2_0_1 st_ino$2_0_old_1)
+                               (flag$2_0_1 flag$2_0_old_1)
+                               (errno$2_0_1 errno$2_0_old_1)
+                               (fstatat$2_0_1 fstatat$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                              (let
+                                 ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                 (let
+                                    ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                     (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                    (let
+                                       ((retval.0$2_0_1 0))
+                                       (let
+                                          ((result$2_1 retval.0$2_0_1)
+                                           (HEAP$2_res_1 HEAP$2_1))
+                                          (=>
+                                             (and
+                                                (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                cmp$1_0_1
+                                                (not cmp1$1_0_1)
+                                                cmp2$1_0_1
+                                                (not cmp$2_0_1)
+                                                cmp2$2_0_1
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((retval.0$1_0_1 0))
+                        (let
+                           ((result$1_1 retval.0$1_0_1)
+                            (HEAP$1_res_1 HEAP$1_1)
+                            (fd$2_0_1 fd$2_0_old_1)
+                            (file$2_0_1 file$2_0_old_1)
+                            (st_size$2_0_1 st_size$2_0_old_1))
+                           (let
+                              ((st_ino$2_0_1 st_ino$2_0_old_1)
+                               (flag$2_0_1 flag$2_0_old_1)
+                               (errno$2_0_1 errno$2_0_old_1)
+                               (fstatat$2_0_1 fstatat$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                              (let
+                                 ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                 (let
+                                    ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                     (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                    (let
+                                       ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                        (retval.0$2_0_1 (- 1)))
+                                       (let
+                                          ((result$2_1 retval.0$2_0_1)
+                                           (HEAP$2_res_1 HEAP$2_2))
+                                          (=>
+                                             (and
+                                                (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                cmp$1_0_1
+                                                (not cmp1$1_0_1)
+                                                cmp2$1_0_1
+                                                (not cmp$2_0_1)
+                                                (not cmp2$2_0_1)
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                        (let
+                           ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                            (retval.0$1_0_1 (- 1)))
+                           (let
+                              ((result$1_1 retval.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_2)
+                               (fd$2_0_1 fd$2_0_old_1)
+                               (file$2_0_1 file$2_0_old_1)
+                               (st_size$2_0_1 st_size$2_0_old_1))
+                              (let
+                                 ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                  (flag$2_0_1 flag$2_0_old_1)
+                                  (errno$2_0_1 errno$2_0_old_1)
+                                  (fstatat$2_0_1 fstatat$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                 (let
+                                    ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                    (let
+                                       ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                       (let
+                                          ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                           (st_size.addr.0$2_0_1 (- 2)))
+                                          (let
+                                             ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                              (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                             (let
+                                                ((retval.0$2_0_1 0))
+                                                (let
+                                                   ((result$2_1 retval.0$2_0_1)
+                                                    (HEAP$2_res_1 HEAP$2_1))
+                                                   (=>
+                                                      (and
+                                                         (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                         cmp$1_0_1
+                                                         (not cmp1$1_0_1)
+                                                         (not cmp2$1_0_1)
+                                                         cmp$2_0_1
+                                                         cmp1$2_0_1
+                                                         cmp2$2_0_1
+                                                         (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                                      END_QUERY))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                        (let
+                           ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                            (retval.0$1_0_1 (- 1)))
+                           (let
+                              ((result$1_1 retval.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_2)
+                               (fd$2_0_1 fd$2_0_old_1)
+                               (file$2_0_1 file$2_0_old_1)
+                               (st_size$2_0_1 st_size$2_0_old_1))
+                              (let
+                                 ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                  (flag$2_0_1 flag$2_0_old_1)
+                                  (errno$2_0_1 errno$2_0_old_1)
+                                  (fstatat$2_0_1 fstatat$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                 (let
+                                    ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                    (let
+                                       ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                       (let
+                                          ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                           (st_size.addr.0$2_0_1 (- 2)))
+                                          (let
+                                             ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                              (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                             (let
+                                                ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                                 (retval.0$2_0_1 (- 1)))
+                                                (let
+                                                   ((result$2_1 retval.0$2_0_1)
+                                                    (HEAP$2_res_1 HEAP$2_2))
+                                                   (=>
+                                                      (and
+                                                         (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                         cmp$1_0_1
+                                                         (not cmp1$1_0_1)
+                                                         (not cmp2$1_0_1)
+                                                         cmp$2_0_1
+                                                         cmp1$2_0_1
+                                                         (not cmp2$2_0_1)
+                                                         (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                                      END_QUERY))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                        (let
+                           ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                            (retval.0$1_0_1 (- 1)))
+                           (let
+                              ((result$1_1 retval.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_2)
+                               (fd$2_0_1 fd$2_0_old_1)
+                               (file$2_0_1 file$2_0_old_1)
+                               (st_size$2_0_1 st_size$2_0_old_1))
+                              (let
+                                 ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                  (flag$2_0_1 flag$2_0_old_1)
+                                  (errno$2_0_1 errno$2_0_old_1)
+                                  (fstatat$2_0_1 fstatat$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                 (let
+                                    ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                    (let
+                                       ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                       (let
+                                          ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                          (let
+                                             ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                              (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                             (let
+                                                ((retval.0$2_0_1 0))
+                                                (let
+                                                   ((result$2_1 retval.0$2_0_1)
+                                                    (HEAP$2_res_1 HEAP$2_1))
+                                                   (=>
+                                                      (and
+                                                         (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                         cmp$1_0_1
+                                                         (not cmp1$1_0_1)
+                                                         (not cmp2$1_0_1)
+                                                         cmp$2_0_1
+                                                         (not cmp1$2_0_1)
+                                                         cmp2$2_0_1
+                                                         (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                                      END_QUERY))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                        (let
+                           ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                            (retval.0$1_0_1 (- 1)))
+                           (let
+                              ((result$1_1 retval.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_2)
+                               (fd$2_0_1 fd$2_0_old_1)
+                               (file$2_0_1 file$2_0_old_1)
+                               (st_size$2_0_1 st_size$2_0_old_1))
+                              (let
+                                 ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                  (flag$2_0_1 flag$2_0_old_1)
+                                  (errno$2_0_1 errno$2_0_old_1)
+                                  (fstatat$2_0_1 fstatat$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                 (let
+                                    ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                                    (let
+                                       ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                       (let
+                                          ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                          (let
+                                             ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                              (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                             (let
+                                                ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                                 (retval.0$2_0_1 (- 1)))
+                                                (let
+                                                   ((result$2_1 retval.0$2_0_1)
+                                                    (HEAP$2_res_1 HEAP$2_2))
+                                                   (=>
+                                                      (and
+                                                         (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                         cmp$1_0_1
+                                                         (not cmp1$1_0_1)
+                                                         (not cmp2$1_0_1)
+                                                         cmp$2_0_1
+                                                         (not cmp1$2_0_1)
+                                                         (not cmp2$2_0_1)
+                                                         (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                                      END_QUERY))))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                        (let
+                           ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                            (retval.0$1_0_1 (- 1)))
+                           (let
+                              ((result$1_1 retval.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_2)
+                               (fd$2_0_1 fd$2_0_old_1)
+                               (file$2_0_1 file$2_0_old_1)
+                               (st_size$2_0_1 st_size$2_0_old_1))
+                              (let
+                                 ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                  (flag$2_0_1 flag$2_0_old_1)
+                                  (errno$2_0_1 errno$2_0_old_1)
+                                  (fstatat$2_0_1 fstatat$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                 (let
+                                    ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                    (let
+                                       ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                        (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                       (let
+                                          ((retval.0$2_0_1 0))
+                                          (let
+                                             ((result$2_1 retval.0$2_0_1)
+                                              (HEAP$2_res_1 HEAP$2_1))
+                                             (=>
+                                                (and
+                                                   (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                   cmp$1_0_1
+                                                   (not cmp1$1_0_1)
+                                                   (not cmp2$1_0_1)
+                                                   (not cmp$2_0_1)
+                                                   cmp2$2_0_1
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((_$1_0_1 (select HEAP$1_1 fstatat$1_0_1)))
+            (let
+               ((cmp1$1_0_1 (distinct _$1_0_1 0)))
+               (let
+                  ((st_size.addr.0$1_0_1 st_size$1_0_1))
+                  (let
+                     ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+                     (let
+                        ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                        (let
+                           ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                            (retval.0$1_0_1 (- 1)))
+                           (let
+                              ((result$1_1 retval.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_2)
+                               (fd$2_0_1 fd$2_0_old_1)
+                               (file$2_0_1 file$2_0_old_1)
+                               (st_size$2_0_1 st_size$2_0_old_1))
+                              (let
+                                 ((st_ino$2_0_1 st_ino$2_0_old_1)
+                                  (flag$2_0_1 flag$2_0_old_1)
+                                  (errno$2_0_1 errno$2_0_old_1)
+                                  (fstatat$2_0_1 fstatat$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                                 (let
+                                    ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                    (let
+                                       ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                        (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                       (let
+                                          ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                           (retval.0$2_0_1 (- 1)))
+                                          (let
+                                             ((result$2_1 retval.0$2_0_1)
+                                              (HEAP$2_res_1 HEAP$2_2))
+                                             (=>
+                                                (and
+                                                   (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                   cmp$1_0_1
+                                                   (not cmp1$1_0_1)
+                                                   (not cmp2$1_0_1)
+                                                   (not cmp$2_0_1)
+                                                   (not cmp2$2_0_1)
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((retval.0$1_0_1 0))
+                  (let
+                     ((result$1_1 retval.0$1_0_1)
+                      (HEAP$1_res_1 HEAP$1_1)
+                      (fd$2_0_1 fd$2_0_old_1)
+                      (file$2_0_1 file$2_0_old_1)
+                      (st_size$2_0_1 st_size$2_0_old_1))
+                     (let
+                        ((st_ino$2_0_1 st_ino$2_0_old_1)
+                         (flag$2_0_1 flag$2_0_old_1)
+                         (errno$2_0_1 errno$2_0_old_1)
+                         (fstatat$2_0_1 fstatat$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                           (let
+                              ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                              (let
+                                 ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                  (st_size.addr.0$2_0_1 (- 2)))
+                                 (let
+                                    ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                     (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                    (let
+                                       ((retval.0$2_0_1 0))
+                                       (let
+                                          ((result$2_1 retval.0$2_0_1)
+                                           (HEAP$2_res_1 HEAP$2_1))
+                                          (=>
+                                             (and
+                                                (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                (not cmp$1_0_1)
+                                                cmp2$1_0_1
+                                                cmp$2_0_1
+                                                cmp1$2_0_1
+                                                cmp2$2_0_1
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((retval.0$1_0_1 0))
+                  (let
+                     ((result$1_1 retval.0$1_0_1)
+                      (HEAP$1_res_1 HEAP$1_1)
+                      (fd$2_0_1 fd$2_0_old_1)
+                      (file$2_0_1 file$2_0_old_1)
+                      (st_size$2_0_1 st_size$2_0_old_1))
+                     (let
+                        ((st_ino$2_0_1 st_ino$2_0_old_1)
+                         (flag$2_0_1 flag$2_0_old_1)
+                         (errno$2_0_1 errno$2_0_old_1)
+                         (fstatat$2_0_1 fstatat$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                           (let
+                              ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                              (let
+                                 ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                  (st_size.addr.0$2_0_1 (- 2)))
+                                 (let
+                                    ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                     (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                    (let
+                                       ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                        (retval.0$2_0_1 (- 1)))
+                                       (let
+                                          ((result$2_1 retval.0$2_0_1)
+                                           (HEAP$2_res_1 HEAP$2_2))
+                                          (=>
+                                             (and
+                                                (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                (not cmp$1_0_1)
+                                                cmp2$1_0_1
+                                                cmp$2_0_1
+                                                cmp1$2_0_1
+                                                (not cmp2$2_0_1)
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((retval.0$1_0_1 0))
+                  (let
+                     ((result$1_1 retval.0$1_0_1)
+                      (HEAP$1_res_1 HEAP$1_1)
+                      (fd$2_0_1 fd$2_0_old_1)
+                      (file$2_0_1 file$2_0_old_1)
+                      (st_size$2_0_1 st_size$2_0_old_1))
+                     (let
+                        ((st_ino$2_0_1 st_ino$2_0_old_1)
+                         (flag$2_0_1 flag$2_0_old_1)
+                         (errno$2_0_1 errno$2_0_old_1)
+                         (fstatat$2_0_1 fstatat$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                           (let
+                              ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                              (let
+                                 ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                 (let
+                                    ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                     (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                    (let
+                                       ((retval.0$2_0_1 0))
+                                       (let
+                                          ((result$2_1 retval.0$2_0_1)
+                                           (HEAP$2_res_1 HEAP$2_1))
+                                          (=>
+                                             (and
+                                                (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                (not cmp$1_0_1)
+                                                cmp2$1_0_1
+                                                cmp$2_0_1
+                                                (not cmp1$2_0_1)
+                                                cmp2$2_0_1
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((retval.0$1_0_1 0))
+                  (let
+                     ((result$1_1 retval.0$1_0_1)
+                      (HEAP$1_res_1 HEAP$1_1)
+                      (fd$2_0_1 fd$2_0_old_1)
+                      (file$2_0_1 file$2_0_old_1)
+                      (st_size$2_0_1 st_size$2_0_old_1))
+                     (let
+                        ((st_ino$2_0_1 st_ino$2_0_old_1)
+                         (flag$2_0_1 flag$2_0_old_1)
+                         (errno$2_0_1 errno$2_0_old_1)
+                         (fstatat$2_0_1 fstatat$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                           (let
+                              ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                              (let
+                                 ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                 (let
+                                    ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                     (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                    (let
+                                       ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                        (retval.0$2_0_1 (- 1)))
+                                       (let
+                                          ((result$2_1 retval.0$2_0_1)
+                                           (HEAP$2_res_1 HEAP$2_2))
+                                          (=>
+                                             (and
+                                                (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                (not cmp$1_0_1)
+                                                cmp2$1_0_1
+                                                cmp$2_0_1
+                                                (not cmp1$2_0_1)
+                                                (not cmp2$2_0_1)
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((retval.0$1_0_1 0))
+                  (let
+                     ((result$1_1 retval.0$1_0_1)
+                      (HEAP$1_res_1 HEAP$1_1)
+                      (fd$2_0_1 fd$2_0_old_1)
+                      (file$2_0_1 file$2_0_old_1)
+                      (st_size$2_0_1 st_size$2_0_old_1))
+                     (let
+                        ((st_ino$2_0_1 st_ino$2_0_old_1)
+                         (flag$2_0_1 flag$2_0_old_1)
+                         (errno$2_0_1 errno$2_0_old_1)
+                         (fstatat$2_0_1 fstatat$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                        (let
+                           ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                           (let
+                              ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                               (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                              (let
+                                 ((retval.0$2_0_1 0))
+                                 (let
+                                    ((result$2_1 retval.0$2_0_1)
+                                     (HEAP$2_res_1 HEAP$2_1))
+                                    (=>
+                                       (and
+                                          (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                          (not cmp$1_0_1)
+                                          cmp2$1_0_1
+                                          (not cmp$2_0_1)
+                                          cmp2$2_0_1
+                                          (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((retval.0$1_0_1 0))
+                  (let
+                     ((result$1_1 retval.0$1_0_1)
+                      (HEAP$1_res_1 HEAP$1_1)
+                      (fd$2_0_1 fd$2_0_old_1)
+                      (file$2_0_1 file$2_0_old_1)
+                      (st_size$2_0_1 st_size$2_0_old_1))
+                     (let
+                        ((st_ino$2_0_1 st_ino$2_0_old_1)
+                         (flag$2_0_1 flag$2_0_old_1)
+                         (errno$2_0_1 errno$2_0_old_1)
+                         (fstatat$2_0_1 fstatat$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                        (let
+                           ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                           (let
+                              ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                               (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                              (let
+                                 ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                  (retval.0$2_0_1 (- 1)))
+                                 (let
+                                    ((result$2_1 retval.0$2_0_1)
+                                     (HEAP$2_res_1 HEAP$2_2))
+                                    (=>
+                                       (and
+                                          (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                          (not cmp$1_0_1)
+                                          cmp2$1_0_1
+                                          (not cmp$2_0_1)
+                                          (not cmp2$2_0_1)
+                                          (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_2)))
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                  (let
+                     ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                      (retval.0$1_0_1 (- 1)))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_2)
+                         (fd$2_0_1 fd$2_0_old_1)
+                         (file$2_0_1 file$2_0_old_1)
+                         (st_size$2_0_1 st_size$2_0_old_1))
+                        (let
+                           ((st_ino$2_0_1 st_ino$2_0_old_1)
+                            (flag$2_0_1 flag$2_0_old_1)
+                            (errno$2_0_1 errno$2_0_old_1)
+                            (fstatat$2_0_1 fstatat$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                           (let
+                              ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                              (let
+                                 ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                 (let
+                                    ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                     (st_size.addr.0$2_0_1 (- 2)))
+                                    (let
+                                       ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                        (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                       (let
+                                          ((retval.0$2_0_1 0))
+                                          (let
+                                             ((result$2_1 retval.0$2_0_1)
+                                              (HEAP$2_res_1 HEAP$2_1))
+                                             (=>
+                                                (and
+                                                   (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                   (not cmp$1_0_1)
+                                                   (not cmp2$1_0_1)
+                                                   cmp$2_0_1
+                                                   cmp1$2_0_1
+                                                   cmp2$2_0_1
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                  (let
+                     ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                      (retval.0$1_0_1 (- 1)))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_2)
+                         (fd$2_0_1 fd$2_0_old_1)
+                         (file$2_0_1 file$2_0_old_1)
+                         (st_size$2_0_1 st_size$2_0_old_1))
+                        (let
+                           ((st_ino$2_0_1 st_ino$2_0_old_1)
+                            (flag$2_0_1 flag$2_0_old_1)
+                            (errno$2_0_1 errno$2_0_old_1)
+                            (fstatat$2_0_1 fstatat$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                           (let
+                              ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                              (let
+                                 ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                 (let
+                                    ((_$2_1_1 (select HEAP$2_1 errno$2_0_1))
+                                     (st_size.addr.0$2_0_1 (- 2)))
+                                    (let
+                                       ((st_ino.addr.0$2_0_1 _$2_1_1)
+                                        (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                       (let
+                                          ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                           (retval.0$2_0_1 (- 1)))
+                                          (let
+                                             ((result$2_1 retval.0$2_0_1)
+                                              (HEAP$2_res_1 HEAP$2_2))
+                                             (=>
+                                                (and
+                                                   (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                   (not cmp$1_0_1)
+                                                   (not cmp2$1_0_1)
+                                                   cmp$2_0_1
+                                                   cmp1$2_0_1
+                                                   (not cmp2$2_0_1)
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                  (let
+                     ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                      (retval.0$1_0_1 (- 1)))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_2)
+                         (fd$2_0_1 fd$2_0_old_1)
+                         (file$2_0_1 file$2_0_old_1)
+                         (st_size$2_0_1 st_size$2_0_old_1))
+                        (let
+                           ((st_ino$2_0_1 st_ino$2_0_old_1)
+                            (flag$2_0_1 flag$2_0_old_1)
+                            (errno$2_0_1 errno$2_0_old_1)
+                            (fstatat$2_0_1 fstatat$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                           (let
+                              ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                              (let
+                                 ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                 (let
+                                    ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                    (let
+                                       ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                        (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                       (let
+                                          ((retval.0$2_0_1 0))
+                                          (let
+                                             ((result$2_1 retval.0$2_0_1)
+                                              (HEAP$2_res_1 HEAP$2_1))
+                                             (=>
+                                                (and
+                                                   (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                   (not cmp$1_0_1)
+                                                   (not cmp2$1_0_1)
+                                                   cmp$2_0_1
+                                                   (not cmp1$2_0_1)
+                                                   cmp2$2_0_1
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                  (let
+                     ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                      (retval.0$1_0_1 (- 1)))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_2)
+                         (fd$2_0_1 fd$2_0_old_1)
+                         (file$2_0_1 file$2_0_old_1)
+                         (st_size$2_0_1 st_size$2_0_old_1))
+                        (let
+                           ((st_ino$2_0_1 st_ino$2_0_old_1)
+                            (flag$2_0_1 flag$2_0_old_1)
+                            (errno$2_0_1 errno$2_0_old_1)
+                            (fstatat$2_0_1 fstatat$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                           (let
+                              ((_$2_0_1 (select HEAP$2_1 fstatat$2_0_1)))
+                              (let
+                                 ((cmp1$2_0_1 (distinct _$2_0_1 0)))
+                                 (let
+                                    ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                                    (let
+                                       ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                        (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                       (let
+                                          ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                           (retval.0$2_0_1 (- 1)))
+                                          (let
+                                             ((result$2_1 retval.0$2_0_1)
+                                              (HEAP$2_res_1 HEAP$2_2))
+                                             (=>
+                                                (and
+                                                   (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                                   (not cmp$1_0_1)
+                                                   (not cmp2$1_0_1)
+                                                   cmp$2_0_1
+                                                   (not cmp1$2_0_1)
+                                                   (not cmp2$2_0_1)
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                  (let
+                     ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                      (retval.0$1_0_1 (- 1)))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_2)
+                         (fd$2_0_1 fd$2_0_old_1)
+                         (file$2_0_1 file$2_0_old_1)
+                         (st_size$2_0_1 st_size$2_0_old_1))
+                        (let
+                           ((st_ino$2_0_1 st_ino$2_0_old_1)
+                            (flag$2_0_1 flag$2_0_old_1)
+                            (errno$2_0_1 errno$2_0_old_1)
+                            (fstatat$2_0_1 fstatat$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                           (let
+                              ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                              (let
+                                 ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                  (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                 (let
+                                    ((retval.0$2_0_1 0))
+                                    (let
+                                       ((result$2_1 retval.0$2_0_1)
+                                        (HEAP$2_res_1 HEAP$2_1))
+                                       (=>
+                                          (and
+                                             (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                             (not cmp$1_0_1)
+                                             (not cmp2$1_0_1)
+                                             (not cmp$2_0_1)
+                                             cmp2$2_0_1
+                                             (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_1)))
+                                          END_QUERY))))))))))))))
+(rule
+   (let
+      ((fd$1_0_1 fd$1_0_old_1)
+       (file$1_0_1 file$1_0_old_1)
+       (st_size$1_0_1 st_size$1_0_old_1))
+      (let
+         ((st_ino$1_0_1 st_ino$1_0_old_1)
+          (flag$1_0_1 flag$1_0_old_1)
+          (errno$1_0_1 errno$1_0_old_1)
+          (fstatat$1_0_1 fstatat$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (= st_size$1_0_1 (- 1))))
+         (let
+            ((st_size.addr.0$1_0_1 st_size$1_0_1))
+            (let
+               ((cmp2$1_0_1 (<= 0 st_size.addr.0$1_0_1)))
+               (let
+                  ((sub5$1_0_1 (- (- 1) st_size.addr.0$1_0_1)))
+                  (let
+                     ((HEAP$1_2 (store HEAP$1_1 errno$1_0_1 sub5$1_0_1))
+                      (retval.0$1_0_1 (- 1)))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_2)
+                         (fd$2_0_1 fd$2_0_old_1)
+                         (file$2_0_1 file$2_0_old_1)
+                         (st_size$2_0_1 st_size$2_0_old_1))
+                        (let
+                           ((st_ino$2_0_1 st_ino$2_0_old_1)
+                            (flag$2_0_1 flag$2_0_old_1)
+                            (errno$2_0_1 errno$2_0_old_1)
+                            (fstatat$2_0_1 fstatat$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (cmp$2_0_1 (= st_size$2_0_1 (- 1))))
+                           (let
+                              ((st_size.addr.0$2_0_1 st_size$2_0_1))
+                              (let
+                                 ((st_ino.addr.0$2_0_1 st_ino$2_0_1)
+                                  (cmp2$2_0_1 (<= 0 st_size.addr.0$2_0_1)))
+                                 (let
+                                    ((HEAP$2_2 (store HEAP$2_1 errno$2_0_1 st_ino.addr.0$2_0_1))
+                                     (retval.0$2_0_1 (- 1)))
+                                    (let
+                                       ((result$2_1 retval.0$2_0_1)
+                                        (HEAP$2_res_1 HEAP$2_2))
+                                       (=>
+                                          (and
+                                             (IN_INV fd$1_0_old_1 file$1_0_old_1 st_size$1_0_old_1 st_ino$1_0_old_1 flag$1_0_old_1 errno$1_0_old_1 fstatat$1_0_old_1 HEAP$1_old_1 fd$2_0_old_1 file$2_0_old_1 st_size$2_0_old_1 st_ino$2_0_old_1 flag$2_0_old_1 errno$2_0_old_1 fstatat$2_0_old_1 HEAP$2_old_1)
+                                             (not cmp$1_0_1)
+                                             (not cmp2$1_0_1)
+                                             (not cmp$2_0_1)
+                                             (not cmp2$2_0_1)
+                                             (not (OUT_INV result$1_1 result$2_1 HEAP$1_2 HEAP$2_2)))
+                                          END_QUERY))))))))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

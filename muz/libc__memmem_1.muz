@@ -1,0 +1,590 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   HEAP$1_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$1_res_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_res_1
+   (Array Int Int))
+(declare-var
+   add.ptr1$1_0_old_1
+   Int)
+(declare-var
+   call1$2_0_1
+   Int)
+(declare-var
+   call3$1_0_1
+   Int)
+(declare-var
+   cur.0$1_0_old_1
+   Int)
+(declare-var
+   haystack$1_0_old_1
+   Int)
+(declare-var
+   haystack$2_0_old_1
+   Int)
+(declare-var
+   haystack.addr.0$2_0_old_1
+   Int)
+(declare-var
+   hl$1_0_old_1
+   Int)
+(declare-var
+   hl$2_0_old_1
+   Int)
+(declare-var
+   i.0$2_0_old_1
+   Int)
+(declare-var
+   i_0_1
+   Int)
+(declare-var
+   needle$1_0_old_1
+   Int)
+(declare-var
+   needle$2_0_old_1
+   Int)
+(declare-var
+   nl$1_0_old_1
+   Int)
+(declare-var
+   nl$2_0_old_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   INV_REC_memcmp^memcmp
+   ((_$1_0 Int)
+    (_$1_1 Int)
+    (_$1_2 Int)
+    (HEAP$1 (Array Int Int))
+    (_$2_0 Int)
+    (_$2_1 Int)
+    (_$2_2 Int)
+    (HEAP$2 (Array Int Int))
+    (result$1 Int)
+    (result$2 Int)
+    (HEAP$1_res (Array Int Int))
+    (HEAP$2_res (Array Int Int)))
+   Bool
+   (=>
+      (and
+         (= _$1_0 _$2_0)
+         (= _$1_1 _$2_1)
+         (= _$1_2 _$2_2)
+         (= HEAP$1 HEAP$2))
+      (and
+         (= result$1 result$2)
+         (= HEAP$1_res HEAP$2_res))))
+(define-fun
+   INV_REC_memcmp__1
+   ((_$1_0 Int)
+    (_$1_1 Int)
+    (_$1_2 Int)
+    (HEAP (Array Int Int))
+    (result$1 Int)
+    (HEAP$1_res (Array Int Int)))
+   Bool
+   true)
+(define-fun
+   INV_REC_memcmp__2
+   ((_$2_0 Int)
+    (_$2_1 Int)
+    (_$2_2 Int)
+    (HEAP (Array Int Int))
+    (result$2 Int)
+    (HEAP$2_res (Array Int Int)))
+   Bool
+   true)
+(define-fun
+   IN_INV
+   ((haystack$1_0 Int)
+    (hl$1_0 Int)
+    (needle$1_0 Int)
+    (nl$1_0 Int)
+    (HEAP$1 (Array Int Int))
+    (haystack$2_0 Int)
+    (hl$2_0 Int)
+    (needle$2_0 Int)
+    (nl$2_0 Int)
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= haystack$1_0 haystack$2_0)
+      (= hl$1_0 hl$2_0)
+      (= needle$1_0 needle$2_0)
+      (= nl$1_0 nl$2_0)
+      (>= haystack$1_0 0)
+      (>= hl$1_0 0)
+      (>= nl$1_0 0)
+      (>= needle$1_0 0)
+      (= (select HEAP$1 i_0_1) (select HEAP$2 i_0_1))))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int)
+    (HEAP$1 (Array Int Int))
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= result$1 result$2)
+      (= HEAP$1 HEAP$2)))
+; :annot (INV_MAIN_42 add.ptr1$1_0 cur.0$1_0 needle$1_0 nl$1_0 HEAP$1 haystack.addr.0$2_0 i.0$2_0 needle$2_0 nl$2_0 HEAP$2)
+(declare-rel
+   INV_MAIN_42
+   (Int
+    Int
+    Int
+    Int
+    (Array Int Int)
+    Int
+    Int
+    Int
+    Int
+    (Array Int Int)))
+(rule
+   (let
+      ((haystack$1_0_1 haystack$1_0_old_1)
+       (hl$1_0_1 hl$1_0_old_1)
+       (needle$1_0_1 needle$1_0_old_1)
+       (nl$1_0_1 nl$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< (abs hl$1_0_1) (abs nl$1_0_1))))
+         (let
+            ((retval.0$1_0_1 0))
+            (let
+               ((result$1_1 retval.0$1_0_1)
+                (HEAP$1_res_1 HEAP$1_1)
+                (haystack$2_0_1 haystack$2_0_old_1)
+                (hl$2_0_1 hl$2_0_old_1)
+                (needle$2_0_1 needle$2_0_old_1)
+                (nl$2_0_1 nl$2_0_old_1))
+               (let
+                  ((HEAP$2_1 HEAP$2_old_1)
+                   (cmp$2_0_1 (> (abs nl$2_0_1) (abs hl$2_0_1))))
+                  (=>
+                     (and
+                        (IN_INV haystack$1_0_old_1 hl$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack$2_0_old_1 hl$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                        cmp$1_0_1
+                        (not cmp$2_0_1))
+                     END_QUERY)))))))
+(rule
+   (let
+      ((haystack$1_0_1 haystack$1_0_old_1)
+       (hl$1_0_1 hl$1_0_old_1)
+       (needle$1_0_1 needle$1_0_old_1)
+       (nl$1_0_1 nl$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< (abs hl$1_0_1) (abs nl$1_0_1))))
+         (let
+            ((add.ptr$1_0_1 (+ haystack$1_0_1 hl$1_0_1))
+             (idx.neg$1_0_1 (- 0 nl$1_0_1)))
+            (let
+               ((add.ptr1$1_0_1 (+ add.ptr$1_0_1 idx.neg$1_0_1))
+                (cur.0$1_0_1 haystack$1_0_1)
+                (haystack$2_0_1 haystack$2_0_old_1)
+                (hl$2_0_1 hl$2_0_old_1)
+                (needle$2_0_1 needle$2_0_old_1)
+                (nl$2_0_1 nl$2_0_old_1))
+               (let
+                  ((HEAP$2_1 HEAP$2_old_1)
+                   (cmp$2_0_1 (> (abs nl$2_0_1) (abs hl$2_0_1))))
+                  (=>
+                     (and
+                        (IN_INV haystack$1_0_old_1 hl$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack$2_0_old_1 hl$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                        (not cmp$1_0_1)
+                        cmp$2_0_1)
+                     END_QUERY)))))))
+(rule
+   (let
+      ((haystack$1_0_1 haystack$1_0_old_1)
+       (hl$1_0_1 hl$1_0_old_1)
+       (needle$1_0_1 needle$1_0_old_1)
+       (nl$1_0_1 nl$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< (abs hl$1_0_1) (abs nl$1_0_1))))
+         (let
+            ((retval.0$1_0_1 0))
+            (let
+               ((result$1_1 retval.0$1_0_1)
+                (HEAP$1_res_1 HEAP$1_1)
+                (haystack$2_0_1 haystack$2_0_old_1)
+                (hl$2_0_1 hl$2_0_old_1)
+                (needle$2_0_1 needle$2_0_old_1)
+                (nl$2_0_1 nl$2_0_old_1))
+               (let
+                  ((HEAP$2_1 HEAP$2_old_1)
+                   (cmp$2_0_1 (> (abs nl$2_0_1) (abs hl$2_0_1))))
+                  (let
+                     ((retval.0$2_0_1 0))
+                     (let
+                        ((result$2_1 retval.0$2_0_1)
+                         (HEAP$2_res_1 HEAP$2_1))
+                        (=>
+                           (and
+                              (IN_INV haystack$1_0_old_1 hl$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack$2_0_old_1 hl$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                              cmp$1_0_1
+                              cmp$2_0_1
+                              (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                           END_QUERY)))))))))
+(rule
+   (let
+      ((haystack$1_0_1 haystack$1_0_old_1)
+       (hl$1_0_1 hl$1_0_old_1)
+       (needle$1_0_1 needle$1_0_old_1)
+       (nl$1_0_1 nl$1_0_old_1))
+      (let
+         ((HEAP$1_1 HEAP$1_old_1)
+          (cmp$1_0_1 (< (abs hl$1_0_1) (abs nl$1_0_1))))
+         (let
+            ((add.ptr$1_0_1 (+ haystack$1_0_1 hl$1_0_1))
+             (idx.neg$1_0_1 (- 0 nl$1_0_1)))
+            (let
+               ((add.ptr1$1_0_1 (+ add.ptr$1_0_1 idx.neg$1_0_1))
+                (cur.0$1_0_1 haystack$1_0_1)
+                (haystack$2_0_1 haystack$2_0_old_1)
+                (hl$2_0_1 hl$2_0_old_1)
+                (needle$2_0_1 needle$2_0_old_1)
+                (nl$2_0_1 nl$2_0_old_1))
+               (let
+                  ((HEAP$2_1 HEAP$2_old_1)
+                   (cmp$2_0_1 (> (abs nl$2_0_1) (abs hl$2_0_1))))
+                  (let
+                     ((sub$2_0_1 (- hl$2_0_1 nl$2_0_1)))
+                     (let
+                        ((add$2_0_1 (+ sub$2_0_1 1)))
+                        (let
+                           ((conv$2_0_1 add$2_0_1))
+                           (let
+                              ((i.0$2_0_1 conv$2_0_1)
+                               (haystack.addr.0$2_0_1 haystack$2_0_1))
+                              (=>
+                                 (and
+                                    (IN_INV haystack$1_0_old_1 hl$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack$2_0_old_1 hl$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                                    (not cmp$1_0_1)
+                                    (not cmp$2_0_1))
+                                 (INV_MAIN_42 add.ptr1$1_0_1 cur.0$1_0_1 needle$1_0_1 nl$1_0_1 HEAP$1_1 haystack.addr.0$2_0_1 i.0$2_0_1 needle$2_0_1 nl$2_0_1 HEAP$2_1))))))))))))
+(rule
+   (let
+      ((add.ptr1$1_0_1 add.ptr1$1_0_old_1)
+       (cur.0$1_0_1 cur.0$1_0_old_1))
+      (let
+         ((needle$1_0_1 needle$1_0_old_1)
+          (nl$1_0_1 nl$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp2$1_0_1 (<= (abs cur.0$1_0_1) (abs add.ptr1$1_0_1))))
+         (let
+            ((HEAP$1_2 HEAP$1_1)
+             (haystack.addr.0$2_0_1 haystack.addr.0$2_0_old_1)
+             (i.0$2_0_1 i.0$2_0_old_1))
+            (let
+               ((needle$2_0_1 needle$2_0_old_1)
+                (nl$2_0_1 nl$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1)
+                (tobool$2_0_1 (distinct i.0$2_0_1 0)))
+               (let
+                  ((HEAP$2_2 HEAP$2_1))
+                  (let
+                     ((HEAP$1_3 HEAP$1_res_1)
+                      (cmp4$1_0_1 (= call3$1_0_1 0)))
+                     (let
+                        ((retval.0$1_0_1 cur.0$1_0_1))
+                        (let
+                           ((result$1_1 retval.0$1_0_1)
+                            (HEAP$1_res_2 HEAP$1_3)
+                            (HEAP$2_3 HEAP$2_res_1)
+                            (tobool2$2_0_1 (distinct call1$2_0_1 0)))
+                           (let
+                              ((retval.0$2_0_1 haystack.addr.0$2_0_1))
+                              (let
+                                 ((result$2_1 retval.0$2_0_1)
+                                  (HEAP$2_res_2 HEAP$2_3))
+                                 (=>
+                                    (and
+                                       (INV_MAIN_42 add.ptr1$1_0_old_1 cur.0$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack.addr.0$2_0_old_1 i.0$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                                       cmp2$1_0_1
+                                       tobool$2_0_1
+                                       (INV_REC_memcmp^memcmp cur.0$1_0_1 needle$1_0_1 nl$1_0_1 HEAP$1_2 haystack.addr.0$2_0_1 needle$2_0_1 nl$2_0_1 HEAP$2_2 call3$1_0_1 call1$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                       cmp4$1_0_1
+                                       (not tobool2$2_0_1)
+                                       (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                                    END_QUERY))))))))))))
+(rule
+   (let
+      ((add.ptr1$1_0_1 add.ptr1$1_0_old_1)
+       (cur.0$1_0_1 cur.0$1_0_old_1))
+      (let
+         ((needle$1_0_1 needle$1_0_old_1)
+          (nl$1_0_1 nl$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp2$1_0_1 (<= (abs cur.0$1_0_1) (abs add.ptr1$1_0_1))))
+         (let
+            ((HEAP$1_2 HEAP$1_1)
+             (haystack.addr.0$2_0_1 haystack.addr.0$2_0_old_1)
+             (i.0$2_0_1 i.0$2_0_old_1))
+            (let
+               ((needle$2_0_1 needle$2_0_old_1)
+                (nl$2_0_1 nl$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1)
+                (tobool$2_0_1 (distinct i.0$2_0_1 0)))
+               (let
+                  ((retval.0$2_0_1 0))
+                  (let
+                     ((result$2_1 retval.0$2_0_1)
+                      (HEAP$2_res_1 HEAP$2_1))
+                     (let
+                        ((HEAP$1_3 HEAP$1_res_1)
+                         (cmp4$1_0_1 (= call3$1_0_1 0)))
+                        (let
+                           ((retval.0$1_0_1 cur.0$1_0_1))
+                           (let
+                              ((result$1_1 retval.0$1_0_1)
+                               (HEAP$1_res_2 HEAP$1_3))
+                              (=>
+                                 (and
+                                    (INV_MAIN_42 add.ptr1$1_0_old_1 cur.0$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack.addr.0$2_0_old_1 i.0$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                                    cmp2$1_0_1
+                                    (not tobool$2_0_1)
+                                    (INV_REC_memcmp__1 cur.0$1_0_1 needle$1_0_1 nl$1_0_1 HEAP$1_2 call3$1_0_1 HEAP$1_res_1)
+                                    cmp4$1_0_1
+                                    (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_1)))
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((add.ptr1$1_0_1 add.ptr1$1_0_old_1)
+       (cur.0$1_0_1 cur.0$1_0_old_1))
+      (let
+         ((needle$1_0_1 needle$1_0_old_1)
+          (nl$1_0_1 nl$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp2$1_0_1 (<= (abs cur.0$1_0_1) (abs add.ptr1$1_0_1))))
+         (let
+            ((retval.0$1_0_1 0))
+            (let
+               ((result$1_1 retval.0$1_0_1)
+                (HEAP$1_res_1 HEAP$1_1)
+                (haystack.addr.0$2_0_1 haystack.addr.0$2_0_old_1)
+                (i.0$2_0_1 i.0$2_0_old_1))
+               (let
+                  ((needle$2_0_1 needle$2_0_old_1)
+                   (nl$2_0_1 nl$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1)
+                   (tobool$2_0_1 (distinct i.0$2_0_1 0)))
+                  (let
+                     ((HEAP$2_2 HEAP$2_1))
+                     (let
+                        ((HEAP$2_3 HEAP$2_res_1)
+                         (tobool2$2_0_1 (distinct call1$2_0_1 0)))
+                        (let
+                           ((retval.0$2_0_1 haystack.addr.0$2_0_1))
+                           (let
+                              ((result$2_1 retval.0$2_0_1)
+                               (HEAP$2_res_2 HEAP$2_3))
+                              (=>
+                                 (and
+                                    (INV_MAIN_42 add.ptr1$1_0_old_1 cur.0$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack.addr.0$2_0_old_1 i.0$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                                    (not cmp2$1_0_1)
+                                    tobool$2_0_1
+                                    (INV_REC_memcmp__2 haystack.addr.0$2_0_1 needle$2_0_1 nl$2_0_1 HEAP$2_2 call1$2_0_1 HEAP$2_res_1)
+                                    (not tobool2$2_0_1)
+                                    (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_3)))
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((add.ptr1$1_0_1 add.ptr1$1_0_old_1)
+       (cur.0$1_0_1 cur.0$1_0_old_1))
+      (let
+         ((needle$1_0_1 needle$1_0_old_1)
+          (nl$1_0_1 nl$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp2$1_0_1 (<= (abs cur.0$1_0_1) (abs add.ptr1$1_0_1))))
+         (let
+            ((retval.0$1_0_1 0))
+            (let
+               ((result$1_1 retval.0$1_0_1)
+                (HEAP$1_res_1 HEAP$1_1)
+                (haystack.addr.0$2_0_1 haystack.addr.0$2_0_old_1)
+                (i.0$2_0_1 i.0$2_0_old_1))
+               (let
+                  ((needle$2_0_1 needle$2_0_old_1)
+                   (nl$2_0_1 nl$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1)
+                   (tobool$2_0_1 (distinct i.0$2_0_1 0)))
+                  (let
+                     ((retval.0$2_0_1 0))
+                     (let
+                        ((result$2_1 retval.0$2_0_1)
+                         (HEAP$2_res_1 HEAP$2_1))
+                        (=>
+                           (and
+                              (INV_MAIN_42 add.ptr1$1_0_old_1 cur.0$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack.addr.0$2_0_old_1 i.0$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                              (not cmp2$1_0_1)
+                              (not tobool$2_0_1)
+                              (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                           END_QUERY)))))))))
+(rule
+   (let
+      ((add.ptr1$1_0_1 add.ptr1$1_0_old_1)
+       (cur.0$1_0_1 cur.0$1_0_old_1))
+      (let
+         ((needle$1_0_1 needle$1_0_old_1)
+          (nl$1_0_1 nl$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp2$1_0_1 (<= (abs cur.0$1_0_1) (abs add.ptr1$1_0_1))))
+         (let
+            ((HEAP$1_2 HEAP$1_1)
+             (haystack.addr.0$2_0_1 haystack.addr.0$2_0_old_1)
+             (i.0$2_0_1 i.0$2_0_old_1))
+            (let
+               ((needle$2_0_1 needle$2_0_old_1)
+                (nl$2_0_1 nl$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1)
+                (tobool$2_0_1 (distinct i.0$2_0_1 0)))
+               (let
+                  ((HEAP$2_2 HEAP$2_1))
+                  (let
+                     ((HEAP$1_3 HEAP$1_res_1)
+                      (cmp4$1_0_1 (= call3$1_0_1 0)))
+                     (let
+                        ((incdec.ptr$1_0_1 (+ cur.0$1_0_1 1)))
+                        (let
+                           ((cur.0$1_0_2 incdec.ptr$1_0_1)
+                            (HEAP$2_3 HEAP$2_res_1)
+                            (tobool2$2_0_1 (distinct call1$2_0_1 0)))
+                           (let
+                              ((incdec.ptr$2_0_1 (+ haystack.addr.0$2_0_1 1))
+                               (dec$2_0_1 (+ i.0$2_0_1 (- 1))))
+                              (let
+                                 ((i.0$2_0_2 dec$2_0_1)
+                                  (haystack.addr.0$2_0_2 incdec.ptr$2_0_1))
+                                 (=>
+                                    (and
+                                       (INV_MAIN_42 add.ptr1$1_0_old_1 cur.0$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack.addr.0$2_0_old_1 i.0$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                                       cmp2$1_0_1
+                                       tobool$2_0_1
+                                       (INV_REC_memcmp^memcmp cur.0$1_0_1 needle$1_0_1 nl$1_0_1 HEAP$1_2 haystack.addr.0$2_0_1 needle$2_0_1 nl$2_0_1 HEAP$2_2 call3$1_0_1 call1$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                       (not cmp4$1_0_1)
+                                       tobool2$2_0_1)
+                                    (INV_MAIN_42 add.ptr1$1_0_1 cur.0$1_0_2 needle$1_0_1 nl$1_0_1 HEAP$1_3 haystack.addr.0$2_0_2 i.0$2_0_2 needle$2_0_1 nl$2_0_1 HEAP$2_3)))))))))))))
+(rule
+   (let
+      ((add.ptr1$1_0_1 add.ptr1$1_0_old_1)
+       (cur.0$1_0_1 cur.0$1_0_old_1))
+      (let
+         ((needle$1_0_1 needle$1_0_old_1)
+          (nl$1_0_1 nl$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (cmp2$1_0_1 (<= (abs cur.0$1_0_1) (abs add.ptr1$1_0_1))))
+         (let
+            ((HEAP$1_2 HEAP$1_1))
+            (let
+               ((HEAP$1_3 HEAP$1_res_1)
+                (cmp4$1_0_1 (= call3$1_0_1 0)))
+               (let
+                  ((incdec.ptr$1_0_1 (+ cur.0$1_0_1 1)))
+                  (let
+                     ((cur.0$1_0_2 incdec.ptr$1_0_1))
+                     (=>
+                        (and
+                           (INV_MAIN_42 add.ptr1$1_0_old_1 cur.0$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack.addr.0$2_0_old_1 i.0$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                           cmp2$1_0_1
+                           (INV_REC_memcmp__1 cur.0$1_0_1 needle$1_0_1 nl$1_0_1 HEAP$1_2 call3$1_0_1 HEAP$1_res_1)
+                           (not cmp4$1_0_1)
+                           (let
+                              ((haystack.addr.0$2_0_1 haystack.addr.0$2_0_old_1)
+                               (i.0$2_0_1 i.0$2_0_old_1))
+                              (let
+                                 ((needle$2_0_1 needle$2_0_old_1)
+                                  (nl$2_0_1 nl$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (tobool$2_0_1 (distinct i.0$2_0_1 0)))
+                                 (=>
+                                    tobool$2_0_1
+                                    (let
+                                       ((HEAP$2_2 HEAP$2_1))
+                                       (=>
+                                          (INV_REC_memcmp__2 haystack.addr.0$2_0_1 needle$2_0_1 nl$2_0_1 HEAP$2_2 call1$2_0_1 HEAP$2_res_1)
+                                          (let
+                                             ((HEAP$2_3 HEAP$2_res_1)
+                                              (tobool2$2_0_1 (distinct call1$2_0_1 0)))
+                                             (=>
+                                                tobool2$2_0_1
+                                                (let
+                                                   ((incdec.ptr$2_0_1 (+ haystack.addr.0$2_0_1 1))
+                                                    (dec$2_0_1 (+ i.0$2_0_1 (- 1))))
+                                                   (let
+                                                      ((i.0$2_0_2 dec$2_0_1)
+                                                       (haystack.addr.0$2_0_2 incdec.ptr$2_0_1))
+                                                      false))))))))))
+                        (INV_MAIN_42 add.ptr1$1_0_1 cur.0$1_0_2 needle$1_0_1 nl$1_0_1 HEAP$1_3 haystack.addr.0$2_0_old_1 i.0$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)))))))))
+(rule
+   (let
+      ((haystack.addr.0$2_0_1 haystack.addr.0$2_0_old_1)
+       (i.0$2_0_1 i.0$2_0_old_1))
+      (let
+         ((needle$2_0_1 needle$2_0_old_1)
+          (nl$2_0_1 nl$2_0_old_1)
+          (HEAP$2_1 HEAP$2_old_1)
+          (tobool$2_0_1 (distinct i.0$2_0_1 0)))
+         (let
+            ((HEAP$2_2 HEAP$2_1))
+            (let
+               ((HEAP$2_3 HEAP$2_res_1)
+                (tobool2$2_0_1 (distinct call1$2_0_1 0)))
+               (let
+                  ((incdec.ptr$2_0_1 (+ haystack.addr.0$2_0_1 1))
+                   (dec$2_0_1 (+ i.0$2_0_1 (- 1))))
+                  (let
+                     ((i.0$2_0_2 dec$2_0_1)
+                      (haystack.addr.0$2_0_2 incdec.ptr$2_0_1))
+                     (=>
+                        (and
+                           (INV_MAIN_42 add.ptr1$1_0_old_1 cur.0$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack.addr.0$2_0_old_1 i.0$2_0_old_1 needle$2_0_old_1 nl$2_0_old_1 HEAP$2_old_1)
+                           tobool$2_0_1
+                           (INV_REC_memcmp__2 haystack.addr.0$2_0_1 needle$2_0_1 nl$2_0_1 HEAP$2_2 call1$2_0_1 HEAP$2_res_1)
+                           tobool2$2_0_1
+                           (let
+                              ((add.ptr1$1_0_1 add.ptr1$1_0_old_1)
+                               (cur.0$1_0_1 cur.0$1_0_old_1))
+                              (let
+                                 ((needle$1_0_1 needle$1_0_old_1)
+                                  (nl$1_0_1 nl$1_0_old_1)
+                                  (HEAP$1_1 HEAP$1_old_1)
+                                  (cmp2$1_0_1 (<= (abs cur.0$1_0_1) (abs add.ptr1$1_0_1))))
+                                 (=>
+                                    cmp2$1_0_1
+                                    (let
+                                       ((HEAP$1_2 HEAP$1_1))
+                                       (=>
+                                          (INV_REC_memcmp__1 cur.0$1_0_1 needle$1_0_1 nl$1_0_1 HEAP$1_2 call3$1_0_1 HEAP$1_res_1)
+                                          (let
+                                             ((HEAP$1_3 HEAP$1_res_1)
+                                              (cmp4$1_0_1 (= call3$1_0_1 0)))
+                                             (=>
+                                                (not cmp4$1_0_1)
+                                                (let
+                                                   ((incdec.ptr$1_0_1 (+ cur.0$1_0_1 1)))
+                                                   (let
+                                                      ((cur.0$1_0_2 incdec.ptr$1_0_1))
+                                                      false))))))))))
+                        (INV_MAIN_42 add.ptr1$1_0_old_1 cur.0$1_0_old_1 needle$1_0_old_1 nl$1_0_old_1 HEAP$1_old_1 haystack.addr.0$2_0_2 i.0$2_0_2 needle$2_0_1 nl$2_0_1 HEAP$2_3)))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

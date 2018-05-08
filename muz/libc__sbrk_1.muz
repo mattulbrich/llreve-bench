@@ -1,0 +1,1244 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   HEAP$1_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$1_res_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_res_1
+   (Array Int Int))
+(declare-var
+   call$1_0_1
+   Int)
+(declare-var
+   call$2_0_1
+   Int)
+(declare-var
+   call11$1_0_1
+   Int)
+(declare-var
+   call13$1_0_1
+   Int)
+(declare-var
+   call8$2_0_1
+   Int)
+(declare-var
+   increment$1_0_old_1
+   Int)
+(declare-var
+   increment$2_0_old_1
+   Int)
+(define-fun
+   __curbrk$1
+   ()
+   Int
+   (- 9))
+(define-fun
+   __curbrk$2
+   ()
+   Int
+   (- 9))
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   INV_REC___libc_brk^__libc_brk
+   ((_$1_0 Int)
+    (HEAP$1 (Array Int Int))
+    (_$2_0 Int)
+    (HEAP$2 (Array Int Int))
+    (result$1 Int)
+    (result$2 Int)
+    (HEAP$1_res (Array Int Int))
+    (HEAP$2_res (Array Int Int)))
+   Bool
+   (=>
+      (and
+         (= _$1_0 _$2_0)
+         (= HEAP$1 HEAP$2))
+      (and
+         (= result$1 result$2)
+         (= HEAP$1_res HEAP$2_res))))
+(define-fun
+   INV_REC___libc_brk__1
+   ((_$1_0 Int)
+    (HEAP (Array Int Int))
+    (result$1 Int)
+    (HEAP$1_res (Array Int Int)))
+   Bool
+   true)
+(define-fun
+   INV_REC___set_errno__1
+   ((_$1_0 Int)
+    (HEAP (Array Int Int))
+    (result$1 Int)
+    (HEAP$1_res (Array Int Int)))
+   Bool
+   true)
+(define-fun
+   INV_REC___libc_brk__2
+   ((_$2_0 Int)
+    (HEAP (Array Int Int))
+    (result$2 Int)
+    (HEAP$2_res (Array Int Int)))
+   Bool
+   true)
+(define-fun
+   IN_INV
+   ((increment$1_0 Int)
+    (HEAP$1 (Array Int Int))
+    (increment$2_0 Int)
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= increment$1_0 increment$2_0)
+      (= HEAP$1 HEAP$2)))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int)
+    (HEAP$1 (Array Int Int))
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= result$1 result$2)
+      (= HEAP$1 HEAP$2)))
+; :annot (INV_MAIN_0 increment$1_0 HEAP$1 increment$2_0 HEAP$2)
+(declare-rel
+   INV_MAIN_0
+   (Int
+    (Array Int Int)
+    Int
+    (Array Int Int)))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((retval.0$1_0_1 (- 1)))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_2 HEAP$1_3)
+                                  (HEAP$2_3 HEAP$2_res_1)
+                                  (cmp1$2_0_1 (< call$2_0_1 0)))
+                                 (let
+                                    ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                    (=>
+                                       (and
+                                          (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                          cmp$1_0_1
+                                          cmp$2_0_1
+                                          (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                          cmp1$1_0_1
+                                          (not cmp1$2_0_1)
+                                          (not cmp4$2_0_1))
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (=>
+                              (and
+                                 (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                 cmp$1_0_1
+                                 (not cmp$2_0_1)
+                                 (not cmp4$2_0_1)
+                                 (INV_REC___libc_brk__1 0 HEAP$1_2 call$1_0_1 HEAP$1_res_1)
+                                 cmp1$1_0_1)
+                              END_QUERY))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                              (let
+                                 ((_$1_1_1 (select HEAP$1_3 __curbrk$1)))
+                                 (let
+                                    ((retval.0$1_0_1 _$1_1_1))
+                                    (let
+                                       ((result$1_1 retval.0$1_0_1)
+                                        (HEAP$1_res_2 HEAP$1_3)
+                                        (HEAP$2_3 HEAP$2_res_1)
+                                        (cmp1$2_0_1 (< call$2_0_1 0)))
+                                       (let
+                                          ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                          (=>
+                                             (and
+                                                (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                cmp$1_0_1
+                                                cmp$2_0_1
+                                                (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                                (not cmp1$1_0_1)
+                                                cmp4$1_0_1
+                                                (not cmp1$2_0_1)
+                                                (not cmp4$2_0_1))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                              (=>
+                                 (and
+                                    (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                    cmp$1_0_1
+                                    (not cmp$2_0_1)
+                                    (not cmp4$2_0_1)
+                                    (INV_REC___libc_brk__1 0 HEAP$1_2 call$1_0_1 HEAP$1_res_1)
+                                    (not cmp1$1_0_1)
+                                    cmp4$1_0_1)
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 __curbrk$1)))
+                  (let
+                     ((retval.0$1_0_1 _$1_1_1))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_1)
+                         (increment$2_0_1 increment$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                           (let
+                              ((cmp$2_0_1 (= _$2_0_1 0)))
+                              (let
+                                 ((HEAP$2_2 HEAP$2_1))
+                                 (let
+                                    ((HEAP$2_3 HEAP$2_res_1)
+                                     (cmp1$2_0_1 (< call$2_0_1 0)))
+                                    (let
+                                       ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                       (=>
+                                          (and
+                                             (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                             (not cmp$1_0_1)
+                                             cmp4$1_0_1
+                                             cmp$2_0_1
+                                             (INV_REC___libc_brk__2 0 HEAP$2_2 call$2_0_1 HEAP$2_res_1)
+                                             (not cmp1$2_0_1)
+                                             (not cmp4$2_0_1))
+                                          END_QUERY))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 __curbrk$1)))
+                  (let
+                     ((retval.0$1_0_1 _$1_1_1))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_1)
+                         (increment$2_0_1 increment$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                           (let
+                              ((cmp$2_0_1 (= _$2_0_1 0)))
+                              (let
+                                 ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                 (=>
+                                    (and
+                                       (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                       (not cmp$1_0_1)
+                                       cmp4$1_0_1
+                                       (not cmp$2_0_1)
+                                       (not cmp4$2_0_1))
+                                    END_QUERY))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                              (let
+                                 ((HEAP$2_3 HEAP$2_res_1)
+                                  (cmp1$2_0_1 (< call$2_0_1 0)))
+                                 (=>
+                                    (and
+                                       (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                       cmp$1_0_1
+                                       cmp$2_0_1
+                                       (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                       (not cmp1$1_0_1)
+                                       (not cmp4$1_0_1)
+                                       cmp1$2_0_1)
+                                    END_QUERY))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                              (let
+                                 ((HEAP$2_3 HEAP$2_res_1)
+                                  (cmp1$2_0_1 (< call$2_0_1 0)))
+                                 (let
+                                    ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                    (=>
+                                       (and
+                                          (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                          cmp$1_0_1
+                                          cmp$2_0_1
+                                          (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                          (not cmp1$1_0_1)
+                                          (not cmp4$1_0_1)
+                                          (not cmp1$2_0_1)
+                                          cmp4$2_0_1)
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                        (let
+                           ((_$2_1_1 (select HEAP$2_1 __curbrk$2)))
+                           (let
+                              ((retval.0$2_0_1 _$2_1_1))
+                              (let
+                                 ((result$2_1 retval.0$2_0_1)
+                                  (HEAP$2_res_1 HEAP$2_1))
+                                 (let
+                                    ((HEAP$1_3 HEAP$1_res_1)
+                                     (cmp1$1_0_1 (< call$1_0_1 0)))
+                                    (let
+                                       ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                                       (=>
+                                          (and
+                                             (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                             cmp$1_0_1
+                                             (not cmp$2_0_1)
+                                             cmp4$2_0_1
+                                             (INV_REC___libc_brk__1 0 HEAP$1_2 call$1_0_1 HEAP$1_res_1)
+                                             (not cmp1$1_0_1)
+                                             (not cmp4$1_0_1))
+                                          END_QUERY))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((increment$2_0_1 increment$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1))
+                  (let
+                     ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                     (let
+                        ((cmp$2_0_1 (= _$2_0_1 0)))
+                        (let
+                           ((HEAP$2_2 HEAP$2_1))
+                           (let
+                              ((HEAP$2_3 HEAP$2_res_1)
+                               (cmp1$2_0_1 (< call$2_0_1 0)))
+                              (=>
+                                 (and
+                                    (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                    (not cmp$1_0_1)
+                                    (not cmp4$1_0_1)
+                                    cmp$2_0_1
+                                    (INV_REC___libc_brk__2 0 HEAP$2_2 call$2_0_1 HEAP$2_res_1)
+                                    cmp1$2_0_1)
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((increment$2_0_1 increment$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1))
+                  (let
+                     ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                     (let
+                        ((cmp$2_0_1 (= _$2_0_1 0)))
+                        (let
+                           ((HEAP$2_2 HEAP$2_1))
+                           (let
+                              ((HEAP$2_3 HEAP$2_res_1)
+                               (cmp1$2_0_1 (< call$2_0_1 0)))
+                              (let
+                                 ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                 (=>
+                                    (and
+                                       (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                       (not cmp$1_0_1)
+                                       (not cmp4$1_0_1)
+                                       cmp$2_0_1
+                                       (INV_REC___libc_brk__2 0 HEAP$2_2 call$2_0_1 HEAP$2_res_1)
+                                       (not cmp1$2_0_1)
+                                       cmp4$2_0_1)
+                                    END_QUERY))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((increment$2_0_1 increment$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1))
+                  (let
+                     ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                     (let
+                        ((cmp$2_0_1 (= _$2_0_1 0)))
+                        (let
+                           ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                           (=>
+                              (and
+                                 (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                 (not cmp$1_0_1)
+                                 (not cmp4$1_0_1)
+                                 (not cmp$2_0_1)
+                                 cmp4$2_0_1)
+                              END_QUERY))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((retval.0$1_0_1 (- 1)))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_2 HEAP$1_3)
+                                  (HEAP$2_3 HEAP$2_res_1)
+                                  (cmp1$2_0_1 (< call$2_0_1 0)))
+                                 (let
+                                    ((retval.0$2_0_1 (- 1)))
+                                    (let
+                                       ((result$2_1 retval.0$2_0_1)
+                                        (HEAP$2_res_2 HEAP$2_3))
+                                       (=>
+                                          (and
+                                             (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                             cmp$1_0_1
+                                             cmp$2_0_1
+                                             (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                             cmp1$1_0_1
+                                             cmp1$2_0_1
+                                             (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                                          END_QUERY))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((retval.0$1_0_1 (- 1)))
+                              (let
+                                 ((result$1_1 retval.0$1_0_1)
+                                  (HEAP$1_res_2 HEAP$1_3)
+                                  (HEAP$2_3 HEAP$2_res_1)
+                                  (cmp1$2_0_1 (< call$2_0_1 0)))
+                                 (let
+                                    ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                    (let
+                                       ((_$2_1_1 (select HEAP$2_3 __curbrk$2)))
+                                       (let
+                                          ((retval.0$2_0_1 _$2_1_1))
+                                          (let
+                                             ((result$2_1 retval.0$2_0_1)
+                                              (HEAP$2_res_2 HEAP$2_3))
+                                             (=>
+                                                (and
+                                                   (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                   cmp$1_0_1
+                                                   cmp$2_0_1
+                                                   (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                                   cmp1$1_0_1
+                                                   (not cmp1$2_0_1)
+                                                   cmp4$2_0_1
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                        (let
+                           ((_$2_1_1 (select HEAP$2_1 __curbrk$2)))
+                           (let
+                              ((retval.0$2_0_1 _$2_1_1))
+                              (let
+                                 ((result$2_1 retval.0$2_0_1)
+                                  (HEAP$2_res_1 HEAP$2_1))
+                                 (let
+                                    ((HEAP$1_3 HEAP$1_res_1)
+                                     (cmp1$1_0_1 (< call$1_0_1 0)))
+                                    (let
+                                       ((retval.0$1_0_1 (- 1)))
+                                       (let
+                                          ((result$1_1 retval.0$1_0_1)
+                                           (HEAP$1_res_2 HEAP$1_3))
+                                          (=>
+                                             (and
+                                                (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                cmp$1_0_1
+                                                (not cmp$2_0_1)
+                                                cmp4$2_0_1
+                                                (INV_REC___libc_brk__1 0 HEAP$1_2 call$1_0_1 HEAP$1_res_1)
+                                                cmp1$1_0_1
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_1)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                              (let
+                                 ((_$1_1_1 (select HEAP$1_3 __curbrk$1)))
+                                 (let
+                                    ((retval.0$1_0_1 _$1_1_1))
+                                    (let
+                                       ((result$1_1 retval.0$1_0_1)
+                                        (HEAP$1_res_2 HEAP$1_3)
+                                        (HEAP$2_3 HEAP$2_res_1)
+                                        (cmp1$2_0_1 (< call$2_0_1 0)))
+                                       (let
+                                          ((retval.0$2_0_1 (- 1)))
+                                          (let
+                                             ((result$2_1 retval.0$2_0_1)
+                                              (HEAP$2_res_2 HEAP$2_3))
+                                             (=>
+                                                (and
+                                                   (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                   cmp$1_0_1
+                                                   cmp$2_0_1
+                                                   (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                                   (not cmp1$1_0_1)
+                                                   cmp4$1_0_1
+                                                   cmp1$2_0_1
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                              (let
+                                 ((_$1_1_1 (select HEAP$1_3 __curbrk$1)))
+                                 (let
+                                    ((retval.0$1_0_1 _$1_1_1))
+                                    (let
+                                       ((result$1_1 retval.0$1_0_1)
+                                        (HEAP$1_res_2 HEAP$1_3)
+                                        (HEAP$2_3 HEAP$2_res_1)
+                                        (cmp1$2_0_1 (< call$2_0_1 0)))
+                                       (let
+                                          ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                          (let
+                                             ((_$2_1_1 (select HEAP$2_3 __curbrk$2)))
+                                             (let
+                                                ((retval.0$2_0_1 _$2_1_1))
+                                                (let
+                                                   ((result$2_1 retval.0$2_0_1)
+                                                    (HEAP$2_res_2 HEAP$2_3))
+                                                   (=>
+                                                      (and
+                                                         (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                         cmp$1_0_1
+                                                         cmp$2_0_1
+                                                         (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                                         (not cmp1$1_0_1)
+                                                         cmp4$1_0_1
+                                                         (not cmp1$2_0_1)
+                                                         cmp4$2_0_1
+                                                         (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                                                      END_QUERY))))))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                        (let
+                           ((_$2_1_1 (select HEAP$2_1 __curbrk$2)))
+                           (let
+                              ((retval.0$2_0_1 _$2_1_1))
+                              (let
+                                 ((result$2_1 retval.0$2_0_1)
+                                  (HEAP$2_res_1 HEAP$2_1))
+                                 (let
+                                    ((HEAP$1_3 HEAP$1_res_1)
+                                     (cmp1$1_0_1 (< call$1_0_1 0)))
+                                    (let
+                                       ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                                       (let
+                                          ((_$1_1_1 (select HEAP$1_3 __curbrk$1)))
+                                          (let
+                                             ((retval.0$1_0_1 _$1_1_1))
+                                             (let
+                                                ((result$1_1 retval.0$1_0_1)
+                                                 (HEAP$1_res_2 HEAP$1_3))
+                                                (=>
+                                                   (and
+                                                      (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                      cmp$1_0_1
+                                                      (not cmp$2_0_1)
+                                                      cmp4$2_0_1
+                                                      (INV_REC___libc_brk__1 0 HEAP$1_2 call$1_0_1 HEAP$1_res_1)
+                                                      (not cmp1$1_0_1)
+                                                      cmp4$1_0_1
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_1)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 __curbrk$1)))
+                  (let
+                     ((retval.0$1_0_1 _$1_1_1))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_1)
+                         (increment$2_0_1 increment$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                           (let
+                              ((cmp$2_0_1 (= _$2_0_1 0)))
+                              (let
+                                 ((HEAP$2_2 HEAP$2_1))
+                                 (let
+                                    ((HEAP$2_3 HEAP$2_res_1)
+                                     (cmp1$2_0_1 (< call$2_0_1 0)))
+                                    (let
+                                       ((retval.0$2_0_1 (- 1)))
+                                       (let
+                                          ((result$2_1 retval.0$2_0_1)
+                                           (HEAP$2_res_2 HEAP$2_3))
+                                          (=>
+                                             (and
+                                                (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                (not cmp$1_0_1)
+                                                cmp4$1_0_1
+                                                cmp$2_0_1
+                                                (INV_REC___libc_brk__2 0 HEAP$2_2 call$2_0_1 HEAP$2_res_1)
+                                                cmp1$2_0_1
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_3)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 __curbrk$1)))
+                  (let
+                     ((retval.0$1_0_1 _$1_1_1))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_1)
+                         (increment$2_0_1 increment$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                           (let
+                              ((cmp$2_0_1 (= _$2_0_1 0)))
+                              (let
+                                 ((HEAP$2_2 HEAP$2_1))
+                                 (let
+                                    ((HEAP$2_3 HEAP$2_res_1)
+                                     (cmp1$2_0_1 (< call$2_0_1 0)))
+                                    (let
+                                       ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                       (let
+                                          ((_$2_1_1 (select HEAP$2_3 __curbrk$2)))
+                                          (let
+                                             ((retval.0$2_0_1 _$2_1_1))
+                                             (let
+                                                ((result$2_1 retval.0$2_0_1)
+                                                 (HEAP$2_res_2 HEAP$2_3))
+                                                (=>
+                                                   (and
+                                                      (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                      (not cmp$1_0_1)
+                                                      cmp4$1_0_1
+                                                      cmp$2_0_1
+                                                      (INV_REC___libc_brk__2 0 HEAP$2_2 call$2_0_1 HEAP$2_res_1)
+                                                      (not cmp1$2_0_1)
+                                                      cmp4$2_0_1
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_3)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((_$1_1_1 (select HEAP$1_1 __curbrk$1)))
+                  (let
+                     ((retval.0$1_0_1 _$1_1_1))
+                     (let
+                        ((result$1_1 retval.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_1)
+                         (increment$2_0_1 increment$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                           (let
+                              ((cmp$2_0_1 (= _$2_0_1 0)))
+                              (let
+                                 ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                 (let
+                                    ((_$2_1_1 (select HEAP$2_1 __curbrk$2)))
+                                    (let
+                                       ((retval.0$2_0_1 _$2_1_1))
+                                       (let
+                                          ((result$2_1 retval.0$2_0_1)
+                                           (HEAP$2_res_1 HEAP$2_1))
+                                          (=>
+                                             (and
+                                                (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                (not cmp$1_0_1)
+                                                cmp4$1_0_1
+                                                (not cmp$2_0_1)
+                                                cmp4$2_0_1
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((HEAP$2_2 HEAP$2_1))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                              (let
+                                 ((HEAP$2_3 HEAP$2_res_1)
+                                  (cmp1$2_0_1 (< call$2_0_1 0)))
+                                 (let
+                                    ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                    (=>
+                                       (and
+                                          (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                          cmp$1_0_1
+                                          cmp$2_0_1
+                                          (INV_REC___libc_brk^__libc_brk 0 HEAP$1_2 0 HEAP$2_2 call$1_0_1 call$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                          (not cmp1$1_0_1)
+                                          (not cmp4$1_0_1)
+                                          (not cmp1$2_0_1)
+                                          (not cmp4$2_0_1))
+                                       (INV_MAIN_0 increment$1_0_1 HEAP$1_3 increment$2_0_1 HEAP$2_3))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((HEAP$1_2 HEAP$1_1)
+                (increment$2_0_1 increment$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1))
+               (let
+                  ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                  (let
+                     ((cmp$2_0_1 (= _$2_0_1 0)))
+                     (let
+                        ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                        (let
+                           ((HEAP$1_3 HEAP$1_res_1)
+                            (cmp1$1_0_1 (< call$1_0_1 0)))
+                           (let
+                              ((cmp4$1_0_1 (= increment$1_0_1 0)))
+                              (=>
+                                 (and
+                                    (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                    cmp$1_0_1
+                                    (not cmp$2_0_1)
+                                    (not cmp4$2_0_1)
+                                    (INV_REC___libc_brk__1 0 HEAP$1_2 call$1_0_1 HEAP$1_res_1)
+                                    (not cmp1$1_0_1)
+                                    (not cmp4$1_0_1))
+                                 (INV_MAIN_0 increment$1_0_1 HEAP$1_3 increment$2_0_1 HEAP$2_1))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((increment$2_0_1 increment$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1))
+                  (let
+                     ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                     (let
+                        ((cmp$2_0_1 (= _$2_0_1 0)))
+                        (let
+                           ((HEAP$2_2 HEAP$2_1))
+                           (let
+                              ((HEAP$2_3 HEAP$2_res_1)
+                               (cmp1$2_0_1 (< call$2_0_1 0)))
+                              (let
+                                 ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                                 (=>
+                                    (and
+                                       (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                       (not cmp$1_0_1)
+                                       (not cmp4$1_0_1)
+                                       cmp$2_0_1
+                                       (INV_REC___libc_brk__2 0 HEAP$2_2 call$2_0_1 HEAP$2_res_1)
+                                       (not cmp1$2_0_1)
+                                       (not cmp4$2_0_1))
+                                    (INV_MAIN_0 increment$1_0_1 HEAP$1_1 increment$2_0_1 HEAP$2_3)))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 __curbrk$1)))
+         (let
+            ((cmp$1_0_1 (= _$1_0_1 0)))
+            (let
+               ((cmp4$1_0_1 (= increment$1_0_1 0)))
+               (let
+                  ((increment$2_0_1 increment$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1))
+                  (let
+                     ((_$2_0_1 (select HEAP$2_1 __curbrk$2)))
+                     (let
+                        ((cmp$2_0_1 (= _$2_0_1 0)))
+                        (let
+                           ((cmp4$2_0_1 (= increment$2_0_1 0)))
+                           (=>
+                              (and
+                                 (IN_INV increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                 (not cmp$1_0_1)
+                                 (not cmp4$1_0_1)
+                                 (not cmp$2_0_1)
+                                 (not cmp4$2_0_1))
+                              (INV_MAIN_0 increment$1_0_1 HEAP$1_1 increment$2_0_1 HEAP$2_1)))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 __curbrk$1))
+          (cmp8$1_0_1 (> increment$1_0_1 0)))
+         (let
+            ((_$1_3_1 _$1_2_1))
+            (let
+               ((add$1_0_1 (+ _$1_3_1 increment$1_0_1))
+                (_$1_4_1 _$1_2_1))
+               (let
+                  ((cmp9$1_0_1 (< add$1_0_1 _$1_4_1)))
+                  (let
+                     ((HEAP$1_2 HEAP$1_1)
+                      (increment$2_0_1 increment$2_0_old_1)
+                      (HEAP$2_1 HEAP$2_old_1))
+                     (let
+                        ((_$2_2_1 (select HEAP$2_1 __curbrk$2)))
+                        (let
+                           ((add.ptr$2_0_1 (+ _$2_2_1 increment$2_0_1))
+                            (HEAP$2_2 HEAP$2_1))
+                           (let
+                              ((HEAP$2_3 HEAP$2_res_1)
+                               (cmp9$2_0_1 (< call8$2_0_1 0)))
+                              (let
+                                 ((.$2_0_1 (ite cmp9$2_0_1 (- 1) _$2_2_1)))
+                                 (let
+                                    ((retval.0$2_0_1 .$2_0_1))
+                                    (let
+                                       ((result$2_1 retval.0$2_0_1)
+                                        (HEAP$2_res_2 HEAP$2_3))
+                                       (let
+                                          ((HEAP$1_3 HEAP$1_res_1)
+                                           (retval.0$1_0_1 (- 1)))
+                                          (let
+                                             ((result$1_1 retval.0$1_0_1)
+                                              (HEAP$1_res_2 HEAP$1_3))
+                                             (=>
+                                                (and
+                                                   (INV_MAIN_0 increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                   cmp8$1_0_1
+                                                   cmp9$1_0_1
+                                                   (INV_REC___libc_brk__2 add.ptr$2_0_1 HEAP$2_2 call8$2_0_1 HEAP$2_res_1)
+                                                   (INV_REC___set_errno__1 42 HEAP$1_2 call11$1_0_1 HEAP$1_res_1)
+                                                   (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 __curbrk$1))
+          (cmp8$1_0_1 (> increment$1_0_1 0)))
+         (let
+            ((_$1_3_1 _$1_2_1))
+            (let
+               ((add$1_0_1 (+ _$1_3_1 increment$1_0_1))
+                (_$1_4_1 _$1_2_1))
+               (let
+                  ((cmp9$1_0_1 (< add$1_0_1 _$1_4_1)))
+                  (let
+                     ((add.ptr$1_0_1 (+ _$1_2_1 increment$1_0_1))
+                      (HEAP$1_2 HEAP$1_1)
+                      (increment$2_0_1 increment$2_0_old_1)
+                      (HEAP$2_1 HEAP$2_old_1))
+                     (let
+                        ((_$2_2_1 (select HEAP$2_1 __curbrk$2)))
+                        (let
+                           ((add.ptr$2_0_1 (+ _$2_2_1 increment$2_0_1))
+                            (HEAP$2_2 HEAP$2_1))
+                           (let
+                              ((HEAP$1_3 HEAP$1_res_1)
+                               (cmp14$1_0_1 (< call13$1_0_1 0)))
+                              (let
+                                 ((.$1_0_1 (ite cmp14$1_0_1 (- 1) _$1_2_1)))
+                                 (let
+                                    ((retval.0$1_0_1 .$1_0_1))
+                                    (let
+                                       ((result$1_1 retval.0$1_0_1)
+                                        (HEAP$1_res_2 HEAP$1_3)
+                                        (HEAP$2_3 HEAP$2_res_1)
+                                        (cmp9$2_0_1 (< call8$2_0_1 0)))
+                                       (let
+                                          ((.$2_0_1 (ite cmp9$2_0_1 (- 1) _$2_2_1)))
+                                          (let
+                                             ((retval.0$2_0_1 .$2_0_1))
+                                             (let
+                                                ((result$2_1 retval.0$2_0_1)
+                                                 (HEAP$2_res_2 HEAP$2_3))
+                                                (=>
+                                                   (and
+                                                      (INV_MAIN_0 increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                                      cmp8$1_0_1
+                                                      (not cmp9$1_0_1)
+                                                      (INV_REC___libc_brk^__libc_brk add.ptr$1_0_1 HEAP$1_2 add.ptr$2_0_1 HEAP$2_2 call13$1_0_1 call8$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                                      (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                                                   END_QUERY)))))))))))))))))
+(rule
+   (let
+      ((increment$1_0_1 increment$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 __curbrk$1))
+          (cmp8$1_0_1 (> increment$1_0_1 0)))
+         (let
+            ((add.ptr$1_0_1 (+ _$1_2_1 increment$1_0_1))
+             (HEAP$1_2 HEAP$1_1)
+             (increment$2_0_1 increment$2_0_old_1)
+             (HEAP$2_1 HEAP$2_old_1))
+            (let
+               ((_$2_2_1 (select HEAP$2_1 __curbrk$2)))
+               (let
+                  ((add.ptr$2_0_1 (+ _$2_2_1 increment$2_0_1))
+                   (HEAP$2_2 HEAP$2_1))
+                  (let
+                     ((HEAP$1_3 HEAP$1_res_1)
+                      (cmp14$1_0_1 (< call13$1_0_1 0)))
+                     (let
+                        ((.$1_0_1 (ite cmp14$1_0_1 (- 1) _$1_2_1)))
+                        (let
+                           ((retval.0$1_0_1 .$1_0_1))
+                           (let
+                              ((result$1_1 retval.0$1_0_1)
+                               (HEAP$1_res_2 HEAP$1_3)
+                               (HEAP$2_3 HEAP$2_res_1)
+                               (cmp9$2_0_1 (< call8$2_0_1 0)))
+                              (let
+                                 ((.$2_0_1 (ite cmp9$2_0_1 (- 1) _$2_2_1)))
+                                 (let
+                                    ((retval.0$2_0_1 .$2_0_1))
+                                    (let
+                                       ((result$2_1 retval.0$2_0_1)
+                                        (HEAP$2_res_2 HEAP$2_3))
+                                       (=>
+                                          (and
+                                             (INV_MAIN_0 increment$1_0_old_1 HEAP$1_old_1 increment$2_0_old_1 HEAP$2_old_1)
+                                             (not cmp8$1_0_1)
+                                             (INV_REC___libc_brk^__libc_brk add.ptr$1_0_1 HEAP$1_2 add.ptr$2_0_1 HEAP$2_2 call13$1_0_1 call8$2_0_1 HEAP$1_res_1 HEAP$2_res_1)
+                                             (not (OUT_INV result$1_1 result$2_1 HEAP$1_3 HEAP$2_3)))
+                                          END_QUERY))))))))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)

@@ -1,0 +1,1298 @@
+;; Produced by llreve (commit dc2abeaa50d9197d51fa4223b58154246b164df0)
+;; See https://formal.iti.kit.edu/reve and https://github.com/mattulbrich/llreve/
+;; (c) 2018 KIT
+
+(set-option
+   :int-real-coercions
+   false)
+(declare-var
+   HEAP$1_old_1
+   (Array Int Int))
+(declare-var
+   HEAP$2_old_1
+   (Array Int Int))
+(declare-var
+   _$2_1_old_1
+   Int)
+(declare-var
+   conv.i$1_0_old_1
+   Int)
+(declare-var
+   count.0$1_0_old_1
+   Int)
+(declare-var
+   count.0$2_0_old_1
+   Int)
+(declare-var
+   i_0_1
+   Int)
+(declare-var
+   incdec.ptr$1_0_old_1
+   Int)
+(declare-var
+   incdec.ptr$2_0_old_1
+   Int)
+(declare-var
+   reject$1_0_old_1
+   Int)
+(declare-var
+   reject$2_0_old_1
+   Int)
+(declare-var
+   s$1_0_old_1
+   Int)
+(declare-var
+   s$2_0_old_1
+   Int)
+(declare-var
+   s.addr.0$1_0_old_1
+   Int)
+(declare-var
+   s.addr.0$2_0_old_1
+   Int)
+(declare-var
+   t.0$2_0_old_1
+   Int)
+(declare-var
+   t.addr.i.0$1_0_old_1
+   Int)
+(declare-rel
+   END_QUERY
+   ())
+(define-fun
+   IN_INV
+   ((s$1_0 Int)
+    (reject$1_0 Int)
+    (HEAP$1 (Array Int Int))
+    (s$2_0 Int)
+    (reject$2_0 Int)
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= s$1_0 s$2_0)
+      (= reject$1_0 reject$2_0)
+      (> reject$1_0 0)
+      (= (select HEAP$1 i_0_1) (select HEAP$2 i_0_1))))
+(define-fun
+   OUT_INV
+   ((result$1 Int)
+    (result$2 Int)
+    (HEAP$1 (Array Int Int))
+    (HEAP$2 (Array Int Int)))
+   Bool
+   (and
+      (= result$1 result$2)
+      (= HEAP$1 HEAP$2)))
+; :annot (INV_MAIN_0 conv.i$1_0 count.0$1_0 incdec.ptr$1_0 reject$1_0 t.addr.i.0$1_0 HEAP$1 _$2_1 count.0$2_0 incdec.ptr$2_0 reject$2_0 t.0$2_0 HEAP$2)
+(declare-rel
+   INV_MAIN_0
+   (Int
+    Int
+    Int
+    Int
+    Int
+    (Array Int Int)
+    Int
+    Int
+    Int
+    Int
+    Int
+    (Array Int Int)))
+; :annot (INV_MAIN_1 count.0$1_0 reject$1_0 s.addr.0$1_0 HEAP$1 count.0$2_0 reject$2_0 s.addr.0$2_0 HEAP$2)
+(declare-rel
+   INV_MAIN_1
+   (Int
+    Int
+    Int
+    (Array Int Int)
+    Int
+    Int
+    Int
+    (Array Int Int)))
+(rule
+   (let
+      ((s$1_0_1 s$1_0_old_1))
+      (let
+         ((reject$1_0_1 reject$1_0_old_1)
+          (HEAP$1_1 HEAP$1_old_1)
+          (s.addr.0$1_0_1 s$1_0_1)
+          (count.0$1_0_1 0)
+          (s$2_0_1 s$2_0_old_1))
+         (let
+            ((reject$2_0_1 reject$2_0_old_1)
+             (HEAP$2_1 HEAP$2_old_1)
+             (count.0$2_0_1 0)
+             (s.addr.0$2_0_1 s$2_0_1))
+            (=>
+               (IN_INV s$1_0_old_1 reject$1_0_old_1 HEAP$1_old_1 s$2_0_old_1 reject$2_0_old_1 HEAP$2_old_1)
+               (INV_MAIN_1 count.0$1_0_1 reject$1_0_1 s.addr.0$1_0_1 HEAP$1_1 count.0$2_0_1 reject$2_0_1 s.addr.0$2_0_1 HEAP$2_1))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+                  (let
+                     ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                     (let
+                        ((result$1_1 count.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_1)
+                         (_$2_1_1 _$2_1_old_1)
+                         (count.0$2_0_1 count.0$2_0_old_1)
+                         (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                         (reject$2_0_1 reject$2_0_old_1)
+                         (t.0$2_0_1 t.0$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (tobool2$2_0_1 (distinct 1 0)))
+                        (let
+                           ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                           (let
+                              ((conv3$2_0_1 _$2_2_1)
+                               (conv4$2_0_1 _$2_1_1))
+                              (let
+                                 ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                 (let
+                                    ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                                    (let
+                                       ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                                       (=>
+                                          (and
+                                             (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                             tobool.i$1_0_1
+                                             cmp.i$1_0_1
+                                             (not cmp$1_0_1)
+                                             tobool2$2_0_1
+                                             (not cmp$2_0_1)
+                                             (not tobool6$2_0_1))
+                                          END_QUERY))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+                  (let
+                     ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                     (let
+                        ((result$1_1 count.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_1)
+                         (_$2_1_1 _$2_1_old_1)
+                         (count.0$2_0_1 count.0$2_0_old_1)
+                         (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                         (reject$2_0_1 reject$2_0_old_1)
+                         (t.0$2_0_1 t.0$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (tobool2$2_0_1 (distinct 1 0)))
+                        (=>
+                           (and
+                              (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                              tobool.i$1_0_1
+                              cmp.i$1_0_1
+                              (not cmp$1_0_1)
+                              (not tobool2$2_0_1))
+                           END_QUERY)))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                  (let
+                     ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                     (let
+                        ((retval.i.0$1_0_1 0))
+                        (let
+                           ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                           (let
+                              ((result$1_1 count.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_1)
+                               (_$2_1_1 _$2_1_old_1)
+                               (count.0$2_0_1 count.0$2_0_old_1)
+                               (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                               (reject$2_0_1 reject$2_0_old_1)
+                               (t.0$2_0_1 t.0$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (tobool2$2_0_1 (distinct 1 0)))
+                              (let
+                                 ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                                 (let
+                                    ((conv3$2_0_1 _$2_2_1)
+                                     (conv4$2_0_1 _$2_1_1))
+                                    (let
+                                       ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                       (let
+                                          ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                                          (let
+                                             ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                                             (=>
+                                                (and
+                                                   (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                                   tobool.i$1_0_1
+                                                   (not cmp.i$1_0_1)
+                                                   (not tobool4.i$1_0_1)
+                                                   (not cmp$1_0_1)
+                                                   tobool2$2_0_1
+                                                   (not cmp$2_0_1)
+                                                   (not tobool6$2_0_1))
+                                                END_QUERY))))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                  (let
+                     ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                     (let
+                        ((retval.i.0$1_0_1 0))
+                        (let
+                           ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                           (let
+                              ((result$1_1 count.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_1)
+                               (_$2_1_1 _$2_1_old_1)
+                               (count.0$2_0_1 count.0$2_0_old_1)
+                               (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                               (reject$2_0_1 reject$2_0_old_1)
+                               (t.0$2_0_1 t.0$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (tobool2$2_0_1 (distinct 1 0)))
+                              (=>
+                                 (and
+                                    (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                    tobool.i$1_0_1
+                                    (not cmp.i$1_0_1)
+                                    (not tobool4.i$1_0_1)
+                                    (not cmp$1_0_1)
+                                    (not tobool2$2_0_1))
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+         (let
+            ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+            (let
+               ((result$1_1 count.0$1_0_1)
+                (HEAP$1_res_1 HEAP$1_1)
+                (_$2_1_1 _$2_1_old_1)
+                (count.0$2_0_1 count.0$2_0_old_1)
+                (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                (reject$2_0_1 reject$2_0_old_1)
+                (t.0$2_0_1 t.0$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1)
+                (tobool2$2_0_1 (distinct 1 0)))
+               (let
+                  ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                  (let
+                     ((conv3$2_0_1 _$2_2_1)
+                      (conv4$2_0_1 _$2_1_1))
+                     (let
+                        ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                        (let
+                           ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                           (let
+                              ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                              (=>
+                                 (and
+                                    (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                    (not tobool.i$1_0_1)
+                                    (not cmp$1_0_1)
+                                    tobool2$2_0_1
+                                    (not cmp$2_0_1)
+                                    (not tobool6$2_0_1))
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+         (let
+            ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+            (let
+               ((result$1_1 count.0$1_0_1)
+                (HEAP$1_res_1 HEAP$1_1)
+                (_$2_1_1 _$2_1_old_1)
+                (count.0$2_0_1 count.0$2_0_old_1)
+                (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                (reject$2_0_1 reject$2_0_old_1)
+                (t.0$2_0_1 t.0$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1)
+                (tobool2$2_0_1 (distinct 1 0)))
+               (=>
+                  (and
+                     (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                     (not tobool.i$1_0_1)
+                     (not cmp$1_0_1)
+                     (not tobool2$2_0_1))
+                  END_QUERY))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+                  (let
+                     ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                     (let
+                        ((inc$1_0_1 (+ count.0$1_0_1 1)))
+                        (let
+                           ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                            (count.0$1_0_2 inc$1_0_1)
+                            (_$2_1_1 _$2_1_old_1)
+                            (count.0$2_0_1 count.0$2_0_old_1)
+                            (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                            (reject$2_0_1 reject$2_0_old_1)
+                            (t.0$2_0_1 t.0$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (tobool2$2_0_1 (distinct 1 0)))
+                           (let
+                              ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                              (let
+                                 ((conv3$2_0_1 _$2_2_1)
+                                  (conv4$2_0_1 _$2_1_1))
+                                 (let
+                                    ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                          tobool.i$1_0_1
+                                          cmp.i$1_0_1
+                                          cmp$1_0_1
+                                          tobool2$2_0_1
+                                          cmp$2_0_1)
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                  (let
+                     ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                     (let
+                        ((retval.i.0$1_0_1 0))
+                        (let
+                           ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                           (let
+                              ((inc$1_0_1 (+ count.0$1_0_1 1)))
+                              (let
+                                 ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                                  (count.0$1_0_2 inc$1_0_1)
+                                  (_$2_1_1 _$2_1_old_1)
+                                  (count.0$2_0_1 count.0$2_0_old_1)
+                                  (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                                  (reject$2_0_1 reject$2_0_old_1)
+                                  (t.0$2_0_1 t.0$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (tobool2$2_0_1 (distinct 1 0)))
+                                 (let
+                                    ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                                    (let
+                                       ((conv3$2_0_1 _$2_2_1)
+                                        (conv4$2_0_1 _$2_1_1))
+                                       (let
+                                          ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                          (=>
+                                             (and
+                                                (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                                tobool.i$1_0_1
+                                                (not cmp.i$1_0_1)
+                                                (not tobool4.i$1_0_1)
+                                                cmp$1_0_1
+                                                tobool2$2_0_1
+                                                cmp$2_0_1)
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+         (let
+            ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+            (let
+               ((inc$1_0_1 (+ count.0$1_0_1 1)))
+               (let
+                  ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                   (count.0$1_0_2 inc$1_0_1)
+                   (_$2_1_1 _$2_1_old_1)
+                   (count.0$2_0_1 count.0$2_0_old_1)
+                   (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                   (reject$2_0_1 reject$2_0_old_1)
+                   (t.0$2_0_1 t.0$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1)
+                   (tobool2$2_0_1 (distinct 1 0)))
+                  (let
+                     ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                     (let
+                        ((conv3$2_0_1 _$2_2_1)
+                         (conv4$2_0_1 _$2_1_1))
+                        (let
+                           ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                           (=>
+                              (and
+                                 (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                 (not tobool.i$1_0_1)
+                                 cmp$1_0_1
+                                 tobool2$2_0_1
+                                 cmp$2_0_1)
+                              END_QUERY))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+                  (let
+                     ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                     (let
+                        ((result$1_1 count.0$1_0_1)
+                         (HEAP$1_res_1 HEAP$1_1)
+                         (_$2_1_1 _$2_1_old_1)
+                         (count.0$2_0_1 count.0$2_0_old_1)
+                         (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                         (reject$2_0_1 reject$2_0_old_1)
+                         (t.0$2_0_1 t.0$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1)
+                         (tobool2$2_0_1 (distinct 1 0)))
+                        (let
+                           ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                           (let
+                              ((conv3$2_0_1 _$2_2_1)
+                               (conv4$2_0_1 _$2_1_1))
+                              (let
+                                 ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                 (let
+                                    ((result$2_1 count.0$2_0_1)
+                                     (HEAP$2_res_1 HEAP$2_1))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                          tobool.i$1_0_1
+                                          cmp.i$1_0_1
+                                          (not cmp$1_0_1)
+                                          tobool2$2_0_1
+                                          cmp$2_0_1
+                                          (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                       END_QUERY)))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                  (let
+                     ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                     (let
+                        ((retval.i.0$1_0_1 0))
+                        (let
+                           ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                           (let
+                              ((result$1_1 count.0$1_0_1)
+                               (HEAP$1_res_1 HEAP$1_1)
+                               (_$2_1_1 _$2_1_old_1)
+                               (count.0$2_0_1 count.0$2_0_old_1)
+                               (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                               (reject$2_0_1 reject$2_0_old_1)
+                               (t.0$2_0_1 t.0$2_0_old_1)
+                               (HEAP$2_1 HEAP$2_old_1)
+                               (tobool2$2_0_1 (distinct 1 0)))
+                              (let
+                                 ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                                 (let
+                                    ((conv3$2_0_1 _$2_2_1)
+                                     (conv4$2_0_1 _$2_1_1))
+                                    (let
+                                       ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                       (let
+                                          ((result$2_1 count.0$2_0_1)
+                                           (HEAP$2_res_1 HEAP$2_1))
+                                          (=>
+                                             (and
+                                                (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                                tobool.i$1_0_1
+                                                (not cmp.i$1_0_1)
+                                                (not tobool4.i$1_0_1)
+                                                (not cmp$1_0_1)
+                                                tobool2$2_0_1
+                                                cmp$2_0_1
+                                                (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                             END_QUERY)))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+         (let
+            ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+            (let
+               ((result$1_1 count.0$1_0_1)
+                (HEAP$1_res_1 HEAP$1_1)
+                (_$2_1_1 _$2_1_old_1)
+                (count.0$2_0_1 count.0$2_0_old_1)
+                (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                (reject$2_0_1 reject$2_0_old_1)
+                (t.0$2_0_1 t.0$2_0_old_1)
+                (HEAP$2_1 HEAP$2_old_1)
+                (tobool2$2_0_1 (distinct 1 0)))
+               (let
+                  ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                  (let
+                     ((conv3$2_0_1 _$2_2_1)
+                      (conv4$2_0_1 _$2_1_1))
+                     (let
+                        ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                        (let
+                           ((result$2_1 count.0$2_0_1)
+                            (HEAP$2_res_1 HEAP$2_1))
+                           (=>
+                              (and
+                                 (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                 (not tobool.i$1_0_1)
+                                 (not cmp$1_0_1)
+                                 tobool2$2_0_1
+                                 cmp$2_0_1
+                                 (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                              END_QUERY))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                  (let
+                     ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                     (let
+                        ((incdec.ptr.i$1_0_1 (+ t.addr.i.0$1_0_1 1)))
+                        (let
+                           ((t.addr.i.0$1_0_2 incdec.ptr.i$1_0_1)
+                            (_$2_1_1 _$2_1_old_1)
+                            (count.0$2_0_1 count.0$2_0_old_1)
+                            (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                            (reject$2_0_1 reject$2_0_old_1)
+                            (t.0$2_0_1 t.0$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (tobool2$2_0_1 (distinct 1 0)))
+                           (let
+                              ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                              (let
+                                 ((conv3$2_0_1 _$2_2_1)
+                                  (conv4$2_0_1 _$2_1_1))
+                                 (let
+                                    ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                    (let
+                                       ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                                       (let
+                                          ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                                          (let
+                                             ((incdec.ptr9$2_0_1 (+ t.0$2_0_1 1)))
+                                             (let
+                                                ((t.0$2_0_2 incdec.ptr9$2_0_1))
+                                                (=>
+                                                   (and
+                                                      (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                                      tobool.i$1_0_1
+                                                      (not cmp.i$1_0_1)
+                                                      tobool4.i$1_0_1
+                                                      tobool2$2_0_1
+                                                      (not cmp$2_0_1)
+                                                      tobool6$2_0_1)
+                                                   (INV_MAIN_0 conv.i$1_0_1 count.0$1_0_1 incdec.ptr$1_0_1 reject$1_0_1 t.addr.i.0$1_0_2 HEAP$1_1 _$2_1_1 count.0$2_0_1 incdec.ptr$2_0_1 reject$2_0_1 t.0$2_0_2 HEAP$2_1))))))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                  (let
+                     ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                     (let
+                        ((incdec.ptr.i$1_0_1 (+ t.addr.i.0$1_0_1 1)))
+                        (let
+                           ((t.addr.i.0$1_0_2 incdec.ptr.i$1_0_1))
+                           (=>
+                              (and
+                                 (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                 tobool.i$1_0_1
+                                 (not cmp.i$1_0_1)
+                                 tobool4.i$1_0_1
+                                 (let
+                                    ((_$2_1_1 _$2_1_old_1)
+                                     (count.0$2_0_1 count.0$2_0_old_1)
+                                     (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                                     (reject$2_0_1 reject$2_0_old_1)
+                                     (t.0$2_0_1 t.0$2_0_old_1)
+                                     (HEAP$2_1 HEAP$2_old_1)
+                                     (tobool2$2_0_1 (distinct 1 0)))
+                                    (=>
+                                       tobool2$2_0_1
+                                       (let
+                                          ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                                          (let
+                                             ((conv3$2_0_1 _$2_2_1)
+                                              (conv4$2_0_1 _$2_1_1))
+                                             (let
+                                                ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                                (=>
+                                                   (not cmp$2_0_1)
+                                                   (let
+                                                      ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                                                      (let
+                                                         ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                                                         (=>
+                                                            tobool6$2_0_1
+                                                            (let
+                                                               ((incdec.ptr9$2_0_1 (+ t.0$2_0_1 1)))
+                                                               (let
+                                                                  ((t.0$2_0_2 incdec.ptr9$2_0_1))
+                                                                  false))))))))))))
+                              (INV_MAIN_0 conv.i$1_0_1 count.0$1_0_1 incdec.ptr$1_0_1 reject$1_0_1 t.addr.i.0$1_0_2 HEAP$1_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)))))))))))
+(rule
+   (let
+      ((_$2_1_1 _$2_1_old_1)
+       (count.0$2_0_1 count.0$2_0_old_1)
+       (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+       (reject$2_0_1 reject$2_0_old_1)
+       (t.0$2_0_1 t.0$2_0_old_1)
+       (HEAP$2_1 HEAP$2_old_1)
+       (tobool2$2_0_1 (distinct 1 0)))
+      (let
+         ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+         (let
+            ((conv3$2_0_1 _$2_2_1)
+             (conv4$2_0_1 _$2_1_1))
+            (let
+               ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+               (let
+                  ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                  (let
+                     ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                     (let
+                        ((incdec.ptr9$2_0_1 (+ t.0$2_0_1 1)))
+                        (let
+                           ((t.0$2_0_2 incdec.ptr9$2_0_1))
+                           (=>
+                              (and
+                                 (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                 tobool2$2_0_1
+                                 (not cmp$2_0_1)
+                                 tobool6$2_0_1
+                                 (let
+                                    ((conv.i$1_0_1 conv.i$1_0_old_1)
+                                     (count.0$1_0_1 count.0$1_0_old_1)
+                                     (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+                                     (reject$1_0_1 reject$1_0_old_1)
+                                     (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+                                     (HEAP$1_1 HEAP$1_old_1)
+                                     (tobool.i$1_0_1 (distinct 1 0)))
+                                    (=>
+                                       tobool.i$1_0_1
+                                       (let
+                                          ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                                          (let
+                                             ((conv1.i$1_0_1 _$1_2_1)
+                                              (conv2.i$1_0_1 conv.i$1_0_1))
+                                             (let
+                                                ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+                                                (=>
+                                                   (not cmp.i$1_0_1)
+                                                   (let
+                                                      ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                                                      (let
+                                                         ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                                                         (=>
+                                                            tobool4.i$1_0_1
+                                                            (let
+                                                               ((incdec.ptr.i$1_0_1 (+ t.addr.i.0$1_0_1 1)))
+                                                               (let
+                                                                  ((t.addr.i.0$1_0_2 incdec.ptr.i$1_0_1))
+                                                                  false))))))))))))
+                              (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_1 count.0$2_0_1 incdec.ptr$2_0_1 reject$2_0_1 t.0$2_0_2 HEAP$2_1)))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+                  (let
+                     ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                     (let
+                        ((inc$1_0_1 (+ count.0$1_0_1 1)))
+                        (let
+                           ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                            (count.0$1_0_2 inc$1_0_1)
+                            (_$2_1_1 _$2_1_old_1)
+                            (count.0$2_0_1 count.0$2_0_old_1)
+                            (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                            (reject$2_0_1 reject$2_0_old_1)
+                            (t.0$2_0_1 t.0$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (tobool2$2_0_1 (distinct 1 0)))
+                           (let
+                              ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                              (let
+                                 ((conv3$2_0_1 _$2_2_1)
+                                  (conv4$2_0_1 _$2_1_1))
+                                 (let
+                                    ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                    (let
+                                       ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                                       (let
+                                          ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                                          (let
+                                             ((inc$2_0_1 (+ count.0$2_0_1 1)))
+                                             (let
+                                                ((count.0$2_0_2 inc$2_0_1)
+                                                 (s.addr.0$2_0_1 incdec.ptr$2_0_1))
+                                                (=>
+                                                   (and
+                                                      (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                                      tobool.i$1_0_1
+                                                      cmp.i$1_0_1
+                                                      cmp$1_0_1
+                                                      tobool2$2_0_1
+                                                      (not cmp$2_0_1)
+                                                      (not tobool6$2_0_1))
+                                                   (INV_MAIN_1 count.0$1_0_2 reject$1_0_1 s.addr.0$1_0_1 HEAP$1_1 count.0$2_0_2 reject$2_0_1 s.addr.0$2_0_1 HEAP$2_1))))))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+                  (let
+                     ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                     (let
+                        ((inc$1_0_1 (+ count.0$1_0_1 1)))
+                        (let
+                           ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                            (count.0$1_0_2 inc$1_0_1)
+                            (_$2_1_1 _$2_1_old_1)
+                            (count.0$2_0_1 count.0$2_0_old_1)
+                            (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                            (reject$2_0_1 reject$2_0_old_1)
+                            (t.0$2_0_1 t.0$2_0_old_1)
+                            (HEAP$2_1 HEAP$2_old_1)
+                            (tobool2$2_0_1 (distinct 1 0)))
+                           (let
+                              ((count.0$2_0_2 count.0$2_0_1)
+                               (s.addr.0$2_0_1 incdec.ptr$2_0_1))
+                              (=>
+                                 (and
+                                    (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                    tobool.i$1_0_1
+                                    cmp.i$1_0_1
+                                    cmp$1_0_1
+                                    (not tobool2$2_0_1))
+                                 (INV_MAIN_1 count.0$1_0_2 reject$1_0_1 s.addr.0$1_0_1 HEAP$1_1 count.0$2_0_2 reject$2_0_1 s.addr.0$2_0_1 HEAP$2_1))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                  (let
+                     ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                     (let
+                        ((retval.i.0$1_0_1 0))
+                        (let
+                           ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                           (let
+                              ((inc$1_0_1 (+ count.0$1_0_1 1)))
+                              (let
+                                 ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                                  (count.0$1_0_2 inc$1_0_1)
+                                  (_$2_1_1 _$2_1_old_1)
+                                  (count.0$2_0_1 count.0$2_0_old_1)
+                                  (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                                  (reject$2_0_1 reject$2_0_old_1)
+                                  (t.0$2_0_1 t.0$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (tobool2$2_0_1 (distinct 1 0)))
+                                 (let
+                                    ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                                    (let
+                                       ((conv3$2_0_1 _$2_2_1)
+                                        (conv4$2_0_1 _$2_1_1))
+                                       (let
+                                          ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                                          (let
+                                             ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                                             (let
+                                                ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                                                (let
+                                                   ((inc$2_0_1 (+ count.0$2_0_1 1)))
+                                                   (let
+                                                      ((count.0$2_0_2 inc$2_0_1)
+                                                       (s.addr.0$2_0_1 incdec.ptr$2_0_1))
+                                                      (=>
+                                                         (and
+                                                            (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                                            tobool.i$1_0_1
+                                                            (not cmp.i$1_0_1)
+                                                            (not tobool4.i$1_0_1)
+                                                            cmp$1_0_1
+                                                            tobool2$2_0_1
+                                                            (not cmp$2_0_1)
+                                                            (not tobool6$2_0_1))
+                                                         (INV_MAIN_1 count.0$1_0_2 reject$1_0_1 s.addr.0$1_0_1 HEAP$1_1 count.0$2_0_2 reject$2_0_1 s.addr.0$2_0_1 HEAP$2_1))))))))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((_$1_2_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+         (let
+            ((conv1.i$1_0_1 _$1_2_1)
+             (conv2.i$1_0_1 conv.i$1_0_1))
+            (let
+               ((cmp.i$1_0_1 (= conv1.i$1_0_1 conv2.i$1_0_1)))
+               (let
+                  ((_$1_3_1 (select HEAP$1_1 t.addr.i.0$1_0_1)))
+                  (let
+                     ((tobool4.i$1_0_1 (distinct _$1_3_1 0)))
+                     (let
+                        ((retval.i.0$1_0_1 0))
+                        (let
+                           ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+                           (let
+                              ((inc$1_0_1 (+ count.0$1_0_1 1)))
+                              (let
+                                 ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                                  (count.0$1_0_2 inc$1_0_1)
+                                  (_$2_1_1 _$2_1_old_1)
+                                  (count.0$2_0_1 count.0$2_0_old_1)
+                                  (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                                  (reject$2_0_1 reject$2_0_old_1)
+                                  (t.0$2_0_1 t.0$2_0_old_1)
+                                  (HEAP$2_1 HEAP$2_old_1)
+                                  (tobool2$2_0_1 (distinct 1 0)))
+                                 (let
+                                    ((count.0$2_0_2 count.0$2_0_1)
+                                     (s.addr.0$2_0_1 incdec.ptr$2_0_1))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                          tobool.i$1_0_1
+                                          (not cmp.i$1_0_1)
+                                          (not tobool4.i$1_0_1)
+                                          cmp$1_0_1
+                                          (not tobool2$2_0_1))
+                                       (INV_MAIN_1 count.0$1_0_2 reject$1_0_1 s.addr.0$1_0_1 HEAP$1_1 count.0$2_0_2 reject$2_0_1 s.addr.0$2_0_1 HEAP$2_1))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+         (let
+            ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+            (let
+               ((inc$1_0_1 (+ count.0$1_0_1 1)))
+               (let
+                  ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                   (count.0$1_0_2 inc$1_0_1)
+                   (_$2_1_1 _$2_1_old_1)
+                   (count.0$2_0_1 count.0$2_0_old_1)
+                   (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                   (reject$2_0_1 reject$2_0_old_1)
+                   (t.0$2_0_1 t.0$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1)
+                   (tobool2$2_0_1 (distinct 1 0)))
+                  (let
+                     ((_$2_2_1 (select HEAP$2_1 t.0$2_0_1)))
+                     (let
+                        ((conv3$2_0_1 _$2_2_1)
+                         (conv4$2_0_1 _$2_1_1))
+                        (let
+                           ((cmp$2_0_1 (= conv3$2_0_1 conv4$2_0_1)))
+                           (let
+                              ((_$2_3_1 (select HEAP$2_1 t.0$2_0_1)))
+                              (let
+                                 ((tobool6$2_0_1 (distinct _$2_3_1 0)))
+                                 (let
+                                    ((inc$2_0_1 (+ count.0$2_0_1 1)))
+                                    (let
+                                       ((count.0$2_0_2 inc$2_0_1)
+                                        (s.addr.0$2_0_1 incdec.ptr$2_0_1))
+                                       (=>
+                                          (and
+                                             (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                                             (not tobool.i$1_0_1)
+                                             cmp$1_0_1
+                                             tobool2$2_0_1
+                                             (not cmp$2_0_1)
+                                             (not tobool6$2_0_1))
+                                          (INV_MAIN_1 count.0$1_0_2 reject$1_0_1 s.addr.0$1_0_1 HEAP$1_1 count.0$2_0_2 reject$2_0_1 s.addr.0$2_0_1 HEAP$2_1)))))))))))))))
+(rule
+   (let
+      ((conv.i$1_0_1 conv.i$1_0_old_1)
+       (count.0$1_0_1 count.0$1_0_old_1)
+       (incdec.ptr$1_0_1 incdec.ptr$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (t.addr.i.0$1_0_1 t.addr.i.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1)
+       (tobool.i$1_0_1 (distinct 1 0)))
+      (let
+         ((retval.i.0$1_0_1 t.addr.i.0$1_0_1))
+         (let
+            ((cmp$1_0_1 (= retval.i.0$1_0_1 0)))
+            (let
+               ((inc$1_0_1 (+ count.0$1_0_1 1)))
+               (let
+                  ((s.addr.0$1_0_1 incdec.ptr$1_0_1)
+                   (count.0$1_0_2 inc$1_0_1)
+                   (_$2_1_1 _$2_1_old_1)
+                   (count.0$2_0_1 count.0$2_0_old_1)
+                   (incdec.ptr$2_0_1 incdec.ptr$2_0_old_1)
+                   (reject$2_0_1 reject$2_0_old_1)
+                   (t.0$2_0_1 t.0$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1)
+                   (tobool2$2_0_1 (distinct 1 0)))
+                  (let
+                     ((count.0$2_0_2 count.0$2_0_1)
+                      (s.addr.0$2_0_1 incdec.ptr$2_0_1))
+                     (=>
+                        (and
+                           (INV_MAIN_0 conv.i$1_0_old_1 count.0$1_0_old_1 incdec.ptr$1_0_old_1 reject$1_0_old_1 t.addr.i.0$1_0_old_1 HEAP$1_old_1 _$2_1_old_1 count.0$2_0_old_1 incdec.ptr$2_0_old_1 reject$2_0_old_1 t.0$2_0_old_1 HEAP$2_old_1)
+                           (not tobool.i$1_0_1)
+                           cmp$1_0_1
+                           (not tobool2$2_0_1))
+                        (INV_MAIN_1 count.0$1_0_2 reject$1_0_1 s.addr.0$1_0_1 HEAP$1_1 count.0$2_0_2 reject$2_0_1 s.addr.0$2_0_1 HEAP$2_1)))))))))
+(rule
+   (let
+      ((count.0$1_0_1 count.0$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (s.addr.0$1_0_1 s.addr.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 s.addr.0$1_0_1)))
+         (let
+            ((conv$1_0_1 _$1_0_1))
+            (let
+               ((tobool$1_0_1 (distinct conv$1_0_1 0)))
+               (let
+                  ((result$1_1 count.0$1_0_1)
+                   (HEAP$1_res_1 HEAP$1_1)
+                   (count.0$2_0_1 count.0$2_0_old_1)
+                   (reject$2_0_1 reject$2_0_old_1)
+                   (s.addr.0$2_0_1 s.addr.0$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1))
+                  (let
+                     ((_$2_0_1 (select HEAP$2_1 s.addr.0$2_0_1)))
+                     (let
+                        ((conv$2_0_1 _$2_0_1))
+                        (let
+                           ((tobool$2_0_1 (distinct conv$2_0_1 0)))
+                           (=>
+                              (and
+                                 (INV_MAIN_1 count.0$1_0_old_1 reject$1_0_old_1 s.addr.0$1_0_old_1 HEAP$1_old_1 count.0$2_0_old_1 reject$2_0_old_1 s.addr.0$2_0_old_1 HEAP$2_old_1)
+                                 (not tobool$1_0_1)
+                                 tobool$2_0_1)
+                              END_QUERY))))))))))
+(rule
+   (let
+      ((count.0$1_0_1 count.0$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (s.addr.0$1_0_1 s.addr.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 s.addr.0$1_0_1)))
+         (let
+            ((conv$1_0_1 _$1_0_1))
+            (let
+               ((tobool$1_0_1 (distinct conv$1_0_1 0)))
+               (let
+                  ((incdec.ptr$1_0_1 (+ s.addr.0$1_0_1 1))
+                   (_$1_1_1 (select HEAP$1_1 s.addr.0$1_0_1)))
+                  (let
+                     ((conv1$1_0_1 _$1_1_1))
+                     (let
+                        ((conv.i$1_0_1 conv1$1_0_1)
+                         (t.addr.i.0$1_0_1 reject$1_0_1)
+                         (count.0$2_0_1 count.0$2_0_old_1)
+                         (reject$2_0_1 reject$2_0_old_1)
+                         (s.addr.0$2_0_1 s.addr.0$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 s.addr.0$2_0_1)))
+                           (let
+                              ((conv$2_0_1 _$2_0_1))
+                              (let
+                                 ((tobool$2_0_1 (distinct conv$2_0_1 0)))
+                                 (=>
+                                    (and
+                                       (INV_MAIN_1 count.0$1_0_old_1 reject$1_0_old_1 s.addr.0$1_0_old_1 HEAP$1_old_1 count.0$2_0_old_1 reject$2_0_old_1 s.addr.0$2_0_old_1 HEAP$2_old_1)
+                                       tobool$1_0_1
+                                       (not tobool$2_0_1))
+                                    END_QUERY))))))))))))
+(rule
+   (let
+      ((count.0$1_0_1 count.0$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (s.addr.0$1_0_1 s.addr.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 s.addr.0$1_0_1)))
+         (let
+            ((conv$1_0_1 _$1_0_1))
+            (let
+               ((tobool$1_0_1 (distinct conv$1_0_1 0)))
+               (let
+                  ((result$1_1 count.0$1_0_1)
+                   (HEAP$1_res_1 HEAP$1_1)
+                   (count.0$2_0_1 count.0$2_0_old_1)
+                   (reject$2_0_1 reject$2_0_old_1)
+                   (s.addr.0$2_0_1 s.addr.0$2_0_old_1)
+                   (HEAP$2_1 HEAP$2_old_1))
+                  (let
+                     ((_$2_0_1 (select HEAP$2_1 s.addr.0$2_0_1)))
+                     (let
+                        ((conv$2_0_1 _$2_0_1))
+                        (let
+                           ((tobool$2_0_1 (distinct conv$2_0_1 0)))
+                           (let
+                              ((result$2_1 count.0$2_0_1)
+                               (HEAP$2_res_1 HEAP$2_1))
+                              (=>
+                                 (and
+                                    (INV_MAIN_1 count.0$1_0_old_1 reject$1_0_old_1 s.addr.0$1_0_old_1 HEAP$1_old_1 count.0$2_0_old_1 reject$2_0_old_1 s.addr.0$2_0_old_1 HEAP$2_old_1)
+                                    (not tobool$1_0_1)
+                                    (not tobool$2_0_1)
+                                    (not (OUT_INV result$1_1 result$2_1 HEAP$1_1 HEAP$2_1)))
+                                 END_QUERY)))))))))))
+(rule
+   (let
+      ((count.0$1_0_1 count.0$1_0_old_1)
+       (reject$1_0_1 reject$1_0_old_1)
+       (s.addr.0$1_0_1 s.addr.0$1_0_old_1)
+       (HEAP$1_1 HEAP$1_old_1))
+      (let
+         ((_$1_0_1 (select HEAP$1_1 s.addr.0$1_0_1)))
+         (let
+            ((conv$1_0_1 _$1_0_1))
+            (let
+               ((tobool$1_0_1 (distinct conv$1_0_1 0)))
+               (let
+                  ((incdec.ptr$1_0_1 (+ s.addr.0$1_0_1 1))
+                   (_$1_1_1 (select HEAP$1_1 s.addr.0$1_0_1)))
+                  (let
+                     ((conv1$1_0_1 _$1_1_1))
+                     (let
+                        ((conv.i$1_0_1 conv1$1_0_1)
+                         (t.addr.i.0$1_0_1 reject$1_0_1)
+                         (count.0$2_0_1 count.0$2_0_old_1)
+                         (reject$2_0_1 reject$2_0_old_1)
+                         (s.addr.0$2_0_1 s.addr.0$2_0_old_1)
+                         (HEAP$2_1 HEAP$2_old_1))
+                        (let
+                           ((_$2_0_1 (select HEAP$2_1 s.addr.0$2_0_1)))
+                           (let
+                              ((conv$2_0_1 _$2_0_1))
+                              (let
+                                 ((tobool$2_0_1 (distinct conv$2_0_1 0)))
+                                 (let
+                                    ((incdec.ptr$2_0_1 (+ s.addr.0$2_0_1 1))
+                                     (_$2_1_1 (select HEAP$2_1 s.addr.0$2_0_1))
+                                     (t.0$2_0_1 reject$2_0_1))
+                                    (=>
+                                       (and
+                                          (INV_MAIN_1 count.0$1_0_old_1 reject$1_0_old_1 s.addr.0$1_0_old_1 HEAP$1_old_1 count.0$2_0_old_1 reject$2_0_old_1 s.addr.0$2_0_old_1 HEAP$2_old_1)
+                                          tobool$1_0_1
+                                          tobool$2_0_1)
+                                       (INV_MAIN_0 conv.i$1_0_1 count.0$1_0_1 incdec.ptr$1_0_1 reject$1_0_1 t.addr.i.0$1_0_1 HEAP$1_1 _$2_1_1 count.0$2_0_1 incdec.ptr$2_0_1 reject$2_0_1 t.0$2_0_1 HEAP$2_1))))))))))))))
+(query
+   END_QUERY
+   :print-certificate
+   true)
