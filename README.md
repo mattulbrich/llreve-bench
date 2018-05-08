@@ -1,10 +1,13 @@
 # LLREVE Examples
 
-Files with extension `.smt2` are in SMT-LIB format. Files with
-extension `.muz` are in Z3 rules format.
+- Files with extension `.smt2` are in SMT-LIB format. 
+  - Files with extension `.smt2` (directory `quant`) that operate on heaps use universally quantified predicates
+  - Files with extension `.array.smt2` (directory `arrays`) that operate on heaps use arrays as predicate arguments.
+- Files with extension `.muz` are in Z3 rules format (they take arrays as predicate arguments)
+
 
 ## Contributing email
-To: arie.gurfinkel
+To: arie.gurfinkel  
 From: Mattias Ulbrich
 
 Hi Arie,
