@@ -26,6 +26,8 @@
 ;; Coupling invariants for the loops are INV_MAIN1 an INV_MAIN2.
 ;; They both contain one universal quantifier over array indices.
 
+;; Author: Mattias Ulbrich <ulbrich@kit.edu>
+;; As an example interesting for regression verification: http://formal.iti.kit.edu/reve
 
 (set-logic HORN)
 
