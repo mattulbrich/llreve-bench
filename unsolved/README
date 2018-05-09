@@ -1,0 +1,7 @@
+This directory contains a few handcrafted horn clause
+sets in SMT2 format that are not solvable currently.
+
+Or are they? Prove me wrong!
+
+Explanation and possible solutions (instantiations for the Horn predicates) 
+are included in the files.
