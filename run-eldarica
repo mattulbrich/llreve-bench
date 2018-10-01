@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#set -x
+
+comm=$(basename $0)
+engine=${comm#run-}
+echo "Run test cases using engine Eldarica."
+
+for file in $(find -name "*.smt2")
+do
+    echo "------------- $file -----"
+    eld-client -log -t:30 "$file" > "$file.eldarica" 2>&1
+    if [ $? -eq 0 ]
+    then
+        if $(grep -q '^sat$' "$file.eldarica")
+        then
+           echo "  Success"
+        else
+           echo "  Failed"
+           cat "$file.eldarica"
+        fi
+    else
+        echo "  Error"
+        cat "$file.eldarica"
+    fi
+done
